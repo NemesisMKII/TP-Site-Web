@@ -1,0 +1,18 @@
+ul {
+    list-style-type: none;
+}
+
+#categories, #techniques {
+    width: 15%;
+}
+#technique_list, #categories_list {
+    transition: transform 0.5s, max-height 0.5s;
+    transform: translateY(-25px);
+    max-height: 0;
+    overflow: hidden;
+}
+
+.show {
+    transform: translateY(0px) !important;
+    max-height: 300px !important;
+}

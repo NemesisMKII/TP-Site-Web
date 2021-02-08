@@ -3,8 +3,46 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Rudy Art Wall</title>
+	<!-- Bootstrap 5.0.0-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<!-- CSS style -->
+	<link rel="stylesheet" type="text/css" href="./style/style.css" />
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
-
+	<header class="border border-dark">
+		<ul class="d-flex p-0 mb-0">
+			<li class="px-1 border-end border-dark">Home</li>
+			<li class="px-1 border-end border-dark">About me</li>
+			<li class="border-end border-dark position-relative text-center" id="techniques">Techniques
+				<ul class="position-absolute text-center px-0 w-100" id="technique_list">
+					<li class="border border-dark">HDR</li>
+					<li class="border border-dark">High Key/Low Key</li>
+					<li class="border border-dark">High Speed</li>
+					<li class="border border-dark">Studio</li>
+					<li class="border border-dark">Tilt Shift</li>
+					<li class="border border-dark">Pose longue</li>
+					<li class="border border-dark">Light painting</li>
+				</ul>
+			</li>
+			<li class="border-end border-dark position-relative text-center" id="categories">Categories
+				<ul class="position-absolute text-center px-0 w-100" id="categories_list">
+					<li class="border border-dark">Noir et blanc</li>
+					<li class="border border-dark">Portrait</li>
+					<li class="border border-dark">Paysage</li>
+					<li class="border border-dark">Architecture</li>
+					<li class="border border-dark">Graphisme</li>
+					<li class="border border-dark">Evenement</li>
+					<li class="border border-dark">Boudoir (+18)</li>
+				</ul>
+			</li>
+			<li class="me-auto px-1 border-end border-dark">Album</li>
+			<li class="px-1 border-start border-dark">Theme</li>
+			<li class="px-1 border-start border-dark">Contact</li>
+		</ul>
+	</header>
+	<script src='./style/default.js' ></script>
 </body>
 </html>
