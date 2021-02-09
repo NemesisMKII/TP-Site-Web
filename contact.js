@@ -8,18 +8,18 @@ $(document).ready(function () {
         formObj = JSON.parse(localStorage.getItem('formulaire'))
     }
 $("#myForm").submit(register)
-//envoi du formulaire
-function register(event) {
-    event.preventDefault()
-    var firstName = $("#firstName").val()
-    var name = $("#name").val()
-    var objet = $("#objet").val()
-    var message = $("#message").val()
-    var mail = $("#mail").val()
-    var age = $(".age:checked").val()
+        //envoi du formulaire
+    function register(event) {
+        event.preventDefault()
+        var firstName = $("#firstName").val()
+        var name = $("#name").val()
+        var objet = $("#objet").val()
+        var message = $("#message").val()
+        var mail = $("#mail").val()
+        var age = $("#age:checked").val()
  
 
-    if ( firstName == "" || name == "" || objet =="" || message == "" || age == ""){
+    if ( firstName == "" || name == "" || objet =="" || message == "" || $("#age").prop("checked") == false){
         alert("Tous les champs ne sont pas remplis")
     }else{
         var newform = {
@@ -42,6 +42,7 @@ function register(event) {
         $("#mail").val("")
         }
     }
-    
+ 
+
 
 })
