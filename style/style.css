@@ -1,3 +1,9 @@
+/* navbar CSS START */
+header a {
+    text-decoration: none;
+    color: black;
+}
+
 ul {
     list-style-type: none;
 }
@@ -6,13 +12,13 @@ ul {
     width: 15%;
 }
 #technique_list, #categories_list {
-    transition: transform 0.5s, max-height 0.5s;
-    transform: translateY(-25px);
+    transition: max-height 1s;
     max-height: 0;
     overflow: hidden;
 }
 
 .show {
-    transform: translateY(0px) !important;
     max-height: 300px !important;
 }
+
+/* navbar CSS END */

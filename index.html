@@ -12,35 +12,37 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!-- NAVBAR -->
 	<header class="border border-dark">
 		<ul class="d-flex p-0 mb-0">
 			<li class="px-1 border-end border-dark">Home</li>
-			<li class="px-1 border-end border-dark">About me</li>
-			<li class="border-end border-dark position-relative text-center" id="techniques">Techniques
+			<li class="px-1 border-end border-dark"><a href="aboutme.html">About me</a></li>
+			<li class="border-end border-dark position-relative text-center" id="techniques"><a href="">Techniques</a>
 				<ul class="position-absolute text-center px-0 w-100" id="technique_list">
-					<li class="border border-dark">HDR</li>
-					<li class="border border-dark">High Key/Low Key</li>
-					<li class="border border-dark">High Speed</li>
-					<li class="border border-dark">Studio</li>
-					<li class="border border-dark">Tilt Shift</li>
-					<li class="border border-dark">Pose longue</li>
-					<li class="border border-dark">Light painting</li>
+					<li class="border border-dark"><a href="index.html?technique=hdr">HDR</a></li>
+					<li class="border border-dark"><a href="index.html?technique=highkey_lowkey">High Key/Low Key</a></li>
+					<li class="border border-dark"><a href="index.html?technique=high speed">High Speed</a></li>
+					<li class="border border-dark"><a href="index.html?technique=studio">Studio</a></li>
+					<li class="border border-dark"><a href="index.html?technique=tilt shift">Tilt Shift</a></li>
+					<li class="border border-dark"><a href="index.html?technique=pose longue">Pose longue</a></li>
+					<li class="border border-dark"><a href="index.html?technique=light painting">Light painting</a></li>
 				</ul>
 			</li>
-			<li class="border-end border-dark position-relative text-center" id="categories">Categories
+			<li class="border-end border-dark position-relative text-center" id="categories"><a href="">Categories</a>
 				<ul class="position-absolute text-center px-0 w-100" id="categories_list">
-					<li class="border border-dark">Noir et blanc</li>
-					<li class="border border-dark">Portrait</li>
-					<li class="border border-dark">Paysage</li>
-					<li class="border border-dark">Architecture</li>
-					<li class="border border-dark">Graphisme</li>
-					<li class="border border-dark">Evenement</li>
-					<li class="border border-dark">Boudoir (+18)</li>
+					<li class="border border-dark"><a href="index.html?category=blackandwhite">Noir et blanc</a></li>
+					<li class="border border-dark"><a href="index.html?category=portrait">Portrait</a></li>
+					<li class="border border-dark"><a href="index.html?category=paysage">Paysage</a></li>
+					<li class="border border-dark"><a href="index.html?category=architecture">Architecture</a></li>
+					<li class="border border-dark"><a href="index.html?category=graphisme">Graphisme</a></li>
+					<li class="border border-dark"><a href="index.html?category=evenement">Evenement</a></li>
+					<li class="border border-dark"><a href="index.html?category=boudoir">Boudoir (+18)</a></li>
 				</ul>
 			</li>
 			<li class="me-auto px-1 border-end border-dark">Album</li>
 			<li class="px-1 border-start border-dark">Theme</li>
-			<li class="px-1 border-start border-dark">Contact</li>
+			<li class="px-1 border-start border-dark"><a href="contact.html">Contact</a></li>
+			<li class="px-1 border-start border-dark" id="btnConnexion"><a href="login.html">Connexion</a></li>
 		</ul>
 	</header>
 	<script src='./style/default.js' ></script>

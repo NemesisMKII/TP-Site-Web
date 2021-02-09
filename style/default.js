@@ -1,8 +1,10 @@
 $(document).ready (() => {
-    $('#techniques').click(() => {
+    //Click on "techniques" shows techniques list
+    $('#techniques').hover((e) => {
         $('#technique_list').toggleClass('show')
     })
-    $('#categories').click(() => {
+    //Click on "categories" shows categories list
+    $('#categories').hover((e) => {
         $('#categories_list').toggleClass('show')
     })
 })
