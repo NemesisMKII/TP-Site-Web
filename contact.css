@@ -1,0 +1,16 @@
+#formulaire{
+    text-align: center;
+    border: #000000 solid 2px;
+    
+    width: 70%;
+    margin-right: 15%;
+    margin-left:15% ;
+
+}
+#formulaire h2{
+    background-color: #323232;
+    color: red;
+}
+#formulaire p{
+    padding: 2%;
+}

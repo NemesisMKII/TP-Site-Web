@@ -2,9 +2,43 @@
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="contact.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rudy Art Wall</title>
 </head>
 <body>
+	<div id="formulaire"> <!--formulaire-->
+		
+		  <h2> Contact</h2>
+			<p>Remplissez le formulaire de contact pour m’exposer votre demande et que je puisse revenir vers vous dès que possible.
+				<br>Si vous souhaitez accéder à l'album boudoire, faites votre demande ici ,un login et un mot de passe vous serons transmis.</p>
 
+		  <form method="GET" action="" id="myForm">
+			<div>
+				<input type="text" name="firstName" id="firstName"  placeholder="Votre prénom" />
+				<input type="text" name="name" id="name" placeholder="Votre nom" /><br>
+				<p><input type="email" name="mail" id="mail" placeholder="Votre e-mail"/><br></p>
+				<p>Renseignez le sujet concernant votre demande</p>
+				<select id="objet">
+					<option id="information" value="information" >Demande d'informations</option>
+					<option id="devis" value ="devis">Demande de devis</option>
+					<option id="rdv" value ="rdv">Demande de rendez-vous</option>
+					<option id="bouboire" value ="boudoire">Demande d'accés à l'album bouboire</option>
+					</select>
+				<p><label for="message"></label>
+				  <textarea name="message" id="message" cols="45" rows="8" placeholder="Votre message"></textarea>
+				</p>
+				Avez vous plus de 18 ans ?
+				<input type="radio" name="age" class="age" id="yes" value="yes"/>Oui 
+				<input type="radio" name="age" class="age" id="no" value="no"/>Non <br>
+				<input type="submit" id="submitForm" value="Envoyez"/><br>
+		
+				</div>  
+			</form>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+	<script src="contact.js"></script>
 </body>
 </html>
