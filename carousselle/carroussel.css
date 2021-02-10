@@ -1,0 +1,70 @@
+/*carrouselle*/
+#carroussel{
+	overflow:hidden;
+	position: relative;
+	height: 130px;
+	width: 100%;
+	background: #807C7C
+
+/*fleches*/	
+}
+.suiv img{
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 50px;
+
+
+}
+.prec img{
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: -0;
+	height: 100%;
+	width: 50px;
+	transform: rotate(180deg);
+}
+/*passage de la souris, decalage flèche*/
+.suiv img:hover{
+	right: -10px;
+}
+.prec img:hover{
+	left: -10px;
+}
+
+
+/*class qui redimensionne les images dans la div slide*/
+.redimension{
+	height: 80%; 
+}
+
+/*le slide*/
+.slider{
+	position: relative;
+	top: 16px;
+	/*left:-25px;*/
+	width: 5000px;
+	height: 100%;
+
+}
+/*les images/
+	/*les encadrés des images*/
+
+#carroussel a{
+	padding: 0 20px;
+}
+#carroussel a img{
+	border: solid 4px #060606
+}
+#carroussel a:hover, #carroussel a img:hover{
+	border: solid 4px #F20707
+}
+
+/*responsive*/
+
+@media screen and (min-width: 966px){
+	
+}
