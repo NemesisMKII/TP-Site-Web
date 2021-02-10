@@ -1,0 +1,87 @@
+/* navbar CSS START */
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    width: 100% !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#technique_list, #categories_list {
+    transition: max-height 1s;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.show {
+    max-height: 300px !important;
+}
+
+/* navbar CSS END */
+
+@media (min-width: 992px) {
+    #categories, #techniques {
+        width: 15%;
+    }
+
+    .album {
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 778px) and (max-width: 991.98px) {
+    header {
+        width: 10% !important;
+        height: 100%;
+    }
+
+    .flex-md-column {
+        flex-direction: column !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 777.98px) {
+    header {
+        max-width: 14%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .album {
+        margin-right: auto;
+    }
+    
+    header {
+        width: 100% !important;
+    }
+}
+/* css formulaire */
+body{
+    background-image: url(photo.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+#formulaire{
+    text-align: center;
+    color: white;
+    width: 70%;
+    margin-right: 15%;
+    margin-left:15% ;
+    padding-bottom: 2%;
+}
+#titreContact {
+    background-color: #323232 ;
+    opacity: 0.70;
+   
+    color: white;
+    padding: 0%;
+    
+}
+#formulaire p{
+    padding: 2%;
+}
