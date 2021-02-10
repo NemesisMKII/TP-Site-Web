@@ -8,6 +8,9 @@
 */                                                                      
                                                                        
 window.onload = function(){
+	$("#facebook").on('click', function(){
+		alert("ok");
+	});
 	// définit les objet
 	var comms_txt = $("div.commentaires textarea");
 	var comms_btn = $("div.commentaires div.add span");
@@ -20,10 +23,10 @@ window.onload = function(){
 			var date = new Date().getTime(); // on définit la timestamp
 			/* var auteur on définit plus tard à l'aide des réseaux sociaux
 			var profil on définit plus tard à l'aide des réseaux sociaux */
-			if($(this).attr("id") == "twitter"){
-				alert("twitter");
-				window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(comms_txt.val(),'_blank'));
-			}
+			//if($(this).attr("id") == "twitter"){
+			//	alert("twitter");
+			//	window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(comms_txt.val(),'_blank'));
+			//}
 		}else{
 			alert("Votre commentaire doit faire entre 3 et 280 maximum."); // remplacer eventuellement par une modal
 		}

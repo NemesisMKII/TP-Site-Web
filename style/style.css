@@ -8,8 +8,8 @@
                                                                               
                                                                               
 */
-div.commentaires textarea{
-	width:100%;
+div.commentaires{
+  padding:8px;
 }
 
 /*
@@ -22,9 +22,15 @@ div.commentaires textarea{
                                                                    
                                                                    
 */
-div.commentaires div.btn{
-	display: inline;
+div.commentaires div#logged div.btn span{
+  vertical-align: middle; /* j'aligne @pseudo avec le login */
 }
+div.commentaires div.add div#logged{
+  padding:5px;
+	display: inline;
+  vertical-align: bottom;
+}
+
 div.commentaires div.btn span{
 	background: url('../ress/commentaires/sn.png');
 	background-repeat: no-repeat;
@@ -32,7 +38,6 @@ div.commentaires div.btn span{
 	width:16px;
 	height:16px;
 }
-
 div.commentaires div.btn span.fb{
 	background-position: 0px 0px;
 }
@@ -44,6 +49,10 @@ div.commentaires div.btn span.insta{
 }
 div.commentaires div.btn span.pint{
 	background-position: -32px 0px;
+}
+div.commentaires textarea{
+  width:100%;
+  outline:none;
 }
 /*
       _                                                              _       
