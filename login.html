@@ -2,9 +2,96 @@
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
-	<title>Rudy Art Wall</title>
+	<title>Login</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
 
+
+<button id="btnConnexion">
+	Test
+</button>
+
+<div class="modal" id="modalLogin">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Connectez-vous</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose"></button>
+			</div>
+			<div class="modal-body">
+				<form action="" class="text-center">
+					<input type="text" class="m-2" placeholder="identifiant" id="myID"><br>
+					<input type="password" class="m-2" placeholder="mot de passe" id="myPassword"><br>
+					<input type="submit" class="btn btn-danger m-2" value="Connexion">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+
+$("#btnConnexion").click(function() {
+
+	$("#modalLogin").modal("show")
+
+	var monJsonUsers
+	if (!localStorage.getItem("users")) {
+		monJsonUsers = {"users": []}
+	} else {
+		monJsonUsers = JSON.parse(localStorage.getItem("users"))
+	}
+
+	var pseudo = $("#myID").val()
+	var MdP = $("#myPassword").val()
+
+
+	function login(pseudo, MdP) {
+
+		if (pseudo == "" || MdP == "") {
+			alert("Merci de remplir les 2 champs")
+		} else {
+			var pseudoExist = false
+			let x
+			for (x in monJsonUsers.users) {
+				if (pseudo == monJsonUsers.users[x].pseudo) {
+					var monUser = monJsonUsers.users[x]
+					pseudoExist = true
+					break
+				}
+			}
+		}
+		if (pseudoExist) {
+			var loginOK = false
+			if (MdP == monUser.mdp) {
+				alert("Content de vous revoir " + monUser.pseudo)
+				loginOK = true
+			} else {
+				alert("Mauvaise identification, essayez encore")
+				location.reload()
+			}
+		if (loginOK) {
+			if (monUser.role == "admin") {
+				// Mode Admin
+				alert("Mode Admin enclenché")
+			}else {
+				// User Normal
+				alert("Mode Boudoir enclenché")
+			}
+		}
+
+		}
+	}
+})
+
+	$("#btnClose").click(function () {
+		$("#modalLogin").hide()
+	})
+
+</script>
 </body>
 </html>
