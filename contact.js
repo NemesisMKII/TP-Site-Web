@@ -16,7 +16,7 @@ $("#myForm").submit(register)
         var objet = $("#objet").val()
         var message = $("#message").val()
         var mail = $("#mail").val()
-        var age = $("#age:checked").val()
+        
  
 
     if ( firstName == "" || name == "" || objet =="" || message == "" || $("#age").prop("checked") == false){
@@ -28,21 +28,28 @@ $("#myForm").submit(register)
             email : mail,
             objetMessage : objet,
             message : message,
-            date : (new Date()).getTime(),
-            ageLegal : age
+            date : (new Date()).getTime()
           
         } 
         formObj.form.push(newform)
         localStorage.setItem('formulaire', JSON.stringify(formObj))
-    
+        
+        //envoi du formulaire via la boite de dialogue mail
+        var messagesend = "   nom : " + name  ;
+        messagesend += "   prenom : " + firstName ;
+        messagesend += "  adresse mail :  "+ mail ;
+        messagesend +=  "   message : " + message   ;
+        message += encodeURI(messagesend);
+        var subject = objet
+        subject = encodeURI(subject)
+        window.location.href=`mailto:rudy.lesur@id-formation.fr?subject=${subject}&body=${messagesend}`;
+        //vide les champs
+        alert("msg envoyé")
         $("#firstName").val("")
         $("#name").val("")
         $("#objet").val("")
         $("#message").val("")
-        $("#mail").val("")
+        $("#mail").val("")       
         }
     }
- 
-
-
 })

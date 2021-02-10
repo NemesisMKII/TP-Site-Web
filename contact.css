@@ -1,5 +1,7 @@
 body{
     background-image: url(photo.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
 }
 #formulaire{
     text-align: center;
@@ -8,8 +10,6 @@ body{
     margin-right: 15%;
     margin-left:15% ;
     padding-bottom: 2%;
-   
-
 }
 #titreContact {
     background-color: #323232 ;
