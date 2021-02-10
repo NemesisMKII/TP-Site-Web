@@ -53,6 +53,7 @@ div.commentaires div.btn span.pint{
 div.commentaires textarea{
   width:100%;
   outline:none;
+  border-radius:3px;
 }
 /*
       _                                                              _       

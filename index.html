@@ -12,10 +12,10 @@
 
 
 	<link rel="StyleSheet" type="text/css" href="style/style.css"></link><!-- style de la section comments -->
-	<script src="style/default.js"></script><!-- Javascript de la section comments -->
 	<script type="text/javascript" src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script> <!-- required login twitter -->
-	<script src="style/twitter_login.js"></script> <!-- required for twitter login-->
-	<script src="style/facebook_login.js"></script> <!-- twitter required for facebook login -->
+	<script src="style/default.js"></script><!-- Javascript de la section comments -->
+
+
 
 
 </head>
@@ -27,6 +27,7 @@
 	<!-- SECTION COMMENTAIRE by Cyril-->
 	<div class="commentaires" id="commentaires" maxlength="280">
 		<div class="add">
+			<textarea></textarea>
 			<div id="logged">
 				
 				<div class="btn">
@@ -38,7 +39,6 @@
 					<span class="pint send" id="pinterest"></span>-->
 				</div>
 			</div>
-			<textarea disabled="disabled"></textarea>
 		</div>
 	</div>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script><!-- FB Login -->
