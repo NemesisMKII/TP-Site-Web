@@ -15,21 +15,13 @@ $(document).ready (() => {
     } 
 
     //----------------------------------------------------
-
-
-
     //FOOTER
     slide = new slider("#carroussel");
     //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
-
-
-
-
-
     //-----------------------------------------------
 })
-
+//variable pour le footer
 var slider = function(id){
     var self=this
    this.divCarrou = $(id); //recup la div carroussel
