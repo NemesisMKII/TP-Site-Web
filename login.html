@@ -2,19 +2,55 @@
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
-	<title>Login</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-		  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<title>Rudy Art Wall</title>
+	<!-- Bootstrap 5.0.0-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<!-- CSS style -->
+	<link rel="stylesheet" type="text/css" href="./style/style.css" />
+	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
-
-
-<button id="btnConnexion">
-	Test
-</button>
-
-<div class="modal" id="modalLogin">
+	<!-- NAVBAR -->
+	<header class="border border-dark">
+		<ul class="d-flex p-0 mb-0">
+			<li class="px-1 border-end border-dark">Home</li>
+			<li class="px-1 border-end border-dark"><a href="aboutme.html">About me</a></li>
+			<li class="border-end border-dark position-relative text-center" id="techniques"><a href="">Techniques</a>
+				<ul class="position-absolute text-center px-0 w-100" id="technique_list">
+					<li class="border border-dark"><a href="index.html?technique=hdr">HDR</a></li>
+					<li class="border border-dark"><a href="index.html?technique=highkey_lowkey">High Key/Low Key</a></li>
+					<li class="border border-dark"><a href="index.html?technique=high speed">High Speed</a></li>
+					<li class="border border-dark"><a href="index.html?technique=studio">Studio</a></li>
+					<li class="border border-dark"><a href="index.html?technique=tilt shift">Tilt Shift</a></li>
+					<li class="border border-dark"><a href="index.html?technique=pose longue">Pose longue</a></li>
+					<li class="border border-dark"><a href="index.html?technique=light painting">Light painting</a></li>
+				</ul>
+			</li>
+			<li class="border-end border-dark position-relative text-center" id="categories"><a href="">Categories</a>
+				<ul class="position-absolute text-center px-0 w-100" id="categories_list">
+					<li class="border border-dark"><a href="index.html?category=blackandwhite">Noir et blanc</a></li>
+					<li class="border border-dark"><a href="index.html?category=portrait">Portrait</a></li>
+					<li class="border border-dark"><a href="index.html?category=paysage">Paysage</a></li>
+					<li class="border border-dark"><a href="index.html?category=architecture">Architecture</a></li>
+					<li class="border border-dark"><a href="index.html?category=graphisme">Graphisme</a></li>
+					<li class="border border-dark"><a href="index.html?category=evenement">Evenement</a></li>
+					<li class="border border-dark"><a href="index.html?category=boudoir">Boudoir (+18)</a></li>
+				</ul>
+			</li>
+			<li class="me-auto px-1 border-end border-dark">Album</li>
+			<li class="px-1 border-start border-dark">Theme</li>
+			<li class="px-1 border-start border-dark" id="formulaire"><a href="contact.html">Contact</a></li>
+			<li class="px-1 border-start border-dark" id="btnConnexion"><a href="login.html">Connexion</a></li>
+		</ul>
+	</header>
+  
+  <button id="btnConnexion">
+	  Test
+  </button>
+  
+  <div class="modal" id="modalLogin">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -30,82 +66,9 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script>
-
-
-// Fonction LOGIN
-
-$("#btnConnexion").click(function() {
-
-	$("#modalLogin").modal("show")				//affiche le formulaire de connexion sous forme de modal
-	$("#formLogin").submit(function(event) {
-		event.preventDefault()
-		var pseudo = $("#myID").val()			//recup le pseudo
-		var MdP = $("#myPassword").val()		//recup le mot de passe
-		login (pseudo, MdP)						//lance la fonction Login
-	})
-})
-
-$("#btnClose").click(function () {		//fermeture du formulaire de connection au clic sur X en haut a droite
-	$("#modalLogin").hide()
-})
-
-function login(pseudo, MdP) {
-	var monJsonUsers								//recup du Json dans localStorage
-	if (!localStorage.getItem("localUsers")) {		//si vide, creation d'un nouveau Json
-		monJsonUsers = {"users": [{"pseudo" : "Zlatan",
-									"mdp" : "123",
-									"role" : "larbin"}]}
-	} else {
-		monJsonUsers = JSON.parse(localStorage.getItem("localUsers"))
-	}
-
-	if (pseudo == "" || MdP == "") {			//verif que les input pseudo et mot de passe sont rempli
-		alert("Merci de remplir les 2 champs")
-	} else {
-		var pseudoExist = false
-		let x									//recherche du pseudo dans le Json
-		for (x in monJsonUsers.users) {
-			if (pseudo == monJsonUsers.users[x].pseudo) {	//pseudo OK
-				var monUser = monJsonUsers.users[x]
-				pseudoExist = true
-				break
-			} else {										//pseudo non trouvé
-				alert("Mauvaise identification, essayez encore")
-				location.reload()
-			}
-		}
-	}
-	if (pseudoExist) {
-		var loginOK = false
-		if (MdP == monUser.mdp) {							//MdP correspond au pseudo
-			alert("Content de vous revoir " + monUser.pseudo)
-			loginOK = true
-			sessionStorage.setItem("sessionUser", JSON.stringify(monUser))	//Stockage de l'user dans le sessionStorage
-			$("#modalLogin").hide()
-																		//charger le theme s'il existe
-																		//modifier le bouton "connection" en déconnection et créer la fonction
-		} else {
-			alert("Mauvaise identification, essayez encore")
-			location.reload()
-		}
-		if (loginOK) {						//pseudo + MdP OK => verif si Admin ou User
-			if (monUser.role == "admin") {
-				// Mode Admin
-				alert("Mode Admin enclenché")
-			} else {
-				// User Normal
-				alert("Mode Boudoir déverrouillé")
-			}
-		}
-	}
-}
-
-// FIN Fonction LOGIN
-
-</script>
+  </div>
+  
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src='./style/default.js' ></script>
 </body>
 </html>

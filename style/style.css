@@ -1,0 +1,158 @@
+/* navbar CSS START */
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    width: 100% !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#technique_list, #categories_list {
+    transition: max-height 1s;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.show {
+    max-height: 300px !important;
+}
+
+/* navbar CSS END */
+
+/* CAROUSEL START */
+#carroussel{
+	overflow:hidden;
+	position: relative;
+	height: 130px;
+	width: 100%;
+	background: #807C7C
+
+/*fleches*/	
+}
+.suiv img{
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 50px;
+
+
+}
+.prec img{
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: -0;
+	height: 100%;
+	width: 50px;
+	transform: rotate(180deg);
+}
+/*passage de la souris, decalage flèche*/
+.suiv img:hover{
+	right: -10px;
+}
+.prec img:hover{
+	left: -10px;
+}
+
+
+/*class qui redimensionne les images dans la div slide*/
+.redimension{
+	height: 80%; 
+}
+
+/*le slide*/
+.slider{
+	position: relative;
+	top: 16px;
+	/*left:-25px;*/
+	width: 5000px;
+	height: 100%;
+
+}
+/*les images/
+	/*les encadrés des images*/
+
+#carroussel a{
+	padding: 0 20px;
+}
+#carroussel a img{
+	border: solid 4px #060606
+}
+#carroussel a:hover, #carroussel a img:hover{
+	border: solid 4px #F20707
+}
+
+/* CAROUSEL END */
+
+@media (min-width: 992px) {
+    /* NAVBAR */
+    #categories, #techniques {
+        width: 15%;
+    }
+
+    .album {
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 778px) and (max-width: 991.98px) {
+    /* NAVBAR */
+    header {
+        width: 10% !important;
+        height: 100%;
+    }
+
+    .flex-md-column {
+        flex-direction: column !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 777.98px) {
+    /* NAVBAR */
+    header {
+        max-width: 14%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* NAVBAR */
+    .album {
+        margin-right: auto;
+    }
+    
+    header {
+        width: 100% !important;
+    }
+}
+/* css formulaire */
+body{
+    background-image: url(photo.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+#formulaire{
+    text-align: center;
+    color: white;
+    width: 70%;
+    margin-right: 15%;
+    margin-left:15% ;
+    padding-bottom: 2%;
+}
+#titreContact {
+    background-color: #323232 ;
+    opacity: 0.70;
+   
+    color: white;
+    padding: 0%;
+    
+}
+#formulaire p{
+    padding: 2%;
+}
