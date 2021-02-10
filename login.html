@@ -35,6 +35,9 @@
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
 
+
+// Fonction LOGIN
+
 $("#btnConnexion").click(function() {
 
 	$("#modalLogin").modal("show")				//affiche le formulaire de connexion sous forme de modal
@@ -51,7 +54,6 @@ $("#btnClose").click(function () {		//fermeture du formulaire de connection au c
 })
 
 function login(pseudo, MdP) {
-	console.log("login enclenché")
 	var monJsonUsers								//recup du Json dans localStorage
 	if (!localStorage.getItem("localUsers")) {		//si vide, creation d'un nouveau Json
 		monJsonUsers = {"users": [{"pseudo" : "Zlatan",
@@ -101,6 +103,8 @@ function login(pseudo, MdP) {
 		}
 	}
 }
+
+// FIN Fonction LOGIN
 
 </script>
 </body>
