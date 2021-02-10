@@ -2,6 +2,7 @@
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rudy Art Wall</title>
 	<!-- Bootstrap 5.0.0-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -46,5 +47,63 @@
 		</ul>
 	</header>
 	<script src='./style/default.js' ></script>
+
+	
+	 <!--formulaire-->
+		<div id="titreContact">
+			<h1>Contact</h1>
+			<p>Remplissez le formulaire de contact pour m’exposer votre demande.<br>
+			<br>Si vous souhaitez accéder à l'album boudoire, faites votre demande ici ,un login et un mot de passe vous serons transmis.</p>
+			</div>
+				<div id="formulaire"> <!--formulaire-->
+		  <form method="POST" action=""  id="myForm">
+			<div>
+				<div class="row mb-3">
+                    <div class="col">
+				<input type="text" class="form-control" name="firstName" id="firstName"  placeholder="Votre prénom" />
+					</div>
+                    <div class="col">
+				<input type="text" class="form-control" name="name" id="name" placeholder="Votre nom" /><br>
+					</div>
+				</div>
+				<div class="col-md-4 mb-3">
+					<div class="col">
+				<input type="email" class="form-control" name="mail" id="mail" placeholder="Votre e-mail"/>
+						</div>
+			</div>
+			<div class="form-group">
+				<label for="objet">Renseignez le sujet concernant votre demande</label>
+				<select id="objet" class="form-control">
+					<option id="information" value="information" >Demande d'informations</option>
+					<option id="devis" value ="devis">Demande de devis</option>
+					<option id="rdv" value ="rdv">Demande de rendez-vous</option>
+					<option id="bouboire" value ="boudoire">Demande d'accés à l'album bouboire</option>
+				</select>
+				</div>
+				<div class="form-group">
+					<label for="message"></label>
+				    <textarea class="form-control" name="message" id="message" cols="45" rows="8" placeholder="Votre message"></textarea>
+					</div>
+				<div>
+					<input class="form-check-input" type="checkbox" id="age" name="subscribe" value="ageLegal">
+					<label class="form-check-label" for="age">Je certifie avoir plus de 18 ans</label><br>
+				</div>
+				<!--captcha-->
+				<label>Captcha <span style="color:#F00;font-size:20px">*</span>:</label>
+				<input type="text" class="form-control" style="margin-bottom: 0px; width: 200px; height: 40px; font-size: 24px; font-weight: bolder; text-decoration: line-through; display: inline-block; background-color: rgb(178, 0, 255);" id="mainCaptcha" disabled="">
+				<button class="btn btn-success" type="button" style="display: inline-block;" id="refresh" onclick="Captcha();">Reset</button>
+				<div style="margin-top:10px; color: #D8000C; background-color: #FFBABA; border-radius: 7px;" id="log"></div>
+ 
+				<input style="margin-top:10px;" type="text" class="form-control" placeholder="Enter captcha" name="captcha" id="txtInput" required="">
+				<div>
+				<button class="btn btn-primary" type="submit" id="submitForm" value="Envoyez">
+				</form>>Envoyez</button>
+				</div>  
+			</form>
+			
+	</div>
+	
+	<script src="contact.js"></script>
+
 </body>
 </html>
