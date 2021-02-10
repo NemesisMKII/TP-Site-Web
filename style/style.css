@@ -132,7 +132,7 @@ ul {
     }
 }
 /* css formulaire */
-body{
+#pageformulaire{
     background-image: url(photo.jpg);
     background-size: cover;
     background-repeat:no-repeat;
