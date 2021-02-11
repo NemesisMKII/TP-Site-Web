@@ -15,7 +15,7 @@
 </head>
 <body>
 	<!-- NAVBAR -->
-	<header class="border border-dark text-center">
+	<header class="border border-dark text-center position-absolute">
 		<ul class="d-flex flex-row flex-sm-column flex-md-column flex-lg-row p-0 mb-0">
 			<li class="border border-dark px-1"><i class="fal fa-home"></i></li>
 			<li class="border border-dark px-1"><a href="aboutme.html">About me</a></li>
@@ -48,14 +48,8 @@
 		</ul>
 	</header>
 	<!-- FOOTER CAROUSEL-->
-	<div id="carroussel" class="responsiv position-fixed bottom-0">
+	<div id="carroussel" class="position-fixed bottom-0">
 		<div class="slider">
-			<a href="#">
-				<img class="redimension" src="ress/imagesCarrou/aneTete.jpg">
-			</a>
-			<a href="#">
-				<img class="redimension" src="ress/imagesCarrou/aneTete.jpg">
-			</a>
 			<a href="#">
 				<img class="redimension" src="ress/imagesCarrou/aneTete.jpg">
 			</a>
@@ -95,11 +89,35 @@
 			</a>
 
 		</div>
-		<div class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
-		<div class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
+		<div id="suiv" class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
+		<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
+		
+	</div>
+	<div id="carroussel2" class="position-absolute end-0" style="display: none;">
+		<div class="slider2">
+			<a href="#">
+				<img class="redimension2" src="ress/imagesCarrou/aneTete.jpg">
+			</a>
+			<a href="#">
+				<img class="redimension2" src="ress/imagesCarrou/aneTete.jpg">
+			</a>
+			<a href="#">
+				<img class="redimension2" src="ress/imagesCarrou/aneTete.jpg">
+			</a>
+			<a href="#">
+				<img class="redimension2" src="ress/imagesCarrou/aneTete.jpg">
+			</a>
+			<a href="#">
+				<img class="redimension2" src="ress/imagesCarrou/aneTete.jpg">
+			</a>
+
+		</div>
+		<div id="suiv2" class="suiv2"><img src="ress/imagesCarrou/fd1.png"></div>
+		<div id="prec2" class="prec2"><img src="ress/imagesCarrou/fd1.png"></div>
 		
 	</div>
 
+	<!--FOOTER CAROUSEL END-->
 	<div class="modal" id="modalLogin">
 		<div class="modal-dialog">
 			<div class="modal-content">
