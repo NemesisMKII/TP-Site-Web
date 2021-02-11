@@ -1,4 +1,11 @@
-$(document).ready(function () {
+function captcha_new(){
+    var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
+    var chiffre2 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
+    var total = chiffre1+chiffre2;		// je calcul combien font chiffre1 + chiffre2
+    $("#dyna").text("Résoudre l'opération suivante:" + chiffre1 + " + " + chiffre2); // ici j'informe le visiteur du calcul à réaliser en modifiant le contenu de ma balise p#captcha_dyn
+    return total; // je retourne le total pour le sortir mon total de ma fonction ligne 37
+}
+$(document).ready(function (){
     var formObj
     if (!localStorage.getItem('formulaire')) {
         formObj = {
@@ -7,74 +14,52 @@ $(document).ready(function () {
     } else {
         formObj = JSON.parse(localStorage.getItem('formulaire'))
     }
-$("#myForm").submit(register)
+
+
+    $("#myForm").on("submit", function(e){
         //envoi du formulaire
-    function register(event) {
-        event.preventDefault()
+        e.preventDefault()
         var firstName = $("#firstName").val()
         var name = $("#name").val()
         var objet = $("#objet").val()
         var message = $("#message").val()
         var mail = $("#mail").val()
         
- 
 
     if ( firstName == "" || name == "" || objet =="" || message == "" || $("#age").prop("checked") == false){
         alert("Tous les champs ne sont pas remplis")
     }else{
-        var newform = {
-            nom : name,
-            prenom : firstName,
-            email : mail,
-            objetMessage : objet,
-            message : message,
-            date : (new Date()).getTime()
-          
-        } 
-        formObj.form.push(newform)
-        localStorage.setItem('formulaire', JSON.stringify(formObj))
+        if(total ==  $("input#captcha").val()){ // si la réponse est correcte
+            console.log("suite de ton script");
+            var newform = {
+                nom : name,
+                prenom : firstName,
+                email : mail,
+                objetMessage : objet,
+                message : message,
+                date : (new Date()).getTime()
+            
+            } 
+            formObj.form.push(newform)
+            localStorage.setItem('formulaire', JSON.stringify(formObj))
+            
         
-        function validateForm(){
-            document.getElementById('log').innerHTML = '';
-            var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
-            var string2 = removeSpaces(document.getElementById('txtInput').value);
-            if (string1 != string2 || string2 == ""){
-            Captcha();
-            document.getElementById('log').innerHTML += '<span style="font-size:16px; padding: 25px;">Entered Invalid Captcha</span> ';
-            return false;
-            }
-            }
-            function Captcha(){
-            var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0');
-            var i;
-            for (i=0;i<6;i++){
-            var a = alpha[Math.floor(Math.random() * alpha.length)];
-            var b = alpha[Math.floor(Math.random() * alpha.length)];
-            var c = alpha[Math.floor(Math.random() * alpha.length)];
-            var d = alpha[Math.floor(Math.random() * alpha.length)];
-            var e = alpha[Math.floor(Math.random() * alpha.length)];
-            var f = alpha[Math.floor(Math.random() * alpha.length)];
-            var g = alpha[Math.floor(Math.random() * alpha.length)];
-            }
-            var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f + ' ' + g;
-            document.getElementById("mainCaptcha").value = code
-            var colors = ["#B40404", "#beb1dd", "#b200ff", "#faff00", "#0000FF", "#FE2E9A", "#FF0080", "#2EFE2E", ];
-            var rand = Math.floor(Math.random() * colors.length);
-            $('#mainCaptcha').css("background-color", colors[rand]);
-            }
-            function removeSpaces(string){
-            return string.split(' ').join('');
-            }
-        //envoi du formulaire via la boite de dialogue mail
-        var messagesend = "   nom : " + name  ;
-        messagesend += "   prenom : " + firstName ;
-        messagesend += "  adresse mail :  "+ mail ;
-        messagesend +=  "   message : " + message   ;
-        message += encodeURI(messagesend);
-        var subject = objet
-        subject = encodeURI(subject)
-        window.location.href=`mailto:rudy.lesur@id-formation.fr?subject=${subject}&body=${messagesend}`;
-       
+            
+            //envoi du formulaire via la boite de dialogue mail
+            var messagesend = "   nom : " + name  ;
+            messagesend += "   prenom : " + firstName ;
+            messagesend += "  adresse mail :  "+ mail ;
+            messagesend +=  "   message : " + message   ;
+            message += encodeURI(messagesend);
+            var subject = objet
+            subject = encodeURI(subject)
+            window.location.href=`mailto:rudy.lesur@id-formation.fr?subject=${subject}&body=${messagesend}`;
+        }else{
+            total = captcha_new(); // je regénère un nouveau calcul
+            $("input#captcha").val(""); // et j'efface sa réponse
+            alert("reponse incorrect");
+        }
+
         //vide les champs
         alert("msg envoyé")
         $("#firstName").val("")
@@ -83,5 +68,7 @@ $("#myForm").submit(register)
         $("#message").val("")
         $("#mail").val("")       
         }
-    }
-})
+    });
+});
+var total = captcha_new(); // j'execute ma fonction et je sort le total de ma fonction #ligne 37
+console.log(total);
