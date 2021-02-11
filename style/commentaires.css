@@ -113,13 +113,22 @@ div.commentaires div.btn span.tw{
 
 */
 div.commentaires div.comm_all{
-  padding:5px;
+  background-color:#fff;
+  margin:8px;
+  padding:5px 25px 5px 25px;
+  border:1px solid silver;
+}
+div.commentaires div.comm_all div + div{
+  border-top:1px solid silver;
 }
 div.commentaires div.comm_all p.comm{
   padding-left:8px;
 }
-div.comm_all div.comm + div.comm{
-  padding-top:30px;
+div.comm_all div.comm:not(:nth-last-child(2)) + div.comm{
+  padding:15px 0px 15px 0px;
+}
+div.comm_all div.comm:nth-last-child(2) + div.comm{ /* dernier commentaire */
+  padding-top:15px;
 }
 div.commentaires div.comm_all .auteur span{
   font-family:RalewayRegular;

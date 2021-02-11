@@ -40,8 +40,34 @@ ATTENTION:
 ::: IL DOIT CORRESPONDRE A LA BALISE IMG (IMAGE EN GRAND AU DESSUS DE L'EXIF)
 ::: ET LA BALISE IMG DE LA PHOTO DOIT AVOIR UNE ATTRIBUT data-id AVEC L'ID DE LA PHOTO EN COURS DEDANS
 ::: SINON REDEFINIR ET M'AVERTIR EN MP SUR DISCORD 
+
+
 */
 
+/*
+  _____   ____   _____ _    _ __  __ ______ _   _ _______    _______ _____ ____  _   _ 
+ |  __ \ / __ \ / ____| |  | |  \/  |  ____| \ | |__   __|/\|__   __|_   _/ __ \| \ | |
+ | |  | | |  | | |    | |  | | \  / | |__  |  \| |  | |  /  \  | |    | || |  | |  \| |
+ | |  | | |  | | |    | |  | | |\/| |  __| | . ` |  | | / /\ \ | |    | || |  | | . ` |
+ | |__| | |__| | |____| |__| | |  | | |____| |\  |  | |/ ____ \| |   _| || |__| | |\  |
+ |_____/ \____/ \_____|\____/|_|  |_|______|_| \_|  |_/_/    \_\_|  |_____\____/|_| \_|
+                                                                                       
+                                                                                       
+*/
+/*
+LOCALSTORAGE
+json 
+liste[{
+	auteur --> username SN
+	content --> commentaire
+	date --> timestamp
+	id --> uuid4 + timestamp
+	idpost --> id de la photo
+	snet -->type de reseau social utilisé (tw = twitter, fb = facebook, insta = instagram, pint = pinterest)
+}]
+
+
+*/
 
 
 /*
@@ -108,27 +134,15 @@ function comm_add(user, sn){
             idpost: idpost,
             content: commentaire,
             date: date,
-            auteur: user,
+            auteur: window.btoa(unescape(encodeURIComponent(user))),
             snet: sn
-        }
+        } // New line json to inset in localstorage
 		comm_obj.liste.push(comm_new); // j'insère mon json dans le tableau
 		localStorage.setItem('commentaires', JSON.stringify(comm_obj))
 	}else{
 		alert("Votre commentaire doit faire entre 3 et 280 maximum."); // remplacer eventuellement par une modal
 	}
 }
-
-/*
-      _                                                               _       
-     | |                                                             | |      
-  ___| |__   _____      __    ___ ___  _ __ ___  _ __ ___   ___ _ __ | |_ ___ 
- / __| '_ \ / _ \ \ /\ / /   / __/ _ \| '_ ` _ \| '_ ` _ \ / _ \ '_ \| __/ __|
- \__ \ | | | (_) \ V  V /   | (_| (_) | | | | | | | | | | |  __/ | | | |_\__ \
- |___/_| |_|\___/ \_/\_/     \___\___/|_| |_| |_|_| |_| |_|\___|_| |_|\__|___/                                                                                                                                                                                                             
-                                                                          
-*/
-
-
 
 /*
    __ _                                       _   
@@ -163,7 +177,42 @@ function fb_login() {
   });
 }
 
+/*
+      _                                                               _       
+     | |                                                             | |      
+  ___| |__   _____      __    ___ ___  _ __ ___  _ __ ___   ___ _ __ | |_ ___ 
+ / __| '_ \ / _ \ \ /\ / /   / __/ _ \| '_ ` _ \| '_ ` _ \ / _ \ '_ \| __/ __|
+ \__ \ | | | (_) \ V  V /   | (_| (_) | | | | | | | | | | |  __/ | | | |_\__ \
+ |___/_| |_|\___/ \_/\_/     \___\___/|_| |_| |_|_| |_| |_|\___|_| |_|\__|___/                                                                                                                                                                                                             
+                                                                          
+*/
 
+function addzero(str){ // add a zeo if str.length > 2 --> used in fonction "show comments"
+	return (str.length==2) ? str : " 0" + str;
+}
+
+/* fonction pour afficher les commentaire en fonction de l'ID de la photo */
+function comments_show(idpost){ /* fonction pour afficher les commentaire en fonction de l'ID de la photo */
+	if(localStorage.getItem("commentaires")){
+		var all_comments = JSON.parse(localStorage.getItem('commentaires'));
+		for(i in all_comments.liste){
+			var commmentaire = all_comments.liste[i];
+			if(idpost == commmentaire.idpost){ // si le commentaire est detiné à la photo affichée
+				//console.log(all_comments.liste[i]);
+				var auteur = decodeURIComponent(escape(window.atob(commmentaire.auteur)));
+				var content = decodeURIComponent(escape(window.atob(commmentaire.content)));
+				var date = new Date(commmentaire.date);
+				var date = "Le " + addzero(date.getDay()) + "/" + addzero(date.getMonth()) + "/" + date.getFullYear() + " à " + date.getHours() + ":" + date.getMinutes();
+				$("div.commentaires div.comm_all").append(`
+					<div class="comm" title="${date}">
+						<p class="auteur"><span class="${commmentaire.snet} ico send"></span> <span>${auteur}</span></p>
+						<p class="comm">${content}</p>
+					</div>
+				`);
+			}
+		}
+	}
+}
 
 window.onload = function(){
 /*
@@ -188,4 +237,9 @@ window.onload = function(){
 		  })    
 		});
 	})
+
+	comments_show($("div#photos img").attr("data-id")); // affiche les commentaires de la photo au chargement
+
+
+
 }
