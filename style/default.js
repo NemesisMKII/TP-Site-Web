@@ -11,7 +11,13 @@ $(document).ready (() => {
             if ($(window).width() > 992) {
                 $('#categories_list').toggleClass('show')
             }
-    })
+        })
+         //Click on "categories" shows categories list
+         $('#theme').hover((e) => {
+            if ($(window).width() > 992) {
+            $('#themeList').toggleClass('show')
+            }
+        })
     } 
   
   
