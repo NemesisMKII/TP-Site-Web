@@ -11,9 +11,9 @@
 	<!-- FIN DE NE PAS TENIR COMPTE -->
 
 
-	<link rel="StyleSheet" type="text/css" href="style/style.css"></link><!-- style de la section comments -->
+	<link rel="StyleSheet" type="text/css" href="style/commentaires.css"></link><!-- style de la section comments -->
 	<script type="text/javascript" src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script> <!-- required login twitter -->
-	<script src="style/default.js"></script><!-- Javascript de la section comments -->
+	<script src="style/commentaires.js"></script><!-- Javascript de la section comments -->
 
 
 
@@ -21,23 +21,31 @@
 </head>
 <body>
 
-	<div id="status">
+	<!-- NE PAS MERGER CETTE DIV PHOTOS -->
+	<div id="photos" style="text-align:center;">
+		<img id="photos" alt="..." title="..." src="ImagePourTest.jpg" data-id="5" />
 	</div>
+	<!-- fin de NE PAS MERGER CETTE DIV PHOTOS -->
 
 	<!-- SECTION COMMENTAIRE by Cyril-->
 	<div class="commentaires" id="commentaires" maxlength="280">
 		<div class="add">
 			<textarea></textarea>
 			<div id="logged">
-				
 				<div class="btn">
-					Commenter avec&nbsp;&nbsp;
-					<span class="fb send" id="facebook" scope="public_profile,email" onclick="fb_login();"></span>
-					<span class="tw send" id="twitter"></span>
-					<!--
-					<span class="insta send" id="instagram"></span>
-					<span class="pint send" id="pinterest"></span>-->
+					<span class="fb send" id="facebook" scope="public_profile,email" onclick="fb_login();">Commenter avec Facebook</span>
+					<span class="tw send" id="twitter">Commenter avec Twitter</span>
 				</div>
+			</div>
+		</div>
+		<div class="comm_all">
+			<div class="comm">
+				<p class="auteur"><span class="tw ico send"></span> <span>@username</span></p>
+				<p class="comm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+			</div>
+			<div class="comm">
+				<p class="auteur"><span class="fb ico send"></span> <span>@username</span></p>
+				<p class="comm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 			</div>
 		</div>
 	</div>
