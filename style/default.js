@@ -19,7 +19,19 @@ $(document).ready (() => {
             }
         })
     } 
-  
+    //theme color 
+    $("li.noir").click(function() {
+        $("body").removeClass("bg3 , bg4").addClass("bg2");
+        console.log('bleu')
+    });
+    
+    $("li.blanc").click(function() {
+        $("body").removeClass("bg2 , bg4").addClass("bg3");
+    });
+    
+    $("li.gris").click(function() {
+        $("body").removeClass("bg2 , bg3").addClass("bg4");
+    });
   
     // formulaire 
     var formObj
