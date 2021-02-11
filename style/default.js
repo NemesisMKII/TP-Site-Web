@@ -173,7 +173,9 @@ $(document).ready (() => {
     }
 
 
-// FIN Fonction LOGIN
+    // FIN Fonction LOGIN
+
+    slide = new slider("#carroussel");
 })
 
 
@@ -225,5 +227,3 @@ var slider = function(id){
        }
    })
 }
-
-slide = new slider("#carroussel");

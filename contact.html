@@ -46,16 +46,14 @@
 			<li class="px-1 border-start border-dark" id="btnConnexion"><a href="login.html">Connexion</a></li>
 		</ul>
 	</header>
-	<script src='./style/default.js' ></script>
 
-	
 	 <!--formulaire-->
 		<div id="titreContact">
 			<h1>Contact</h1>
 			<p>Remplissez le formulaire de contact pour m’exposer votre demande.<br>
 			<br>Si vous souhaitez accéder à l'album boudoire, faites votre demande ici ,un login et un mot de passe vous serons transmis.</p>
-			</div>
-				<div id="formulaire"> <!--formulaire-->
+		</div>
+	<div id="formulaire"> <!--formulaire-->
 		  <form method="POST" action=""  id="myForm">
 			<div>
 				<div class="row mb-3">
@@ -97,13 +95,32 @@
 				<input style="margin-top:10px;" type="text" class="form-control" placeholder="Enter captcha" name="captcha" id="txtInput" required="">
 				<div>
 				<button class="btn btn-primary" type="submit" id="submitForm" value="Envoyez">
-				</form>>Envoyez</button>
+					Envoyez
+				</button>
 				</div>  
 			</form>
-			
 	</div>
 	
-	<script src="contact.js"></script>
+	<div class="modal" id="modalLogin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Connectez-vous</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose"></button>
+				</div>
+				<div class="modal-body">
+					<form action="" class="text-center" id="formLogin">
+						<input type="text" class="m-2" placeholder="identifiant" id="myID"><br>
+						<input type="password" class="m-2" placeholder="mot de passe" id="myPassword"><br>
+						<input type="submit" class="btn btn-danger m-2" value="Connexion">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src='./style/default.js' ></script>
 
 </body>
 </html>

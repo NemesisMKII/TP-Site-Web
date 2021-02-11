@@ -45,6 +45,26 @@
 			<li class="px-1 border-start border-dark" id="btnConnexion"><a href="login.html">Connexion</a></li>
 		</ul>
 	</header>
+
+	<div class="modal" id="modalLogin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Connectez-vous</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose"></button>
+				</div>
+				<div class="modal-body">
+					<form action="" class="text-center" id="formLogin">
+						<input type="text" class="m-2" placeholder="identifiant" id="myID"><br>
+						<input type="password" class="m-2" placeholder="mot de passe" id="myPassword"><br>
+						<input type="submit" class="btn btn-danger m-2" value="Connexion">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src='./style/default.js' ></script>
 </body>
 </html>
