@@ -132,7 +132,7 @@ ul {
     }
 }
 /* css formulaire */
-body{
+#pageformulaire{
     background-image: url(photo.jpg);
     background-size: cover;
     background-repeat:no-repeat;
@@ -155,4 +155,8 @@ body{
 }
 #formulaire p{
     padding: 2%;
+}
+#dina{
+    border: solid 1px black;
+    background: white;
 }
