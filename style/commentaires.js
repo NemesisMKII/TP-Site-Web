@@ -41,6 +41,9 @@ ATTENTION:
 ::: ET LA BALISE IMG DE LA PHOTO DOIT AVOIR UNE ATTRIBUT data-id AVEC L'ID DE LA PHOTO EN COURS DEDANS
 ::: SINON REDEFINIR ET M'AVERTIR EN MP SUR DISCORD 
 
+:: PROTOCOLE SSL
+::: Connexion HTTPS (site web du TP) requise pour Facebook
+
 
 */
 
@@ -99,6 +102,24 @@ function uuidv4() {
 }
 
 /*
+             _   _ _               _     _             _ 
+            | | (_) |             | |   | |           | |
+   ___ _ __ | |_ _| |_ ___  ___   | |__ | |_ _ __ ___ | |
+  / _ \ '_ \| __| | __/ _ \/ __|  | '_ \| __| '_ ` _ \| |
+ |  __/ | | | |_| | ||  __/\__ \  | | | | |_| | | | | | |
+  \___|_| |_|\__|_|\__\___||___/  |_| |_|\__|_| |_| |_|_|
+                                                         
+                                                         
+*/
+/*
+ on en aura besoin pour éviter de faire planter le site
+*/
+function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+
+/*
             _     _                                            _       
            | |   | |                                          | |      
    __ _  __| | __| |   ___ ___  _ __ ___  _ __ ___   ___ _ __ | |_ ___ 
@@ -110,7 +131,7 @@ function uuidv4() {
 /* FONCTION AJOUT COMMENTAIRES */
 function comm_add(user, sn){
 	// définit les objet
-
+  var user = htmlEntities(user); // on applique l'encodage html pour éviter les bug d'affichage/plantage
 	var comms_txt = $("div.commentaires textarea");
 	var comms_btn = $("div.commentaires div.add span");
 	if(comms_txt.val().trim().length >= 3 && comms_txt.val().trim().length <= 280){ // on verifie le nb de caractères
@@ -118,7 +139,7 @@ function comm_add(user, sn){
 		var date = new Date().getTime(); // on définit la timestamp
 		var id = uuidv4() + "." + date; // pour minimiser un maxi les doublon j'aouter le timestamp (en ms) en plus du UUID
 		var idpost = $("div#photos img").attr("data-id"); // on définit id du post
-		var commentaire = window.btoa(unescape(encodeURIComponent(comms_txt.val()))); // on définit le commentaire
+		var commentaire = htmlEntities(comms_txt.val()); // on définit le commentaire
 		// var auteur = user;
 		//alert("date:" + date + "\rid " + " " + id + "\rpost " + idpost + "\rcomm: " + commentaire + "\rauth " + auteur + " (" + sn + ")");
 		if (!localStorage.getItem('commentaires')) {
@@ -132,13 +153,29 @@ function comm_add(user, sn){
         var comm_new = {
             id: id,
             idpost: idpost,
-            content: commentaire,
+            content:  window.btoa(unescape(encodeURIComponent(commentaire))),
             date: date,
             auteur: window.btoa(unescape(encodeURIComponent(user))),
             snet: sn
         } // New line json to inset in localstorage
 		comm_obj.liste.push(comm_new); // j'insère mon json dans le tableau
 		localStorage.setItem('commentaires', JSON.stringify(comm_obj))
+
+    // ON AJOUTE ENSUITE LE COMMENTAIRE DANS LA PAGE SANS REFRESH
+    $("div.commentaires div.comm_all").append(`
+      <div class="comm" title="${date}">
+        <p class="auteur"><span class="${sn} ico send"></span> <span>${user}</span></p>
+        <p class="comm">${commentaire}</p>
+      </div>
+    `);
+
+    if($('input#share').is(':checked')){ // si l'utilisateur veux publier sur les réseaux sociaux.
+      if(sn == "tw"){ // si c'est tweeter je propose de publier
+        window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(comms_txt.val(),'_blank'));
+      }
+    }
+    // enfin je vide le textarea
+    comms_txt.val("");
 	}else{
 		alert("Votre commentaire doit faire entre 3 et 280 maximum."); // remplacer eventuellement par une modal
 	}
@@ -176,6 +213,7 @@ function fb_login() {
     }
   });
 }
+
 
 /*
       _                                                               _       

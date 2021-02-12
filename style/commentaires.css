@@ -1,3 +1,14 @@
+/*
+      _       __ 
+     | |     / _|
+   __| | ___| |_ 
+  / _` |/ _ \  _|
+ | (_| |  __/ |  
+  \__,_|\___|_|  
+                 
+                                                                                                    
+                                                                                       
+*/
 @font-face{
     font-family:RalewayRegular;
     src:url("font/Raleway-Regular.ttf");
@@ -10,10 +21,6 @@ body, textarea, input{
   font-size:17px;
   font-family:RalewayLight;
 }
-
-
-
-
 
 /*
                                                      _        _               
@@ -32,6 +39,7 @@ div.commentaires *{
 div.commentaires{
   padding:8px;
   width:100%;
+  background-color: #fff;
 }
 
 /* mini icones réseaux sociaux */
@@ -64,10 +72,7 @@ div.commentaires span.ico.pint{
                                                                    
                                                                    
 */
-div.commentaires div.add{
-  padding:8px;
-  margin-bottom:55px;
-}
+
 div.commentaires div.add div#logged{
   padding:0px;
   margin:0px;
@@ -80,11 +85,14 @@ div.commentaires textarea{
   width:100%;
   outline:none;
   border-radius:3px;
+  min-height:100px;
+  border:1px solid silver;
 }
 div.commentaires div.btn{
   display:inline;
   width:100%;
   float: right;
+  margin-bottom:35px;
 } 
 textarea + div#logged{
   line-height:0px;
@@ -96,6 +104,7 @@ div.commentaires div.btn span{
   width:45%;
   padding:5px;
   border-radius:3px;
+  vertical-align:middle;
 }
 div.commentaires div.btn span.fb{
   background-color:#3B5998;
@@ -103,6 +112,12 @@ div.commentaires div.btn span.fb{
 div.commentaires div.btn span.tw{
   background-color:#26A6D1;
 }
+div.commentaires div.btn span img{
+  display:inline;
+  vertical-align: text-bottom;
+  height:26px;
+}
+
 /*
       _                                                              _       
      | |                                                            | |      
@@ -113,11 +128,32 @@ div.commentaires div.btn span.tw{
 
 */
 div.commentaires div.comm_all{
-  background-color:#fff;
+  background-color:#e1e1e1;
   margin:8px;
   padding:5px 25px 5px 25px;
   border:1px solid silver;
+  max-height:250px;
+  overflow:auto;
 }
+div.comm_all::-webkit-scrollbar {
+    margin:0px;
+    height: 6px;
+    width: 5px;
+    background: #d4d4d4;
+}
+
+div.comm_all::-webkit-scrollbar-thumb {
+    background: grey;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+div.comm_all::-webkit-scrollbar-corner {
+    background: #000;
+}
+
+
+
 div.commentaires div.comm_all div + div{
   border-top:1px solid silver;
 }
