@@ -171,8 +171,32 @@ function comm_add(user, sn){
 
     if($('input#share').is(':checked')){ // si l'utilisateur veux publier sur les réseaux sociaux.
       if(sn == "tw"){ // si c'est tweeter je propose de publier
-        window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(comms_txt.val(),'_blank'));
+        window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(comms_txt.val()+" "+window.location.href),'_blank');
       }
+    }
+
+
+    if($('input#share').is(':checked')){ 
+      var currentUrl = window.location;
+      var picture = window.location.href + $("div#photos img").attr("src");
+      //alert(currentUrl);
+      if(currentUrl == "https://localhost/" || currentUrl == "http://localhost/" || currentUrl == "ipfs://localhost/"){
+        console.log('%c⚠️ CURRENT URL localhost => cyril.ovh for demo.', 'font-size: 24px; color: red');
+        currentUrl = "https://cyril.ovh";
+        picture = 'https://cyril.ovh/style/preview.png';
+      }
+      console.log(picture);
+      FB.ui({
+        method: 'stream.publish',
+        display: 'popup',
+        /*message: 'blabla',*/
+        link: currentUrl,
+        picture: picture 
+      }, 
+      function(response) {
+        console.log('publishStory response: ', response);
+      });
+      return false;
     }
     // enfin je vide le textarea
     comms_txt.val("");
@@ -199,6 +223,8 @@ function fb_login() {
     xfbml      : true,                     // Parse social plugins on this webpage.
     version    : 'v9.0'           // Use this Graph API version for this call.
   });
+
+
 
   FB.getLoginStatus(function(response) {   // See the onlogin handler
     if (response.status === 'connected'){
@@ -277,7 +303,10 @@ window.onload = function(){
 	})
 
 	comments_show($("div#photos img").attr("data-id")); // affiche les commentaires de la photo au chargement
-
+  // AVERTISSEMENT DEVELOPPEMENT
+  if(window.location.protocol !="https" || window.location.hostname =="localhost" || window.location.hostname=="127.0.0.1"){
+    console.log('%c⚠️AVERTISSEMENTS\n- PROTOCOLE HTTPS REQUIS POUR LES COMMENTAIRES (Connexion SSL exigée par les réseaux sociaux).\n- FONCTION PARTAGE FB EN MODE DEMO (--> faire pointer NDD sur le serveur pour désactiver le mode DEMO)\n   \'-> sinon FB retourne une erreur lors du partage.', 'font-size: 24px; color: red');
+  }
 
 
 }
