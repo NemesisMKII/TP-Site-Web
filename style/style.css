@@ -64,7 +64,8 @@ ul {
 
 /*class qui redimensionne les images dans la div slide*/
 .redimension{
-	height: 80%; 
+    width: 110px;
+    height: 110px; 
 }
 
 /*le slide*/
@@ -85,14 +86,15 @@ ul {
 #carroussel a img{
 	border: solid 4px #060606
 }
-#carroussel a:hover, #carroussel a img:hover{
+#carroussel a img:hover{
 	border: solid 4px #F20707
 }
 
 /*responsive carousel-----------------------*/
 #carroussel2{
     overflow:hidden;
-    position: relative;
+    position: absolute;
+    top: 0px;
     height: 100%;
     width: 130px;
     background: #807C7C
@@ -127,10 +129,7 @@ ul {
 
 
 /*class qui redimensionne les images dans la div slide*/
-.redimension2{
-    width: 80%;
-    height: 130px; 
-}
+
 
 /*le slide*/
 .slider2{
@@ -151,8 +150,20 @@ ul {
     margin-top: 20px;
     border: solid 4px #060606
 }
-#carroussel2 a:hover, #carroussel a img:hover{
+#carroussel2 a img:hover{
     border: solid 4px #F20707
+}
+
+/*ZOOM*/
+
+#zoom{
+    width:50%;
+    height:700px;
+    padding-top: 10%;
+    padding-left: 8%;
+}
+#zoom img{
+     border: solid 4px #060606
 }
 
 /* CAROUSEL END */

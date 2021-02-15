@@ -153,17 +153,7 @@ $(document).ready (() => {
 //FOOTER
 
 
-$(window).resize(function(){
-  var largeurWindow = $(window).width()
-  if (largeurWindow < 992) {
-    $('#carroussel').hide()
-    $('#carroussel2').show()
-
-  }else {
-    $('#carroussel2').hide()
-    $('#carroussel').show()      
-  }
-})
+  carrousselMoove()
     slide2 = new slider2("#carroussel2");
    slide = new slider("#carroussel");
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
@@ -217,6 +207,7 @@ var slider = function(id){
        }
    })
 }
+//fct responsive footer
 var slider2 = function(id){
     var self=this
    this.divCarrou = $(id); //recup la div carroussel
@@ -259,8 +250,28 @@ var slider2 = function(id){
        }
    })
 }
+$(window).resize(function(){
+  carrousselMoove()
+});
+function carrousselMoove(){
 
+    var largeurWindow = $(window).width()
+    if (largeurWindow < 992) {
+      $('#carroussel').hide()
+      $('#carroussel2').show()
 
+    }else {
+      $('#carroussel2').hide()
+      $('#carroussel').show()      
+    }
+}
+// zoom
+$('.img-full').attr("src",$('.choixImg').first().attr('src'))
+$('.choixImg').click(function(){
+  $('.img-full').attr("src",$(this).attr('src'))
+})
+
+//End footer fct
 
 // a l'ext de onready
 function captcha_new(){
