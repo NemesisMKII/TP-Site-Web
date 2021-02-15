@@ -70,6 +70,9 @@ liste[{
 }]
 
 
+
+APPEL DE LA FONCTION "afficher le commentaires en fonction de la photo"
+-------> comments_show(idpost);
 */
 
 
