@@ -75,8 +75,34 @@
 	<main>
 		<!-- Affichage image zoom-->
 		<div id="zoom" class="row align-items-center h-100">		
-			<img src="" class="img-full p-0" alt="">
+			<img src="" class="img-full p-0" alt="" data-id="999">
 		</div>
+
+
+		<!-- SECTION COMMENTAIRE by Cyril-->
+		<div class="commentaires" id="commentaires" maxlength="280">
+			<div class="add">
+				<textarea></textarea>
+				<div id="logged">
+					<div class="btn">
+						<p><input type="checkbox" id="share"/> Partager sur mon réseau social</p>
+						<span class="fb send" id="facebook" scope="public_profile,email" onclick="fb_login();">Commenter avec <img src="ress/commentaires/fb48.png" alt="Commenter avec Facebook"/></span>
+						<span class="tw send" id="twitter">Commenter avec <img src="ress/commentaires/tw48.png" alt="Commenter avec Twitter"/></span>
+					</div>
+				</div>
+			</div>
+			<div class="comm_all">
+				<!--
+				<div class="comm">
+					<p class="auteur"><span class="fb ico send"></span> <span>@username</span></p>
+					<p class="comm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				</div>
+				-->
+			</div>
+		</div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script><!-- FB Login -->
+		<!-- FIN DE SECTION DE COMMENAIRE by Cyril -->
+		<br><br><br><br><br><br><br><br><br><br>
 
 
 		<!-- SECTION COMMENTAIRE by Cyril-->

@@ -61,12 +61,21 @@ ATTENTION:
 LOCALSTORAGE
 json 
 liste[{
+<<<<<<< Updated upstream
 	auteur --> username SN
 	content --> commentaire
 	date --> timestamp
 	id --> uuid4 + timestamp
 	idpost --> id de la photo
 	snet -->type de reseau social utilisé (tw = twitter, fb = facebook, insta = instagram, pint = pinterest)
+=======
+  auteur --> username SN
+  content --> commentaire
+  date --> timestamp
+  id --> uuid4 + timestamp
+  idpost --> id de la photo
+  snet -->type de reseau social utilisé (tw = twitter, fb = facebook, insta = instagram, pint = pinterest)
+>>>>>>> Stashed changes
 }]
 
 
@@ -133,6 +142,7 @@ function htmlEntities(str) {
 
 /* FONCTION AJOUT COMMENTAIRES */
 function comm_add(user, sn){
+<<<<<<< Updated upstream
 	// définit les objet
   var user = htmlEntities(user); // on applique l'encodage html pour éviter les bug d'affichage/plantage
 	var comms_txt = $("div.commentaires textarea");
@@ -146,11 +156,30 @@ function comm_add(user, sn){
 		// var auteur = user;
 		//alert("date:" + date + "\rid " + " " + id + "\rpost " + idpost + "\rcomm: " + commentaire + "\rauth " + auteur + " (" + sn + ")");
 		if (!localStorage.getItem('commentaires')) {
+=======
+  // définit les objet
+  var user = htmlEntities(user); // on applique l'encodage html pour éviter les bug d'affichage/plantage
+  var comms_txt = $("div.commentaires textarea");
+  var comms_btn = $("div.commentaires div.add span");
+  if(comms_txt.val().trim().length >= 3 && comms_txt.val().trim().length <= 280){ // on verifie le nb de caractères
+    /* Je récupère, génère toutes mes valeurs */
+    var date = new Date().getTime(); // on définit la timestamp
+    var id = uuidv4() + "." + date; // pour minimiser un maxi les doublon j'aouter le timestamp (en ms) en plus du UUID
+    var idpost = $("div#zoom img").attr("data-id"); // on définit id du post
+    var commentaire = htmlEntities(comms_txt.val()); // on définit le commentaire
+    // var auteur = user;
+    //alert("date:" + date + "\rid " + " " + id + "\rpost " + idpost + "\rcomm: " + commentaire + "\rauth " + auteur + " (" + sn + ")");
+    if (!localStorage.getItem('commentaires')) {
+>>>>>>> Stashed changes
             comm_obj = {
                 'liste': []
             }
         }else{
+<<<<<<< Updated upstream
         	comm_obj = JSON.parse(localStorage.getItem('commentaires'))
+=======
+          comm_obj = JSON.parse(localStorage.getItem('commentaires'))
+>>>>>>> Stashed changes
         }
 
         var comm_new = {
@@ -161,8 +190,13 @@ function comm_add(user, sn){
             auteur: window.btoa(unescape(encodeURIComponent(user))),
             snet: sn
         } // New line json to inset in localstorage
+<<<<<<< Updated upstream
 		comm_obj.liste.push(comm_new); // j'insère mon json dans le tableau
 		localStorage.setItem('commentaires', JSON.stringify(comm_obj))
+=======
+    comm_obj.liste.push(comm_new); // j'insère mon json dans le tableau
+    localStorage.setItem('commentaires', JSON.stringify(comm_obj))
+>>>>>>> Stashed changes
 
     // ON AJOUTE ENSUITE LE COMMENTAIRE DANS LA PAGE SANS REFRESH
     $("div.commentaires div.comm_all").append(`
@@ -181,7 +215,11 @@ function comm_add(user, sn){
 
     if($('input#share').is(':checked')){ 
       var currentUrl = window.location;
+<<<<<<< Updated upstream
       var picture = window.location.href + $("div#photos img").attr("src");
+=======
+      var picture = window.location.href + $("div#zoom img").attr("src");
+>>>>>>> Stashed changes
       //alert(currentUrl);
       if(currentUrl == "https://localhost/" || currentUrl == "http://localhost/" || currentUrl == "ipfs://localhost/"){
         console.log('%c⚠️ CURRENT URL localhost => cyril.ovh for demo.', 'font-size: 24px; color: red');
@@ -203,9 +241,15 @@ function comm_add(user, sn){
     }
     // enfin je vide le textarea
     comms_txt.val("");
+<<<<<<< Updated upstream
 	}else{
 		alert("Votre commentaire doit faire entre 3 et 280 maximum."); // remplacer eventuellement par une modal
 	}
+=======
+  }else{
+    alert("Votre commentaire doit faire entre 3 et 280 maximum."); // remplacer eventuellement par une modal
+  }
+>>>>>>> Stashed changes
 }
 
 /*
@@ -255,7 +299,11 @@ function fb_login() {
 */
 
 function addzero(str){ // add a zeo if str.length > 2 --> used in fonction "show comments"
+<<<<<<< Updated upstream
 	return (str.length==2) ? str : " 0" + str;
+=======
+  return (str.length==2) ? str : " 0" + str;
+>>>>>>> Stashed changes
 }
 
 /* fonction pour afficher les commentaire en fonction de l'ID de la photo */
@@ -270,6 +318,7 @@ function comments_show(idpost){ /* fonction pour afficher les commentaire en fon
       }
     }
   }
+<<<<<<< Updated upstream
 	if(localStorage.getItem("commentaires")){
 		var all_comments = JSON.parse(localStorage.getItem('commentaires'));
 		for(i in all_comments.liste){
@@ -292,6 +341,30 @@ function comments_show(idpost){ /* fonction pour afficher les commentaire en fon
 			}
 		}
 	}
+=======
+  if(localStorage.getItem("commentaires")){
+    var all_comments = JSON.parse(localStorage.getItem('commentaires'));
+    for(i in all_comments.liste){
+      var commmentaire = all_comments.liste[i];
+      if(idpost == commmentaire.idpost){ // si le commentaire est detiné à la photo affichée
+        //console.log(all_comments.liste[i]);
+        var auteur = decodeURIComponent(escape(window.atob(commmentaire.auteur)));
+        var content = decodeURIComponent(escape(window.atob(commmentaire.content)));
+        var date = new Date(commmentaire.date);
+        var date = "Le " + addzero(date.getDay()) + "/" + addzero(date.getMonth()) + "/" + date.getFullYear() + " à " + date.getHours() + ":" + date.getMinutes();
+        $("div.commentaires div.comm_all").append(`
+          <div class="comm" title="${date}" data-id="${commmentaire.id}">
+            <p class="auteur">
+              <span class="${commmentaire.snet} ico send"></span> <span>${auteur}</span>
+              <span style="float:right;" class='ico del' alt='Supprimer le commentaire' title='Supprimer le commentaire' onclick='comm_del(\"${commmentaire.id}\")'></span>
+            </p>
+            <p class="comm">${content}</p>
+          </div>
+        `);
+      }
+    }
+  }
+>>>>>>> Stashed changes
 }
 
 /*                                                                                                                   
@@ -333,7 +406,11 @@ window.onload = function(){
 */
 
 
+<<<<<<< Updated upstream
   comments_show($("div#photos img").attr("data-id")); // affiche les commentaires de la photo au chargement
+=======
+  comments_show($("div#zoom img").attr("data-id")); // affiche les commentaires de la photo au chargement
+>>>>>>> Stashed changes
 /*
   _            _ _   _                                              _   
  | |          (_) | | |                                            | |  
@@ -344,6 +421,7 @@ window.onload = function(){
                                                                                                                                       
 */
 
+<<<<<<< Updated upstream
 	document.querySelector('div.commentaires div.btn span.tw').addEventListener('click', function() {
 		// Initialize with your OAuth.io app public key
 		OAuth.initialize('HwAr2OtSxRgEEnO2-JnYjsuA3tc');
@@ -356,6 +434,20 @@ window.onload = function(){
 		  })    
 		});
 	})
+=======
+  document.querySelector('div.commentaires div.btn span.tw').addEventListener('click', function() {
+    // Initialize with your OAuth.io app public key
+    OAuth.initialize('HwAr2OtSxRgEEnO2-JnYjsuA3tc');
+    // Use popup for OAuth
+    OAuth.popup('twitter').then(twitter => {
+      //console.log('twitter:', twitter);
+      twitter.get('/1.1/account/verify_credentials.json?include_email=true').then(data => {
+        // console.log('username:', data.screen_name);
+        comm_add(data.screen_name,"tw");
+      })    
+    });
+  })
+>>>>>>> Stashed changes
 
 
   /*
