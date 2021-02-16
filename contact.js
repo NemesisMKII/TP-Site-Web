@@ -1,3 +1,4 @@
+// a l'ext de onready
 function captcha_new(){
     var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
     var chiffre2 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
@@ -5,6 +6,8 @@ function captcha_new(){
     $("#dyna").text("Résoudre l'opération suivante:" + chiffre1 + " + " + chiffre2); // ici j'informe le visiteur du calcul à réaliser en modifiant le contenu de ma balise p#captcha_dyn
     return total; // je retourne le total pour le sortir mon total de ma fonction ligne 37
 }
+
+// int à onready
 $(document).ready(function (){
     var formObj
     if (!localStorage.getItem('formulaire')) {
@@ -70,5 +73,7 @@ $(document).ready(function (){
         }
     });
 });
+
+// à l'exterieur et aprè on onload
 var total = captcha_new(); // j'execute ma fonction et je sort le total de ma fonction #ligne 37
 console.log(total);

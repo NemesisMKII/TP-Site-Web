@@ -11,14 +11,16 @@
 	<link rel="stylesheet" type="text/css" href="./style/style.css" />
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
 	<!-- NAVBAR -->
-	<header class="border border-dark">
-		<ul class="d-flex p-0 mb-0">
-			<li class="px-1 border-end border-dark">Home</li>
-			<li class="px-1 border-end border-dark"><a href="aboutme.html">About me</a></li>
-			<li class="border-end border-dark position-relative text-center" id="techniques"><a href="">Techniques</a>
+	<header class="border border-dark text-center">
+		<ul class="d-flex flex-row flex-sm-column flex-md-column flex-lg-row p-0 mb-0">
+			<li class="border border-dark px-1"><a href="index.html"><i class="fal fa-home"></i></a></li>
+			<li class="border border-dark px-1"><a href="aboutme.html">About me</a></li>
+			<li class="border border-dark position-relative text-center" id="techniques"><a href="">Techniques</a>
 				<ul class="position-absolute text-center px-0 w-100" id="technique_list">
 					<li class="border border-dark"><a href="index.html?technique=hdr">HDR</a></li>
 					<li class="border border-dark"><a href="index.html?technique=highkey_lowkey">High Key/Low Key</a></li>
@@ -29,7 +31,7 @@
 					<li class="border border-dark"><a href="index.html?technique=light painting">Light painting</a></li>
 				</ul>
 			</li>
-			<li class="border-end border-dark position-relative text-center" id="categories"><a href="">Categories</a>
+			<li class="border border-dark position-relative text-center" id="categories"><a href="">Categories</a>
 				<ul class="position-absolute text-center px-0 w-100" id="categories_list">
 					<li class="border border-dark"><a href="index.html?category=blackandwhite">Noir et blanc</a></li>
 					<li class="border border-dark"><a href="index.html?category=portrait">Portrait</a></li>
@@ -40,22 +42,27 @@
 					<li class="border border-dark"><a href="index.html?category=boudoir">Boudoir (+18)</a></li>
 				</ul>
 			</li>
-			<li class="me-auto px-1 border-end border-dark">Album</li>
-			<li class="px-1 border-start border-dark">Theme</li>
-			<li class="px-1 border-start border-dark"><a href="contact.html">Contact</a></li>
-			<li class="px-1 border-start border-dark" id="btnConnexion"><a href="login.html">Connexion</a></li>
+			<li class="border border-dark px-1 album">Album</li>
+			<li class="border border-dark px-1" id="theme">Theme
+				<ul id="themeList" class="themecontainer position-absolute text-center p-0">
+					<li class="border border-dark noir" class="bg2" >Noir</li>
+					<li class="border border-dark blanc" class="bg3">Blanc</li>
+					<li  class="border border-dark gris" class="bg4">Gris</li>
+				</ul>
+			</li>
+			
+			<li class="border border-dark px-1"><a href="contact.html">Contact</a></li>
+			<li class="border border-dark px-1" id="btnConnexion"><a href="login.html">Connexion</a></li>
 		</ul>
 	</header>
-	<!--<script src='./style/default.js' ></script>-->
-
 	<div id="pageformulaire">
 	 <!--formulaire-->
 		<div id="titreContact">
 			<h1>Contact</h1>
 			<p>Remplissez le formulaire de contact pour m’exposer votre demande.<br>
 			<br>Si vous souhaitez accéder à l'album boudoire, faites votre demande ici ,un login et un mot de passe vous serons transmis.</p>
-			</div>
-				<div id="formulaire"> <!--formulaire-->
+		</div>
+	<div id="formulaire"> <!--formulaire-->
 		  <form method="POST" action=""  id="myForm">
 			<div>
 				<div class="row mb-3">
@@ -93,13 +100,32 @@
 				<input type="text" maxlength="50" required id="captcha"/> 
 			
 				<button class="btn btn-primary" type="submit" id="submitForm" value="Envoyez">
-				</form>>Envoyez</button>
+					Envoyez
+				</button>
 				</div>  
 			</form>
-			
 	</div>
 </div>
-	<script src="contact.js"></script>
+	
+	<div class="modal" id="modalLogin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Connectez-vous</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose"></button>
+				</div>
+				<div class="modal-body">
+					<form action="" class="text-center" id="formLogin">
+						<input type="text" class="m-2" placeholder="identifiant" id="myID"><br>
+						<input type="password" class="m-2" placeholder="mot de passe" id="myPassword"><br>
+						<input type="submit" class="btn btn-danger m-2" value="Connexion">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+	<script src='./style/default.js' ></script>
 </body>
 </html>
