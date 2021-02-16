@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 /* navbar CSS START */
 header a {
     text-decoration: none;
@@ -28,7 +32,7 @@ ul {
 #carroussel{
 	overflow:hidden;
 	position: relative;
-	height: 130px;
+	height: 17%;
 	width: 100%;
 	background: #807C7C
 
@@ -93,12 +97,21 @@ ul {
 
 @media (min-width: 992px) {
     /* NAVBAR */
+
+    header {
+        height: 17%;
+    }
+    
     #categories, #techniques {
         width: 15%;
     }
 
     .album {
         margin-right: auto;
+    }
+
+    #centerdiv {
+        height: 67%;
     }
 }
 
