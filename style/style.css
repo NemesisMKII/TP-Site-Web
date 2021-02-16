@@ -29,9 +29,7 @@ ul {
 /* navbar CSS END */
 /* theme color start */
 .themecontainer li{
-    display: inline-block;
     height: 25px;
-    width: 25px;
     cursor: pointer;
     list-style: none;
 }

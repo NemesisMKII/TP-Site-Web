@@ -94,7 +94,6 @@ $(document).ready (() => {
         $("header").css({'border-color':'white', 'color':'white'})
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('noir')
-        
     });
     
     $("li.white").click(function() {
@@ -105,8 +104,6 @@ $(document).ready (() => {
         $("header li").addClass('border-dark')
         $("header").css({'border-color':'dark', 'color':'black'})
         $("body").removeClass("bg2 , bg4").addClass("bg3");
-       
-       
     });
     
     $("li.grey").click(function() {
