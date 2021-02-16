@@ -1,4 +1,19 @@
 $(document).ready (() => {
+
+    var Connexion = false
+    var mesUsers = {"users":    [{"id" : 1,
+            "pseudo" : "Rudy",
+            "mdp" : "789",
+            "role" : "admin",
+            "date" : 1,
+            "theme" : 1},
+            {"id" : 2,
+                "pseudo" : "Zlatan",
+                "mdp" : "123",
+                "role" : "user",
+                "date" : 2,
+                "theme" : 2}]}
+
     if ($(window).width() > 992) {
         //Click on "techniques" shows techniques list
         $('#techniques').hover((e) => {
@@ -29,7 +44,6 @@ $(document).ready (() => {
     } else {
         formObj = JSON.parse(localStorage.getItem('formulaire'))
     }
-
 
     $("#myForm").on("submit", function(e){
         //envoi du formulaire
@@ -85,15 +99,20 @@ $(document).ready (() => {
         }
     });
 
+    $("#formLogin").submit(function(event) {
+        event.preventDefault()
+        var pseudo = $("#myID").val()			//recup le pseudo
+        var MdP = $("#myPassword").val()		//recup le mot de passe
+        login(pseudo, MdP)						//lance la fonction Login
+    })
+
     $("#btnConnexion").click(function(e) {
         e.preventDefault()
-        $("#modalLogin").modal("show")				//affiche le formulaire de connexion sous forme de modal
-        $("#formLogin").submit(function(event) {
-            event.preventDefault()
-            var pseudo = $("#myID").val()			//recup le pseudo
-            var MdP = $("#myPassword").val()		//recup le mot de passe
-            login(pseudo, MdP)						//lance la fonction Login
-        })
+        if (Connexion == false) {
+            $("#modalLogin").show()		         //affiche le formulaire de connexion sous forme de moda
+        } else {
+            deconnexion()
+        }
     })
   
     $("#btnClose").click(function () {		//fermeture du formulaire de connection au clic sur X en haut a droite
@@ -103,11 +122,10 @@ $(document).ready (() => {
     // Fonction LOGIN
 
     function login(pseudo, MdP) {
+
         var monJsonUsers								//recup du Json dans localStorage
         if (!localStorage.getItem("localUsers")) {		//si vide, creation d'un nouveau Json
-            monJsonUsers = {"users": [{"pseudo" : "Zlatan",
-                    "mdp" : "123",
-                    "role" : "larbin"}]}
+            monJsonUsers = mesUsers
         } else {
             monJsonUsers = JSON.parse(localStorage.getItem("localUsers"))
         }
@@ -122,9 +140,6 @@ $(document).ready (() => {
                     var monUser = monJsonUsers.users[x]
                     pseudoExist = true
                     break
-                } else {										//pseudo non trouvé
-                    alert("Mauvaise identification, essayez encore")
-                    location.reload()
                 }
             }
         }
@@ -133,13 +148,12 @@ $(document).ready (() => {
             if (MdP == monUser.mdp) {							//MdP correspond au pseudo
                 alert("Content de vous revoir " + monUser.pseudo)
                 loginOK = true
-                sessionStorage.setItem("sessionUser", JSON.stringify(monUser))	//Stockage de l'user dans le sessionStorage
+                monObjUser = {"userLog" : monUser}
+                sessionStorage.setItem("sessionUser", JSON.stringify(monObjUser))	//Stockage de l'user dans le sessionStorage
                 $("#modalLogin").hide()
                 //charger le theme s'il existe
-                //modifier le bouton "connection" en déconnection et créer la fonction
-            } else {
-                alert("Mauvaise identification, essayez encore")
-                location.reload()
+                $("#btnConnexion").text("Deconnexion")      //modifier le bouton "connexion" en déconnexion
+                Connexion = true
             }
             if (loginOK) {						//pseudo + MdP OK => verif si Admin ou User
                 if (monUser.role == "admin") {
@@ -150,11 +164,19 @@ $(document).ready (() => {
                     alert("Mode Boudoir déverrouillé")
                 }
             }
-        }
+        } else {
+        alert("Mauvaise identification, essayez encore")
+        location.reload()}
     }
 
-
     // FIN Fonction LOGIN
+
+    function deconnexion () {
+        sessionStorage.removeItem("sessionUser")
+        $("#btnConnexion").text("Connexion")
+        Connexion = false
+        alert("Vous etes bien deconnecté")
+    }
 //----------------------------------------------------
 //FOOTER
 
