@@ -278,7 +278,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
      var dossier="grande/"
      var name = $(this).attr('name')
      var nameFirst = $('.choixImg').attr('name')
-     var fileExtension='.jpg'
+     var fileExtension=$('.choixImg').attr('data-ex')
 
   $('.img-full').attr("src",way+dossier+nameFirst+'Max'+fileExtension) //zoom de la 1er image
   $('.choixImg').click(function(){ //zoom au click
@@ -286,9 +286,9 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
      var way = "ress/imagesCarrou/miniature/" //le chemin
      var dossier="grande/" //le dossier
      var name = $(this).attr('name') //le nom
-     var fileExtension='.jpg' //l'extension
+     var fileExtension= $(this).attr('data-ex')//l'extension
 
-     $('.img-full').attr("src",way+dossier+name+'Max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
+     $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
   })
 }
 
