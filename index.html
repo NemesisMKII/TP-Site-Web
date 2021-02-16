@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="./style/style.css" />
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<!--Detect mobile tablet pc-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.js" integrity="sha512-mKlod4zKRIIIrcTz1adxwkprNtUm1lZZL2yP+l9UEmK6mXndshkfPojjPkVOKOanqBM9b2Gc88eBjLCAgkWtHw==" crossorigin="anonymous"></script>
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
@@ -44,9 +46,9 @@
 			<li class="border border-dark px-1 album">Album</li>
 			<li class="border border-dark px-1" id="theme">Theme
 				<ul id="themeList" class="themecontainer position-absolute text-center p-0">
-					<li class="border border-dark noir" class="bg2" >Noir</li>
-					<li class="border border-dark blanc" class="bg3">Blanc</li>
-					<li  class="border border-dark gris" class="bg4">Gris</li>
+					<li class="border border-dark black" class="bg2" id="noir" value="noir" >Noir</li>
+					<li class="border border-dark white" class="bg3" id="blanc"value="blanc">Blanc</li>
+					<li  class="border border-dark grey" class="bg4" id="gris" value="gris">Gris</li>
 				</ul>
 			</li>
 			
@@ -55,6 +57,7 @@
 		</ul>
 	</header>
 	<main>
+    
 		<!-- Affichage image zoom-->
 		<div id="zoom">		
 			<img src="" class="img-full" alt="">
@@ -126,6 +129,7 @@
 		<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
 		
 	</div>
+
 	<!--carroussel responsiv-->
 	<div id="carroussel2" class="position-absolute end-0" style="display: none;">
 		<div class="slider2">
@@ -191,6 +195,7 @@
 	</div>
 
 	<!--FOOTER CAROUSEL END-->
+
 	<div class="modal" id="modalLogin">
 		<div class="modal-dialog">
 			<div class="modal-content">
