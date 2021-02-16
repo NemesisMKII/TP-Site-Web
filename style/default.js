@@ -279,6 +279,7 @@ $(document).ready (() => {
     slide2 = new slider2("#carroussel2");
    slide = new slider("#carroussel");
   zoomImg() //zoom 1er image et au click
+  fullScreen()
 
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
@@ -413,7 +414,24 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
      $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
   })
 }
-
+//fullScreen
+function fullScreen(){
+  $('.img-full').click(function () {
+      $('#overlay').show()
+      $('.imgReal').attr("src", $(this).attr('src'))
+      $('#zoom').hide()
+  })
+  $('.closeMe').click(function () {
+      $('#overlay').hide()
+      $('#zoom').show()
+  })
+  $(document).keydown(function (event) {
+     if (event.keyCode == 27){
+      $('#overlay').hide()
+      $('#zoom').show()
+      }
+  })
+}
 //End footer fct
 
 // a l'ext de onready
