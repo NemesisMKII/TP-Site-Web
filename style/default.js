@@ -255,7 +255,7 @@ var slider2 = function(id){
 $(window).resize(function(){
   carrousselMoove()
 });
-function carrousselMoove(){
+function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
 
     var largeurWindow = $(window).width()
     if (largeurWindow < 992) {
@@ -283,12 +283,12 @@ function carrousselMoove(){
   $('.img-full').attr("src",way+dossier+nameFirst+'Max'+fileExtension) //zoom de la 1er image
   $('.choixImg').click(function(){ //zoom au click
      //var srcImg= $(this).attr('src')
-     var way = "ress/imagesCarrou/miniature/"
-     var dossier="grande/"
-     var name = $(this).attr('name')
-     var fileExtension='.jpg'
+     var way = "ress/imagesCarrou/miniature/" //le chemin
+     var dossier="grande/" //le dossier
+     var name = $(this).attr('name') //le nom
+     var fileExtension='.jpg' //l'extension
 
-     $('.img-full').attr("src",way+dossier+name+'Max'+fileExtension)
+     $('.img-full').attr("src",way+dossier+name+'Max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
   })
 }
 
