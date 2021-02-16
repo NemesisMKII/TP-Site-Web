@@ -112,6 +112,11 @@ ul {
 
     #centerdiv {
         height: 67%;
+        font-size: 0.85rem;
+    }
+
+    .img-photographer {
+        width: 350px;
     }
 }
 
