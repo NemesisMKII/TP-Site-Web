@@ -214,7 +214,7 @@ $(document).ready (() => {
         }
     });
 
-    $("#f").submit(function(event) {
+    $("#formLogin").submit(function(event) {
         event.preventDefault()
         var pseudo = $("#myID").val()			//recup le pseudo
         var MdP = $("#myPassword").val()		//recup le mot de passe
@@ -223,6 +223,8 @@ $(document).ready (() => {
 
     $("#btnConnexion").click(function(e) {
         e.preventDefault()
+        $('#myID').val('')
+        $('#myPassword').val('')
         if (Connexion == false) {
             $("#modalLogin").show()		         //affiche le formulaire de connexion sous forme de moda
         } else {
@@ -237,10 +239,10 @@ $(document).ready (() => {
     // Fonction LOGIN
 
     function login(pseudo, MdP) {
-
         var monJsonUsers								//recup du Json dans localStorage
         if (!localStorage.getItem("localUsers")) {		//si vide, creation d'un nouveau Json
             monJsonUsers = mesUsers
+            console.log(monJsonUsers);
         } else {
             monJsonUsers = JSON.parse(localStorage.getItem("localUsers"))
         }
