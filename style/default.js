@@ -55,19 +55,19 @@ $(document).ready (() => {
         //Click on "techniques" shows techniques list
         $('#techniques').hover((e) => {
             if ($(window).width() > 992) {
-                $('#technique_list').toggleClass('show')
+                $('#technique_list').toggleClass('showlist')
             }
         })
         //Click on "categories" shows categories list
         $('#categories').hover((e) => {
             if ($(window).width() > 992) {
-                $('#categories_list').toggleClass('show')   
+                $('#categories_list').toggleClass('showlist')   
             }
         })
          //Click on "categories" shows categories list
          $('#theme').hover((e) => {
             if ($(window).width() > 992) {
-            $('#themeList').toggleClass('show')
+            $('#themeList').toggleClass('showlist')
             }
         })
     }
