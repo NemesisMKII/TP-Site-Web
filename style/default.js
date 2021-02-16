@@ -153,9 +153,11 @@ $(document).ready (() => {
 //FOOTER
 
 
-  carrousselMoove()
+  carrousselMoove() //deplace le caroussel
     slide2 = new slider2("#carroussel2");
    slide = new slider("#carroussel");
+  zoomImg() //zoom 1er image et au click
+
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
 //-----------------------------------------------
@@ -259,17 +261,36 @@ function carrousselMoove(){
     if (largeurWindow < 992) {
       $('#carroussel').hide()
       $('#carroussel2').show()
+      
 
     }else {
       $('#carroussel2').hide()
-      $('#carroussel').show()      
+      $('#carroussel').show()
+       
     }
 }
+//Ajout des miniatures
+
+
 // zoom
-$('.img-full').attr("src",$('.choixImg').first().attr('src'))
-$('.choixImg').click(function(){
-  $('.img-full').attr("src",$(this).attr('src'))
-})
+  function zoomImg(){
+    var way = "ress/imagesCarrou/miniature/"
+     var dossier="grande/"
+     var name = $(this).attr('name')
+     var nameFirst = $('.choixImg').attr('name')
+     var fileExtension='.jpg'
+
+  $('.img-full').attr("src",way+dossier+nameFirst+'Max'+fileExtension) //zoom de la 1er image
+  $('.choixImg').click(function(){ //zoom au click
+     //var srcImg= $(this).attr('src')
+     var way = "ress/imagesCarrou/miniature/"
+     var dossier="grande/"
+     var name = $(this).attr('name')
+     var fileExtension='.jpg'
+
+     $('.img-full').attr("src",way+dossier+name+'Max'+fileExtension)
+  })
+}
 
 //End footer fct
 
@@ -284,4 +305,3 @@ function captcha_new(){
 
 // à l'exterieur et aprè on onload
 var total = captcha_new(); // j'execute ma fonction et je sort le total de ma fonction #ligne 37
-console.log(total);
