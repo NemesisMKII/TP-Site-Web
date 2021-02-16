@@ -1,4 +1,56 @@
 $(document).ready (() => {
+// background en fonction de la taille de l'ecran => function pour la couleur dédié
+    function tablette(){
+        $("header a").css('color','white')
+        $("header li").removeClass('border-dark')
+        $("header li").addClass('border-white')
+        $("header ").removeClass('border-dark')
+        $("header").addClass('border-white')
+        $("header").css({'border-color':'white', 'color':'white'})
+        $("body").removeClass("bg2 , bg3").addClass("bg4");
+    }
+    function ordinateur(){
+        $("header a").css('color','black')
+        $("header").removeClass('border-white')
+        $("header").addClass('border-dark')
+        $("header li").removeClass('border-white')
+        $("header li").addClass('border-dark')
+        $("header").css({'border-color':'dark', 'color':'black'})
+        $("body").removeClass("bg2 , bg4").addClass("bg3");
+    }
+    function telephone(){
+        $("header a").css('color','white')
+        $("header li").removeClass('border-dark')
+        $("header li").addClass('border-white')
+        $("header ").removeClass('border-dark')
+        $("header").addClass('border-white')
+        $("header").css({'border-color':'white', 'color':'white'})
+        $("body").removeClass("bg3 , bg4").addClass("bg2");
+        alert('mobile')
+    }
+    // background en fonction de la taille de l 'ecran
+    if ($(window).width() >= 1024 ){
+        ordinateur()
+        console.log('ecran pc 1')
+    }
+     if  ($(window).width() >= 800 && $(window).height() >=800) {
+
+        if( navigator.userAgent.match(/ipad/gi)){
+            console.log("tablette")
+            tablette()
+        }else{
+            console.log("phone")
+            telephone()
+        }
+    }
+     if (navigator.userAgent.match(/ipad|android|phone|ios|iphone/gi)){
+        if ($(window).width() <= 570 ){
+        console.log("smart")
+        telephone()
+    }
+}
+// end background color
+  
     if ($(window).width() > 992) {
         //Click on "techniques" shows techniques list
         $('#techniques').hover((e) => {
@@ -9,7 +61,7 @@ $(document).ready (() => {
         //Click on "categories" shows categories list
         $('#categories').hover((e) => {
             if ($(window).width() > 992) {
-                $('#categories_list').toggleClass('show')
+                $('#categories_list').toggleClass('show')   
             }
         })
          //Click on "categories" shows categories list
@@ -18,22 +70,74 @@ $(document).ready (() => {
             $('#themeList').toggleClass('show')
             }
         })
-    } 
-    //theme color 
-    $("li.noir").click(function() {
+    }
+    
+ //-------------------------------------------------------------------------------  
+ //bouton detection mobile/tablet
+     $('#detect-button').click(function(){
+     var detector = new MobileDetect(window.navigator.userAgent)
+     console.log( "Mobile: " + detector.mobile());
+     console.log( "Phone: " + detector.phone());
+     console.log( "Tablet: " + detector.tablet());
+    console.log( "OS: " + detector.os());
+    console.log( "userAgent: " + detector.userAgent());
+
+    });
+
+
+    //theme color black white grey au clic navbar
+    $("li.black").click(function() {
+        $("header a").css('color','white')
+        $("header li").removeClass('border-dark')
+        $("header li").addClass('border-white')
+        $("header ").removeClass('border-dark')
+        $("header").addClass('border-white')
+        $("header").css({'border-color':'white', 'color':'white'})
         $("body").removeClass("bg3 , bg4").addClass("bg2");
-        console.log('bleu')
+        console.log('noir')
+        
     });
     
-    $("li.blanc").click(function() {
+    $("li.white").click(function() {
+        $("header a").css('color','black')
+        $("header").removeClass('border-white')
+        $("header").addClass('border-dark')
+        $("header li").removeClass('border-white')
+        $("header li").addClass('border-dark')
+        $("header").css({'border-color':'dark', 'color':'black'})
         $("body").removeClass("bg2 , bg4").addClass("bg3");
+       
+       
     });
     
-    $("li.gris").click(function() {
+    $("li.grey").click(function() {
+        $("header a").css('color','white')
+        $("header li").removeClass('border-dark')
+        $("header li").addClass('border-white')
+        $("header ").removeClass('border-dark')
+        $("header").addClass('border-white')
+        $("header").css({'border-color':'white', 'color':'white'})
         $("body").removeClass("bg2 , bg3").addClass("bg4");
-    });
-  
-    // formulaire 
+    })
+    // enregistrement du choix des couleurs dans le localstorage
+    var themeObj
+    if (!localStorage.getItem('themeColor')) {
+        themeObj = {
+            "themes": []
+        }
+    } else {
+        themeObj = JSON.parse(localStorage.getItem('themeColor'))
+    }
+    $("ul#themeList li").on('click', function(){
+        var color = $(this).attr("value")
+        var theme = {
+            colorChoose : color
+        }
+        themeObj.themes.push(theme)
+        localStorage.setItem('themeColor', JSON.stringify(themeObj)) 
+        });
+ //------------------------------------------------------------------------------------       
+    // formulaire localstorage
     var formObj
     if (!localStorage.getItem('formulaire')) {
         formObj = {
@@ -64,8 +168,7 @@ $("#myForm").submit(register)
             date : (new Date()).getTime()    
         } 
         formObj.form.push(newform)
-        localStorage.setItem('formulaire', JSON.stringify(formObj))
-        
+        localStorage.setItem('formulaire', JSON.stringify(formObj)) 
         //envoi du formulaire via la boite de dialogue mail
         var messagesend = "   nom : " + name  ;
         messagesend += "   prenom : " + firstName ;
@@ -75,26 +178,23 @@ $("#myForm").submit(register)
         var subject = objet
         subject = encodeURI(subject)
         window.location.href=`mailto:rudy.lesur@id-formation.fr?subject=${subject}&body=${messagesend}`;
-       //captcha
-         
-       var chiffre1 = Math.floor(Math.random() * 10); 
+        //captcha
+        var chiffre1 = Math.floor(Math.random() * 10); 
         var chiffre2 = Math.floor(Math.random() * 10); 
         var total = chiffre1 + chiffre2; 
         var captcha = $("#captcha").val()
         $("#captcha").text("Résoudre" + chiffre2 + "+" + chiffre2); 
        if ($("#calculer").val() == total){
-        console.log("ok")
-       
+        console.log("ok"); 
     }
-    
-
         //vide les champs
-        alert("msg envoyé")
+        alert("Votre message à été envoyé, nous vous répondons dans les meilleurs délais")
         $("#firstName").val("")
         $("#name").val("")
         $("#objet").val("")
         $("#message").val("")
-        $("#mail").val("")       
+        $("#mail").val("")  
+        $("#calculer").val("")     
         }
     }
 

@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="./style/style.css" />
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<!--Detect mobile tablet pc-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.js" integrity="sha512-mKlod4zKRIIIrcTz1adxwkprNtUm1lZZL2yP+l9UEmK6mXndshkfPojjPkVOKOanqBM9b2Gc88eBjLCAgkWtHw==" crossorigin="anonymous"></script>
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
@@ -43,10 +45,10 @@
 			</li>
 			<li class="border border-dark px-1 album">Album</li>
 			<li class="border border-dark px-1" id="theme">Theme
-				<ul id="themeList" class="themecontainer">
-					<li class="border border-dark noir" class="bg2" ></li>
-					<li class="border border-dark blanc" class="bg3"></li>
-					<li class="border border-dark gris" class="bg4"></li>
+				<ul id="themeList" class="themecontainer position-absolute text-center p-0">
+					<li class="border border-dark black" class="bg2" id="noir" value="noir" >Noir</li>
+					<li class="border border-dark white" class="bg3" id="blanc"value="blanc">Blanc</li>
+					<li  class="border border-dark grey" class="bg4" id="gris" value="gris">Gris</li>
 				</ul>
 			</li>
 			
@@ -54,6 +56,11 @@
 			<li class="border border-dark px-1" id="btnConnexion"><a href="login.html">Connexion</a></li>
 		</ul>
 	</header>
+	<!--test button pour mobile-->
+	<div id="navbar"><span>Mobile-detect.js</span></div>
+	<div id="wrapper">
+	  <button id="detect-button">Detect Device</button>
+	</div>
 	<!-- FOOTER CAROUSEL-->
 	<div id="carroussel" class="responsiv position-fixed bottom-0">
 		<div class="slider">
@@ -106,6 +113,26 @@
 		<div class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
 		
 	</div>
+
+	<div class="modal" id="modalLogin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Connectez-vous</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose"></button>
+				</div>
+				<div class="modal-body">
+					<form action="" class="text-center" id="formLogin">
+						<input type="text" class="m-2" placeholder="identifiant" id="myID"><br>
+						<input type="password" class="m-2" placeholder="mot de passe" id="myPassword"><br>
+						<input type="submit" class="btn btn-danger m-2" value="Connexion">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 	<script src='./style/default.js'></script>
 </body>
 </html>
