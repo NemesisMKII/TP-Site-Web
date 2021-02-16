@@ -249,7 +249,7 @@ function fb_login() {
      | |                                                             | |      
   ___| |__   _____      __    ___ ___  _ __ ___  _ __ ___   ___ _ __ | |_ ___ 
  / __| '_ \ / _ \ \ /\ / /   / __/ _ \| '_ ` _ \| '_ ` _ \ / _ \ '_ \| __/ __|
- \__ \ | | | (_) \ V  V /   | (_| (_) | | | | | | | | | | |  __/ | | | |_\__ \
+ \__ \ | | | (_) \ V  V /   | (_| (_) | | | | | | | | | | |  __/ | | | |_\__ \    + BTN MODO
  |___/_| |_|\___/ \_/\_/     \___\___/|_| |_| |_|_| |_| |_|\___|_| |_|\__|___/                                                                                                                                                                                                             
                                                                           
 */
@@ -260,6 +260,16 @@ function addzero(str){ // add a zeo if str.length > 2 --> used in fonction "show
 
 /* fonction pour afficher les commentaire en fonction de l'ID de la photo */
 function comments_show(idpost){ /* fonction pour afficher les commentaire en fonction de l'ID de la photo */
+  if(sessionStorage.getItem("sessionUser")){ // verifie si l'utilisateur est connecté à son compte pour la modo
+    var comm_userinfos = JSON.parse(sessionStorage.getItem('sessionUser')); // retrieve data from sessionStorage
+    for(i in comm_userinfos.userLog){ // parcours du json sessionStorage
+      var user = comm_userinfos.userLog[i];
+      var admin = 0;
+      if(comm_userinfos.userLog[i].role=="admin"){ // check if admin
+        var admin = 1;
+      }
+    }
+  }
 	if(localStorage.getItem("commentaires")){
 		var all_comments = JSON.parse(localStorage.getItem('commentaires'));
 		for(i in all_comments.liste){
@@ -271,8 +281,11 @@ function comments_show(idpost){ /* fonction pour afficher les commentaire en fon
 				var date = new Date(commmentaire.date);
 				var date = "Le " + addzero(date.getDay()) + "/" + addzero(date.getMonth()) + "/" + date.getFullYear() + " à " + date.getHours() + ":" + date.getMinutes();
 				$("div.commentaires div.comm_all").append(`
-					<div class="comm" title="${date}">
-						<p class="auteur"><span class="${commmentaire.snet} ico send"></span> <span>${auteur}</span></p>
+					<div class="comm" title="${date}" data-id="${commmentaire.id}">
+						<p class="auteur">
+              <span class="${commmentaire.snet} ico send"></span> <span>${auteur}</span>
+              <span style="float:right;" class='ico del' alt='Supprimer le commentaire' title='Supprimer le commentaire' onclick='comm_del(\"${commmentaire.id}\")'></span>
+            </p>
 						<p class="comm">${content}</p>
 					</div>
 				`);
@@ -281,7 +294,46 @@ function comments_show(idpost){ /* fonction pour afficher les commentaire en fon
 	}
 }
 
+/*                                                                                                                   
+  ___ _   _ _ __  _ __  _ __    ___ ___  _ __ ___  _ __ ___  
+ / __| | | | '_ \| '_ \| '__|  / __/ _ \| '_ ` _ \| '_ ` _ \ 
+ \__ \ |_| | |_) | |_) | |    | (_| (_) | | | | | | | | | | |
+ |___/\__,_| .__/| .__/|_|     \___\___/|_| |_| |_|_| |_| |_|
+           | |   | |                                         
+           |_|   |_|                                         
+*/
+function comm_del(id_comm){
+  $(`div.comm[data-id='${id_comm}']`).remove(); // remove from DOM
+  if(localStorage.getItem("commentaires")){ // va chercher mon JSON
+    var all_comments = JSON.parse(localStorage.getItem('commentaires')); // je parse
+    for(i in all_comments.liste){
+      if(all_comments.liste[i].id == id_comm){
+        all_comments.liste.splice(i, 1);
+      }
+    }
+    localStorage.setItem('commentaires', JSON.stringify(all_comments))
+  }
+
+}
+
 window.onload = function(){
+/*
+           _____  _____  ______ _         __                 _   _                     
+     /\   |  __ \|  __ \|  ____| |       / _|               | | (_)                    
+    /  \  | |__) | |__) | |__  | |      | |_ ___  _ __   ___| |_ _  ___  _ __          
+   / /\ \ |  ___/|  ___/|  __| | |      |  _/ _ \| '_ \ / __| __| |/ _ \| '_ \         
+  / ____ \| |    | |    | |____| |____  | || (_) | | | | (__| |_| | (_) | | | |        
+ /_/    \_\_|_  _|_|    |______|______| |_| \___/|_| |_|\___|\__|_|\___/|_| |_|        
+     /\    / _|/ _|                                          | |      (_)              
+    /  \  | |_| |_    ___ ___  _ __ ___  _ __ ___   ___ _ __ | |_ __ _ _ _ __ ___  ___ 
+   / /\ \ |  _|  _|  / __/ _ \| '_ ` _ \| '_ ` _ \ / _ \ '_ \| __/ _` | | '__/ _ \/ __|
+  / ____ \| | | |   | (_| (_) | | | | | | | | | | |  __/ | | | || (_| | | | |  __/\__ \
+ /_/    \_\_| |_|    \___\___/|_| |_| |_|_| |_| |_|\___|_| |_|\__\__,_|_|_|  \___||___/                                                                             
+                                                                                       
+*/
+
+
+  comments_show($("div#photos img").attr("data-id")); // affiche les commentaires de la photo au chargement
 /*
   _            _ _   _                                              _   
  | |          (_) | | |                                            | |  
@@ -305,14 +357,22 @@ window.onload = function(){
 		});
 	})
 
-	comments_show($("div#photos img").attr("data-id")); // affiche les commentaires de la photo au chargement
+
+  /*
+             _      ______ _____ _______ 
+       /\   | |    |  ____|  __ \__   __|
+      /  \  | |    | |__  | |__) | | |   
+     / /\ \ | |    |  __| |  _  /  | |   
+    / ____ \| |____| |____| | \ \  | |   
+   /_/    \_\______|______|_|  \_\ |_|   
+                                         
+                                         
+  */
   // AVERTISSEMENT DEVELOPPEMENT
   if(window.location.protocol !="https" || window.location.hostname != "localhost" || window.location.hostname=="127.0.0.1"){
     console.log('%c⚠️AVERTISSEMENTS\n- PROTOCOLE HTTPS REQUIS POUR LES COMMENTAIRES (Connexion SSL exigée par les réseaux sociaux).\n- FONCTION PARTAGE FB EN MODE DEMO (--> faire pointer NDD sur le serveur pour désactiver le mode DEMO)\n   \'-> sinon FB retourne une erreur lors du partage.', 'font-size: 24px; color: red');
   }
-  if(window.location.protocol !="https" || window.location.hostname != "localhost"){
+  if(window.location.protocol !="https" && window.location.hostname != "localhost"){
     alert("⛔️ Accès au site via https://localhost requis (contraintes de sécurité imposées par les API) pour les commentaires.");
   }
-
-
 }

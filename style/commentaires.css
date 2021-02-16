@@ -62,6 +62,14 @@ div.commentaires span.ico.insta{
 div.commentaires span.ico.pint{
   background-position: -32px 0px;
 }
+div.commentaires span.ico.del{
+  background-position: -64px 0px;
+  filter: grayscale(100%);
+  cursor:pointer;
+}
+div.commentaires span.ico.del:hover{
+  filter: grayscale(0%);
+}
 /*
             _     _                                            _   
            | |   | |                                          | |  
