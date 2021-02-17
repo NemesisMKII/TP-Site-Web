@@ -9,36 +9,19 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-    <style>
-        .overlay {
-            position: absolute;
-            display: none;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            padding-top: 5%;
-            padding-bottom: 5%;
-            text-align: center;
-        }
 
-        .img-full{
-            height: 100%;
-        }
-
-        .closeMe{
-            position: absolute;
-            mix-blend-mode: difference;
-            filter: invert(1);
-            font-size: 25px;
-            font-weight: bold;
-            left: 73%;
-            top: 10%;
-            cursor: pointer;
-        }
-    </style>
 
 </head>
 <body>
+    <form>
+            ...
+            <div>
+                 <label for="password">Mot de passe</label>
+                <input type="text" class="gen" placeholder="Mot de passe *" required="required" name="password" id="password">
+     
+            </div>
+            ...
+        </form>
     <div class="overlay">
 
 
@@ -56,24 +39,49 @@
     </div>
 
 <script>
-    $(document).ready(function () {
-        $('.img-thumbnail').click(function () {
-            $('.overlay').show()
-            //attr()
-            //peut prend 1 oU 2 Params
-            //SI 1 seul param => Retourne la valeur
-            //Si 2 params => Change la valeur
-            $('.img-full').attr("src", $(this).attr('src'))
-        })
-        $('.closeMe').click(function () {
-            $('.overlay').hide()
-        })
-        $(document).keydown(function (event) {
-            if (event.keyCode == 27){
-                $('.overlay').hide()
-            }
-        })
-    })
+   function generate(l) {
+    if (typeof l==='undefined'){var l=8;}
+    /* c : chaîne de caractères alphanumérique */
+    var c='abcdefghijknopqrstuvwxyzACDEFGHJKLMNPQRSTUVWXYZ12345679',
+    n=c.length,
+    /* p : chaîne de caractères spéciaux */
+    p='!@#$+-*&_',
+    o=p.length,
+    r='',
+    n=c.length,
+    /* s : determine la position du caractère spécial dans le mdp */
+    s=Math.floor(Math.random() * (p.length-1));
+
+    for(var i=0; i<l; ++i){
+        if(s == i){
+            /* on insère à la position donnée un caractère spécial aléatoire */
+            r += p.charAt(Math.floor(Math.random() * o));
+        }else{
+            /* on insère un caractère alphanumérique aléatoire */
+            r += c.charAt(Math.floor(Math.random() * n));
+        }
+    }
+    return r;
+}
+
+/* exemple de fonction génération de mdp dans un form (utilise JQuery) */
+$(document).ready(function() {
+    /* on détecte un des champ du formulaire contient une class "gen", on insérera un bouton dans sa div parent qui appelera la fonction generate() */
+    if($('form input.gen').length){
+        $('form input.gen').each(function(){
+            $('<span class="generate"><i class="fa fa-fw fa-refresh"></i></span>').appendTo($(this).parent());
+        });
+    }
+   
+    /* évènement click sur un element de class "generate" > appelle la fonction generate() */
+    $(document).on('click','.generate', function(e){
+        e.preventDefault();
+        /* ajout du mot de passe + changement du paramètre type de password vers text (pour lisibilité) */
+        $(this).parent().children('input').val(generate()).attr('type','text');
+    });
+    generate(l)
+});
+
 </script>
 </body>
 </html> 
