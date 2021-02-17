@@ -369,10 +369,10 @@ window.onload = function(){
                                          
   */
   // AVERTISSEMENT DEVELOPPEMENT
-  if(window.location.protocol !="https" || window.location.hostname != "localhost" || window.location.hostname=="127.0.0.1"){
+  /* if(window.location.protocol !="https" || window.location.hostname != "localhost" || window.location.hostname=="127.0.0.1"){
     console.log('%c⚠️AVERTISSEMENTS\n- PROTOCOLE HTTPS REQUIS POUR LES COMMENTAIRES (Connexion SSL exigée par les réseaux sociaux).\n- FONCTION PARTAGE FB EN MODE DEMO (--> faire pointer NDD sur le serveur pour désactiver le mode DEMO)\n   \'-> sinon FB retourne une erreur lors du partage.', 'font-size: 24px; color: red');
   }
   if(window.location.protocol !="https" && window.location.hostname != "localhost"){
     alert("⛔️ Accès au site via https://localhost requis (contraintes de sécurité imposées par les API) pour les commentaires.");
-  }
+  } */
 }
