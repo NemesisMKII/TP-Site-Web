@@ -46,8 +46,7 @@ $(document).ready (() => {
     if ($(window).width() >= 1024 ){
         ordinateur()
         console.log('ecran pc 1')
-    }
-     if  ($(window).width() >= 800 && $(window).height() >=800) {
+    } else if  ($(window).width() >= 800 && $(window).height() >=800) {
 
         if( navigator.userAgent.match(/ipad/gi)){
             console.log("tablette")
