@@ -1,0 +1,84 @@
+<!-- NE PAS INTEGRER DANS LE PROJET -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>oauthio-sample</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script type="text/javascript" src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+
+  <style id="compiled-css" type="text/css">
+      
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+</head>
+<body>
+    <a id="twitter-button" class="btn btn-block btn-social btn-twitter">
+  <i class="fa fa-twitter"></i> Sign in with Twitter
+</a>
+
+    <script type="text/javascript">//<![CDATA[
+
+
+document.querySelector('#twitter-button').addEventListener('click', function() {
+  // Initialize with your OAuth.io app public key
+  OAuth.initialize('HwAr2OtSxRgEEnO2-JnYjsuA3tc');
+  // Use popup for OAuth
+  OAuth.popup('twitter').then(twitter => {
+    console.log('twitter:', twitter);
+    // Prompts 'welcome' message with User's email on successful login
+    // #me() is a convenient method to retrieve user data without requiring you
+    // to know which OAuth provider url to call
+    //twitter.me().then(data => {
+      //console.log('data:', data);
+      //alert('Twitter alias:' + data.alias + ".\nView browser 'Console Log' for more details");
+    //});
+    // Retrieves user data from OAuth provider by using #get() and
+    // OAuth provider url    
+    twitter.get('/1.1/account/verify_credentials.json?include_email=true').then(data => {
+      console.log('username:', data.screen_name);
+    })    
+  });
+})
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "s3egg5h7"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+    <script>
+      let allLines = []
+
+      window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+      })
+    </script>
+
+</body>
+</html>
