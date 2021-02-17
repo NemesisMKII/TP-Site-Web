@@ -2,6 +2,7 @@
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<title>Rudy Art Wall</title>
 	<!-- Bootstrap 5.0.0-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -14,12 +15,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.js" integrity="sha512-mKlod4zKRIIIrcTz1adxwkprNtUm1lZZL2yP+l9UEmK6mXndshkfPojjPkVOKOanqBM9b2Gc88eBjLCAgkWtHw==" crossorigin="anonymous"></script>
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<!-- COMMENTAIRES -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="StyleSheet" type="text/css" href="style/commentaires.css"></link><!-- style de la section comments -->
+	<script type="text/javascript" src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script> <!-- required login twitter -->
+	<script src="style/commentaires.js"></script><!-- Javascript de la section comments -->
+	<!-- FIN DE COMMENTAIRES-->
 </head>
 <body>
 	<!-- NAVBAR -->
 	<header class="text-center border">
 		<div class="h-75 d-flex align-items-center justify-content-center">
-			<img src="/ress/Logo RudyArtWAll.png" alt="">
+			<img src="./ress/LogoRudyArtWAll.png" alt="Rudy Art Wall">
 		</div>
 		<ul class="h-25 border border-dark d-flex flex-row flex-sm-column flex-md-column flex-lg-row align-items-center mb-0 p-0">
 			<li class="border border-dark h-100 px-1"><a href="index.html"><i class="fal fa-home"></i></a></li>
@@ -60,149 +67,177 @@
 		</ul>
 	</header>
 	<main>
-		<!-- Affichage image zoom-->
-		<div id="zoom" class="row align-items-center h-100">		
-			<img src="" class="img-full p-0" alt="">
-		</div>
 		<!--full screen-->
 		<div id="overlay">
 			<img src="" class="imgReal" alt="">
 			<div class="closeMe">X</div>
 		</div>
+		<div id="col1">
+			<!-- Affichage image zoom-->
+			<div id="zoom" class="row align-items-center h-100">		
+				<img src="" class="img-full p-0" alt="">
+			</div>
+		</div>
+		<div id="col2">
+			<!-- SECTION COMMENTAIRE by Cyril-->
+			<div class="commentaires" id="commentaires" maxlength="280">
+				<div class="add">
+					<textarea></textarea>
+					<div id="logged">
+						<div class="btn">
+							<p><input type="checkbox" id="share"/> Partager sur mon réseau social</p>
+							<span class="fb send" id="facebook" scope="public_profile,email" onclick="fb_login();">Commenter avec <img src="ress/commentaires/fb48.png" alt="Commenter avec Facebook"/></span>
+							<span class="tw send" id="twitter">Commenter avec <img src="ress/commentaires/tw48.png" alt="Commenter avec Twitter"/></span>
+						</div>
+					</div>
+				</div>
+				<div class="comm_all">
+					<!--
+					<div class="comm">
+						<p class="auteur"><span class="fb ico send"></span> <span>@username</span></p>
+						<p class="comm">...</div>
+					-->
+				</div>
+			</div>
+			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script><!-- FB Login -->
+			<!-- FIN DE SECTION DE COMMENAIRE by Cyril -->
 
+		</div>
 	</main>
-	<!-- FOOTER CAROUSEL-->
-	<!-- Affichage image zoom-->
+	<footer>
+		<!-- FOOTER CAROUSEL-->
+		<!-- Affichage image zoom-->
 
-	<!-- carroussel non responsiv-->
-	<div id="carroussel" class="position-fixed bottom-0" style="display: none;">
-		<div class="slider">
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Arbre_LP_PA_.jfif" name="Arbre_LP_PA_" data-ex=".jfif">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle_LP_GR_.jpg" name="Cercle_LP_GR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle2_LP_GR_.jpg" name="Cercle2_LP_GR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Ciel_PL_PA_.jpg" name="Ciel_PL_PA_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Coeur_LP_EV_.jpg" name="Coeur_LP_EV_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Fruit_HS_GR_.jpg" name="Fruit_HS_GR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Lion_LP_NB_.png" name="Lion_LP_NB_" data-ex=".png">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Love_LP_EV_.jpg" name="Love_LP_EV_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Panthere_LP_NB_.png" name="Panthere_LP_NB_" data-ex=".png">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Paysage_HDR_PA_.jpg" name="Paysage_HDR_PA_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Rog_HDR_GR_.jpeg" name="Rog_HDR_GR_" data-ex=".jpeg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Train_TS_AR_.jpg" name="Train_TS_AR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage_HK_PO_.jpg" name="Visage_HK_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage2_LK_PO_.jpg" name="Visage2_LK_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage3_ST_PO_.jpg" name="Visage3_ST_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage4_HS_PO_.jpg" name="Visage4_HS_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage5_ST_NB_.jpg" name="Visage5_ST_NB_" data-ex=".jpg">
-		</a>
-			
+		<!-- carroussel non responsiv-->
+		<div id="carroussel" class="position-fixed bottom-0" style="display: none;">
+			<div class="slider">
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Arbre_LP_PA_.jfif" name="Arbre_LP_PA_" data-ex=".jfif">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle_LP_GR_.jpg" name="Cercle_LP_GR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle2_LP_GR_.jpg" name="Cercle2_LP_GR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Ciel_PL_PA_.jpg" name="Ciel_PL_PA_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Coeur_LP_EV_.jpg" name="Coeur_LP_EV_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Fruit_HS_GR_.jpg" name="Fruit_HS_GR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Lion_LP_NB_.png" name="Lion_LP_NB_" data-ex=".png">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Love_LP_EV_.jpg" name="Love_LP_EV_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Panthere_LP_NB_.png" name="Panthere_LP_NB_" data-ex=".png">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Paysage_HDR_PA_.jpg" name="Paysage_HDR_PA_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Rog_HDR_GR_.jpeg" name="Rog_HDR_GR_" data-ex=".jpeg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Train_TS_AR_.jpg" name="Train_TS_AR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage_HK_PO_.jpg" name="Visage_HK_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage2_LK_PO_.jpg" name="Visage2_LK_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage3_ST_PO_.jpg" name="Visage3_ST_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage4_HS_PO_.jpg" name="Visage4_HS_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage5_ST_NB_.jpg" name="Visage5_ST_NB_" data-ex=".jpg">
+			</a>
+
+			</div>
+			<div id="suiv" class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
+			<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
+
 		</div>
-		<div id="suiv" class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
-		<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
-		
-	</div>
 
-	<!--carroussel responsiv-->
-	<div id="carroussel2" class="position-absolute end-0" style="display: none;">
-		<div class="slider2">
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Arbre_LP_PA_.jfif" name="Arbre_LP_PA_" data-ex=".jfif">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle_LP_GR_.jpg" name="Cercle_LP_GR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle2_LP_GR_.jpg" name="Cercle2_LP_GR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Ciel_PL_PA_.jpg" name="Ciel_PL_PA_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Coeur_LP_EV_.jpg" name="Coeur_LP_EV_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Fruit_HS_GR_.jpg" name="Fruit_HS_GR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Lion_LP_NB_.png" name="Lion_LP_NB_" data-ex=".png">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Love_LP_EV_.jpg" name="Love_LP_EV_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Panthere_LP_NB_.png" name="Panthere_LP_NB_" data-ex=".png">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Paysage_HDR_PA_.jpg" name="Paysage_HDR_PA_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Rog_HDR_GR_.jpeg" name="Rog_HDR_GR_" data-ex=".jpeg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Train_TS_AR_.jpg" name="Train_TS_AR_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage_HK_PO_.jpg" name="Visage_HK_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage2_LK_PO_.jpg" name="Visage2_LK_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage3_ST_PO_.jpg" name="Visage3_ST_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage4_HS_PO_.jpg" name="Visage4_HS_PO_" data-ex=".jpg">
-		</a>
-		<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage5_ST_NB_.jpg" name="Visage5_ST_NB_" data-ex=".jpg">
-		</a>
-			
+		<!--carroussel responsiv-->
+		<div id="carroussel2" class="position-absolute end-0" style="display: none;">
+			<div class="slider2">
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Arbre_LP_PA_.jfif" name="Arbre_LP_PA_" data-ex=".jfif">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle_LP_GR_.jpg" name="Cercle_LP_GR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Cercle2_LP_GR_.jpg" name="Cercle2_LP_GR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Ciel_PL_PA_.jpg" name="Ciel_PL_PA_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Coeur_LP_EV_.jpg" name="Coeur_LP_EV_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Fruit_HS_GR_.jpg" name="Fruit_HS_GR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Lion_LP_NB_.png" name="Lion_LP_NB_" data-ex=".png">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Love_LP_EV_.jpg" name="Love_LP_EV_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Panthere_LP_NB_.png" name="Panthere_LP_NB_" data-ex=".png">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Paysage_HDR_PA_.jpg" name="Paysage_HDR_PA_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Rog_HDR_GR_.jpeg" name="Rog_HDR_GR_" data-ex=".jpeg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Train_TS_AR_.jpg" name="Train_TS_AR_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage_HK_PO_.jpg" name="Visage_HK_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage2_LK_PO_.jpg" name="Visage2_LK_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage3_ST_PO_.jpg" name="Visage3_ST_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage4_HS_PO_.jpg" name="Visage4_HS_PO_" data-ex=".jpg">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/Visage5_ST_NB_.jpg" name="Visage5_ST_NB_" data-ex=".jpg">
+			</a>
+
+			</div>
+			<div id="suiv2" class="suiv2"><img src="ress/imagesCarrou/fd1.png"></div>
+			<div id="prec2" class="prec2"><img src="ress/imagesCarrou/fd1.png"></div>
+
 		</div>
-		<div id="suiv2" class="suiv2"><img src="ress/imagesCarrou/fd1.png"></div>
-		<div id="prec2" class="prec2"><img src="ress/imagesCarrou/fd1.png"></div>
-		
-	</div>
 
-	<!--FOOTER CAROUSEL END-->
+		<!--FOOTER CAROUSEL END-->
+	</footer>
 
 	<div class="modal" id="modalLogin">
 		<div class="modal-dialog">
