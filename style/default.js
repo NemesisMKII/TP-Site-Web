@@ -530,14 +530,14 @@ $(".evenement").click(function(e){
 //------------------------------------------------------------------------------------------------
 // fonctions au click des TECHNIQUES
 // FONCTION CLICK TECH
-$("#tech").click(function (e){
+$(".tech").click(function (e){
     e.preventDefault()
     $("main").hide()
     $("#listeTechniques").show()
 })
 
  // fonction au click de HDR
- $("#hdr").click(function(e){
+ $(".hdr").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "HDR"
@@ -548,7 +548,7 @@ $("#tech").click(function (e){
     $("main").append(texte)  
 }) 
 // click high key low key
-$("#highkey").click(function(e){
+$(".highkey").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "High Key/Low Key"
@@ -559,7 +559,7 @@ $("#highkey").click(function(e){
     $("main").append(texte)  
 })  
 // click high speed
-$("#highspeed").click(function(e){
+$(".highspeed").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "High Speed"
@@ -570,7 +570,7 @@ $("#highspeed").click(function(e){
     $("main").append(texte)  
 }) 
 // click studio
-$("#studio").click(function(e){
+$(".studio").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "Studio"
@@ -581,7 +581,7 @@ $("#studio").click(function(e){
     $("main").append(texte)  
 }) 
 // click tilt shift
-$("#tiltshift").click(function(e){
+$(".tiltshift").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "Tilt Shift"
@@ -592,7 +592,7 @@ $("#tiltshift").click(function(e){
     $("main").append(texte)  
 }) 
 // click POSE LONGUE
-$("#poselongue").click(function(e){
+$(".poselongue").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "Pose Longue"
@@ -603,7 +603,7 @@ $("#poselongue").click(function(e){
     $("main").append(texte)  
 }) 
 // click light painting
-$("#lightpainting").click(function(e){
+$(".lightpainting").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "Light Painting"
