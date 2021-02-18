@@ -5,13 +5,15 @@ $(document).ready (() => {
             "mdp" : "789",
             "role" : "admin",
             "date" : 1,
-            "theme" : 1},
-            {"id" : 2,
-                "pseudo" : "Zlatan",
-                "mdp" : "123",
-                "role" : "user",
-                "date" : 2,
-                "theme" : 2}]}
+            "theme" : 1}]}
+//
+ var monJsonUsers               //recup du Json dans localStorage
+        if (!localStorage.getItem("localUsers")) {    //si vide, creation d'un nouveau Json
+            monJsonUsers = mesUsers
+        
+        } else {
+            monJsonUsers = JSON.parse(localStorage.getItem("localUsers"))
+        }          
 
 // background en fonction de la taille de l'ecran => function pour la couleur dédié
     function tablette(){
@@ -186,7 +188,7 @@ $(document).ready (() => {
             } 
             formObj.form.push(newform)
             localStorage.setItem('formulaire', JSON.stringify(formObj))
-            
+            register()
         
             
             //envoi du formulaire via la boite de dialogue mail
@@ -198,6 +200,8 @@ $(document).ready (() => {
             var subject = objet
             subject = encodeURI(subject)
             window.location.href=`mailto:rudy.lesur@id-formation.fr?subject=${subject}&body=${messagesend}`;
+            
+
         }else{
             total = captcha_new(); // je regénère un nouveau calcul
             $("input#captcha").val(""); // et j'efface sa réponse
@@ -295,6 +299,34 @@ $(document).ready (() => {
         Connexion = false
         alert("Vous etes bien deconnecté")
     }
+    //fonction
+    function register(){
+      var firstName = $("#firstName").val()
+      var objet = $("#objet").val()
+      var mail = $("#mail").val()
+      var date =(new Date()).getTime()
+      var motDePasse=generateMdp()
+      if (objet == "boudoir") {
+        var monObj = {id : generateUUID(),
+                      pseudo : firstName,
+                      mdp : motDePasse,
+                      role : "user",
+                      date : date,
+                      theme : 1}
+
+       monJsonUsers.users.push(monObj)
+       localStorage.setItem('localUsers', JSON.stringify(monJsonUsers))
+
+         var messagesendLog = "Vous avez demandé un accès au mode boudoir. Voici votre identifiant : " + firstName ;
+              messagesendLog += " et votre mot de passe: " + motDePasse ;
+              messagesendLog += ". Cet accés est valable 7 jours. Bonne journée.";
+            message += encodeURI(messagesendLog);
+            var subject = "Accés au mode boudoir"
+            subject = encodeURI(subject)
+            window.location.href=`mailto:${mail}?subject=${subject}&body=${messagesendLog}`;
+      }
+    }     
+
 //----------------------------------------------------
 //FOOTER
 
@@ -695,7 +727,8 @@ $(".lightpainting").click(function(e){
     $("main").append(texte) 
     $("main").show()  
 })
- //----------------------------------------------------------------------------------------------       
+ //----------------------------------------------------------------------------------------------  
+ 
 // a l'ext de onready
 function captcha_new(){
     var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
@@ -708,4 +741,27 @@ function captcha_new(){
 
 // à l'exterieur et aprè on onload
 var total = captcha_new(); // j'execute ma fonction et je sort le total de ma fonction #ligne 37
-
+// UUIDV4
+function generateUUID() { // Public Domain/MIT
+var d = new Date().getTime();
+ if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+        d += performance.now(); //use high-precision timer if available
+ }
+ return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (d + Math.random() * 16) % 16 | 0;
+    d = Math.floor(d / 16);
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+  });
+}
+//genereation de mot de passe
+function generateMdp(){
+  var d = new Date().getTime();
+ if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+        d += performance.now(); //use high-precision timer if available
+ }
+ return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (d + Math.random() * 16) % 16 | 0;
+    d = Math.floor(d / 16);
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+  });
+}
