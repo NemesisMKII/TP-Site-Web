@@ -479,6 +479,8 @@ var categoriesTemplate =
         e.preventDefault()
         $("main").hide()
         $("#listeCategories").show()
+        $("#listeTechniques").hide() 
+        $("#carroussel").hide()
     })
    
 // Fonction click noir et blanc
@@ -486,6 +488,7 @@ var categoriesTemplate =
         $(".blackandwhite").click(function(e){
             e.preventDefault()  
             $("#listeCategories").hide() 
+            $("#carroussel").show()
             var texte = categoriesTemplate
             var nom = "Noir & Blanc"
             var textecat = "La photographie en noir et blanc élimine les distractions La couleur peut être un très bon élément de composition. ... En supprimant ainsi les couleurs, vous réduisez grandement les sources de distractions visibles. Vous pourrez alors vous concentrer sur la forme et la texture des différents éléments de votre image."
@@ -494,12 +497,14 @@ var categoriesTemplate =
             $("main").empty()
             $("main").append(texte)
             $("main").show() 
+
         })
     
 // fonction au click de portrait
     $(".portrait").click(function(e){
         e.preventDefault()   
         $("#listeCategories").hide()
+        $("#carroussel").show()
         var texte = categoriesTemplate
         var nom = "Portrait"
         var textecat = "La photo de portrait est un art à part entière : il ne s’agit plus seulement d'immortaliser une scène ou une nature morte mais plutôt de capter une sensibilité, une personnalité, un trait d’humeur ou de caractère chez la personne qui joue les modèles devant l'objectif le temps d’une séance photo. De ce shooting photo, en studio, à domicile ou en extérieur vont naitre des images qui témoigneront d’une époque, d’une période de votre vie, d’un moment fort, peut être d’une réussite que vous aimeriez cristalliser.  Cette photo-portrait sera un concentré d'émotions pour revivre ces instants avec à chaque fois la même intensité. La photographie peut aussi avoir des vertus thérapeutiques et être un bon moyen de prendre confiance en soi, en son image, de s’accepter tel qu’on est. C’est encore le moyen de se mettre en valeur pour une photo corporate ou dans un cadre privé pour séduire de nouveaux partenaires."
@@ -513,6 +518,7 @@ var categoriesTemplate =
     $(".paysage").click(function(e){
         e.preventDefault()   
         $("#listeCategories").hide() 
+        $("#carroussel").show()
         var texte = categoriesTemplate
         var nom = "Paysage"
         var textecat = "Les paysages n’ont pas seulement enthousiasmés les grands peintres. D’innombrables photographes mondialement connus ont traité ce sujet fascinant. Dès l’Antiquité, des genres picturaux apparaissent. Ainsi, il existait en Grèce de grands portraitistes comme Zeuxis ou Appelle. Mais le paysage n’était pas à cette époque un genre pictural autonome. Il pouvait servir d’arrière-plan ou d’élément décoratif mais ne constituait pas en lui-même un sujet. Il faut attendre le 19e siècle pour que le paysage s’affirme comme un genre pictural dominant. Au paysage réaliste des peintres anglais ou des français de l’École de Barbizon succèdera le paysage impressionniste."
@@ -526,6 +532,7 @@ var categoriesTemplate =
     $(".architecture").click(function(e){
         e.preventDefault()  
         $("#listeCategories").hide()  
+        $("#carroussel").show()
         var texte = categoriesTemplate
         var nom = "Architecture"
         var textecat = "La photographie d'architecture, est l’un des principaux thèmes de la photographie. Elle consiste à réaliser des photographies d’édifices, cette restitution pouvant être fidèle, ou magnifiée selon le désir, la volonté et la sensibilité artistique du photographe"
@@ -538,9 +545,10 @@ var categoriesTemplate =
 // fonction au click de graphisme
 $(".graphisme").click(function(e){
     e.preventDefault() 
-    $("#listeCategories").hide()   
+    $("#listeCategories").hide()  
+    $("#carroussel").show() 
     var texte = categoriesTemplate
-    var nom = "graphisme"
+    var nom = "Graphisme"
     var textecat = "Le graphisme est une discipline qui consiste à créer, choisir et utiliser des éléments graphiques (dessins, caractères typographiques, photos, couleurs, etc.) ... Le designer graphique est alors un médiateur qui agit sur les conditions de réception et d'appropriation des informations et des savoirs qu'il met en forme"
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -552,6 +560,7 @@ $(".graphisme").click(function(e){
 $(".evenement").click(function(e){
     e.preventDefault()   
     $("#listeCategories").hide() 
+    $("#carroussel").show()
     var texte = categoriesTemplate
     var nom = "Evenement"
     var textecat = "L’art de la photographie ne s’improvise pas. Entre lumières, positions, angles, cadre, vous mettre en valeur, vous et vos événements. Et au-delà de cette mise en valeur, il est votre référent pour votre image et vos souvenirs."
@@ -565,7 +574,8 @@ $(".evenement").click(function(e){
  // faire une fonction pour autoriser l'acces a cette categorie
  $(".boudoir").click(function(e){
     e.preventDefault()  
-    $("#listeCategories").hide()  
+    $("#listeCategories").hide() 
+    $("#carroussel").show() 
     var texte = categoriesTemplate
     var nom = "Boudoir"
     var textecat = "La photo boudoir mêle féminité, douceur, sensualité et émotion. A la différence de la photo de nu, les photos boudoir sont généralement prises dans un décor naturel, en studio, en chambre ou dans votre salon afin de vous représenter dans votre univers."
@@ -583,12 +593,15 @@ $("#tech").click(function (e){
     e.preventDefault()
     $("main").hide()
     $("#listeTechniques").show()
+    $("#listeCategories").hide() 
+    $("#carroussel").hide()
 })
 
  // fonction au click de HDR
  $(".hdr").click(function(e){
     e.preventDefault() 
     $("#listeTechniques").hide()  
+    $("#carroussel").show()
     var texte = categoriesTemplate
     var nom = "HDR"
     var textecat = "Le HDR (abréviation du terme High Dynamic Range signifiant grande plage dynamique) désigne des formats et des standards de vidéos et d'images numériques permettant de représenter des niveaux de luminosités plus élevés que la limite de 100 nits des contenus du standard SDR. Le HDR permet d'augmenter la gamme dynamique pouvant être enregistrée dans une image ou une vidéo numérique et permet d'obtenir des hautes-lumières plus lumineuses, plus détaillées et plus saturées en couleur. Les technologies liées au HDR permettent également d'améliorer le détail dans les zones sombres."
@@ -601,7 +614,8 @@ $("#tech").click(function (e){
 // click high key low key
 $(".highkey").click(function(e){
     e.preventDefault()  
-    $("#listeTechniques").hide()  
+    $("#listeTechniques").hide()
+    $("#carroussel").show()  
     var texte = categoriesTemplate
     var nom = "High Key/Low Key"
     var textecat = "Une photo High-key est une image qui présente une forte prédominance des teintes claires. Légèrement surexposé sans pour autant être «brûlé » et dépourvu d’ombres, le portrait high-key se présente comme une image très claire, presque blanche sur laquelle, seuls quelques reliefs ou détails stratégiques plus foncés sont mis en évidence. Le portrait high-key propose une vision légère, romantique, douce et pure d’un visage en lumière diffuse et uniforme.<br>Une photo Low-key, quant à elle, est une image qui présente une prédominance des teintes foncées. Volontairement sous-exposé, le portrait low-key regroupe plusieurs styles d’images dont les visuels en clair-obscur. Réalisé en général avec une seule source lumineuse, le portrait low-key se présente comme une image noire sur laquelle, seuls quelques reliefs ou détails stratégiques ont été mis en lumière. Au contraire du high-key, le portrait low-key propose une vision caractérisée d’un visage en lumière contrastée."
@@ -615,6 +629,7 @@ $(".highkey").click(function(e){
 $(".highspeed").click(function(e){
     e.preventDefault()   
     $("#listeTechniques").hide() 
+    $("#carroussel").show()
     var texte = categoriesTemplate
     var nom = "High Speed"
     var textecat = "La photographie High Speed est une approche technique répondant à deux enjeux : une durée d'exposition aussi courte que possible et un déclenchement précis dans le temps pour le synchroniser avec le phénomène à saisir. Le but est de capter des phénomènes trop rapides pour être perçus à l'œil nu."
@@ -627,7 +642,8 @@ $(".highspeed").click(function(e){
 // click studio
 $(".studio").click(function(e){
     e.preventDefault()  
-    $("#listeTechniques").hide()  
+    $("#listeTechniques").hide() 
+    $("#carroussel").show() 
     var texte = categoriesTemplate
     var nom = "Studio"
     var textecat = "Profitez de la qualité studio professionnelle, composé de plusieurs flashs avec diffuseur de lumière et de fonds unis ou imprimés et une multitude d'accessoires et vêtements."
@@ -640,7 +656,8 @@ $(".studio").click(function(e){
 // click tilt shift
 $(".tiltshift").click(function(e){
     e.preventDefault() 
-    $("#listeTechniques").hide()   
+    $("#listeTechniques").hide() 
+    $("#carroussel").show()  
     var texte = categoriesTemplate
     var nom = "Tilt Shift"
     var textecat = "Le Tilt-Shift, plus communément appelé effet maquette, est à la base un effet créé par les objectifs à bascule. Il permet -grâce à un flou qui entoure le sujet- de donner une impression de miniaturisation à une photo."
@@ -654,6 +671,7 @@ $(".tiltshift").click(function(e){
 $(".poselongue").click(function(e){
     e.preventDefault()   
     $("#listeTechniques").hide() 
+    $("#carroussel").show()
     var texte = categoriesTemplate
     var nom = "Pose Longue"
     var textecat = "Une pose longue consiste, en photographie, à utiliser, de jour, un temps de pose assez long pour capturer nettement les éléments fixes d'une scène tout en supprimant les éléments en mouvement ou en les rendant flous et, de nuit, à transformer les sources lumineuses mobiles en trainées lumineuses"
@@ -666,6 +684,7 @@ $(".poselongue").click(function(e){
 // click light painting
 $(".lightpainting").click(function(e){
     e.preventDefault() 
+    $("#carroussel").show()
     $("#listeTechniques").hide()   
     var texte = categoriesTemplate
     var nom = "Light Painting"
