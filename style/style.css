@@ -10,6 +10,7 @@ header a {
 
 header {
     width: 100% !important;
+    z-index: 11;
 }
 
 ul {
@@ -97,8 +98,9 @@ ul {
 
 /*class qui redimensionne les images dans la div slide*/
 .redimension{
-    width: 110px;
-    height: 110px; 
+    max-width: 110px;
+    min-width: 100px;
+    max-height: 80%; 
 }
 
 /*le slide*/
@@ -236,6 +238,14 @@ ul {
     header {
         height: 17%;
     }
+
+    header #logoDIV {
+        height: 75%;
+    }
+
+    header ul {
+        height: 25%;
+    }
     
     #categories, #techniques {
         width: 15%;
@@ -247,6 +257,7 @@ ul {
   
     main {
         height: 67%;
+        overflow-y: scroll;
     }
 
     #centerdiv {
@@ -270,9 +281,15 @@ ul {
         height: 100%;
     }
 
-    .flex-md-column {
-        flex-direction: column !important;
+    header ul {
+        height: 100%;
     }
+
+    header ul li {
+        max-height: 50px;
+        overflow-wrap: break-word;
+    }
+
     /*CARROUSEL*/
     #zoom{
         padding-top: 50px;
@@ -282,6 +299,16 @@ ul {
         width: 400px;
         height: 350px;
     }
+
+    #logoDIV {
+        width: 100%;
+        position: absolute;
+    }
+
+    .album {
+        margin-bottom: auto;
+    }
+
 }
 
 
@@ -293,8 +320,22 @@ ul {
     }*/
     /* NAVBAR */
     header {
-        max-width: 14%;
-        color: white;
+        width: 10% !important;
+        height: 100%;
+    }
+
+    header ul {
+        height: 100%;
+    }
+
+    header ul li {
+        max-height: 50px;
+        overflow-wrap: break-word;
+    }
+
+    #logoDIV {
+        width: 100%;
+        position: absolute;
     }
 }
 
