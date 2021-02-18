@@ -1,4 +1,18 @@
 $(document).ready (() => {
+    var Connexion = false
+    var mesUsers = {"users":    [{"id" : 1,
+            "pseudo" : "Rudy",
+            "mdp" : "789",
+            "role" : "admin",
+            "date" : 1,
+            "theme" : 1},
+            {"id" : 2,
+                "pseudo" : "Zlatan",
+                "mdp" : "123",
+                "role" : "user",
+                "date" : 2,
+                "theme" : 2}]}
+
 // background en fonction de la taille de l'ecran => function pour la couleur dédié
     function tablette(){
         $("header a").css('color','white')
@@ -34,8 +48,7 @@ $(document).ready (() => {
     if ($(window).width() >= 1024 ){
         ordinateur()
         console.log('ecran pc 1')
-    }
-     if  ($(window).width() >= 800 && $(window).height() >=800) {
+    } else if  ($(window).width() >= 800 && $(window).height() >=800) {
 
         if( navigator.userAgent.match(/ipad/gi)){
             console.log("tablette")
@@ -57,19 +70,19 @@ $(document).ready (() => {
         //Click on "techniques" shows techniques list
         $('#techniques').hover((e) => {
             if ($(window).width() > 992) {
-                $('#technique_list').toggleClass('show')
+                $('#technique_list').toggleClass('showlist')
             }
         })
         //Click on "categories" shows categories list
         $('#categories').hover((e) => {
             if ($(window).width() > 992) {
-                $('#categories_list').toggleClass('show')   
+                $('#categories_list').toggleClass('showlist')   
             }
         })
          //Click on "categories" shows categories list
          $('#theme').hover((e) => {
             if ($(window).width() > 992) {
-            $('#themeList').toggleClass('show')
+            $('#themeList').toggleClass('showlist')
             }
         })
     }
@@ -96,7 +109,6 @@ $(document).ready (() => {
         $("header").css({'border-color':'white', 'color':'white'})
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('noir')
-        
     });
     
     $("li.white").click(function() {
@@ -107,8 +119,6 @@ $(document).ready (() => {
         $("header li").addClass('border-dark')
         $("header").css({'border-color':'dark', 'color':'black'})
         $("body").removeClass("bg2 , bg4").addClass("bg3");
-       
-       
     });
     
     $("li.grey").click(function() {
@@ -149,7 +159,6 @@ $(document).ready (() => {
     } else {
         formObj = JSON.parse(localStorage.getItem('formulaire'))
     }
-
 
     $("#myForm").on("submit", function(e){
         //envoi du formulaire
@@ -206,15 +215,22 @@ $(document).ready (() => {
         }
     });
 
+    $("#formLogin").submit(function(event) {
+        event.preventDefault()
+        var pseudo = $("#myID").val()			//recup le pseudo
+        var MdP = $("#myPassword").val()		//recup le mot de passe
+        login(pseudo, MdP)						//lance la fonction Login
+    })
+
     $("#btnConnexion").click(function(e) {
         e.preventDefault()
-        $("#modalLogin").modal("show")				//affiche le formulaire de connexion sous forme de modal
-        $("#formLogin").submit(function(event) {
-            event.preventDefault()
-            var pseudo = $("#myID").val()			//recup le pseudo
-            var MdP = $("#myPassword").val()		//recup le mot de passe
-            login(pseudo, MdP)						//lance la fonction Login
-        })
+        $('#myID').val('')
+        $('#myPassword').val('')
+        if (Connexion == false) {
+            $("#modalLogin").show()		         //affiche le formulaire de connexion sous forme de moda
+        } else {
+            deconnexion()
+        }
     })
   
     $("#btnClose").click(function () {		//fermeture du formulaire de connection au clic sur X en haut a droite
@@ -226,9 +242,8 @@ $(document).ready (() => {
     function login(pseudo, MdP) {
         var monJsonUsers								//recup du Json dans localStorage
         if (!localStorage.getItem("localUsers")) {		//si vide, creation d'un nouveau Json
-            monJsonUsers = {"users": [{"pseudo" : "Zlatan",
-                    "mdp" : "123",
-                    "role" : "larbin"}]}
+            monJsonUsers = mesUsers
+            console.log(monJsonUsers);
         } else {
             monJsonUsers = JSON.parse(localStorage.getItem("localUsers"))
         }
@@ -243,9 +258,6 @@ $(document).ready (() => {
                     var monUser = monJsonUsers.users[x]
                     pseudoExist = true
                     break
-                } else {										//pseudo non trouvé
-                    alert("Mauvaise identification, essayez encore")
-                    location.reload()
                 }
             }
         }
@@ -254,13 +266,12 @@ $(document).ready (() => {
             if (MdP == monUser.mdp) {							//MdP correspond au pseudo
                 alert("Content de vous revoir " + monUser.pseudo)
                 loginOK = true
-                sessionStorage.setItem("sessionUser", JSON.stringify(monUser))	//Stockage de l'user dans le sessionStorage
+                monObjUser = {"userLog" : monUser}
+                sessionStorage.setItem("sessionUser", JSON.stringify(monObjUser))	//Stockage de l'user dans le sessionStorage
                 $("#modalLogin").hide()
                 //charger le theme s'il existe
-                //modifier le bouton "connection" en déconnection et créer la fonction
-            } else {
-                alert("Mauvaise identification, essayez encore")
-                location.reload()
+                $("#btnConnexion").text("Deconnexion")      //modifier le bouton "connexion" en déconnexion
+                Connexion = true
             }
             if (loginOK) {						//pseudo + MdP OK => verif si Admin ou User
                 if (monUser.role == "admin") {
@@ -271,11 +282,19 @@ $(document).ready (() => {
                     alert("Mode Boudoir déverrouillé")
                 }
             }
-        }
+        } else {
+        alert("Mauvaise identification, essayez encore")
+        location.reload()}
     }
 
-
     // FIN Fonction LOGIN
+
+    function deconnexion () {
+        sessionStorage.removeItem("sessionUser")
+        $("#btnConnexion").text("Connexion")
+        Connexion = false
+        alert("Vous etes bien deconnecté")
+    }
 //----------------------------------------------------
 //FOOTER
 
@@ -284,6 +303,7 @@ $(document).ready (() => {
     slide2 = new slider2("#carroussel2");
    slide = new slider("#carroussel");
   zoomImg() //zoom 1er image et au click
+  fullScreen()
 
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
@@ -418,7 +438,24 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
      $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
   })
 }
-
+//fullScreen
+function fullScreen(){
+  $('.img-full').click(function () {
+      $('#overlay').show()
+      $('.imgReal').attr("src", $(this).attr('src'))
+      $('#zoom').hide()
+  })
+  $('.closeMe').click(function () {
+      $('#overlay').hide()
+      $('#zoom').show()
+  })
+  $(document).keydown(function (event) {
+     if (event.keyCode == 27){
+      $('#overlay').hide()
+      $('#zoom').show()
+      }
+  })
+}
 //End footer fct
 //--------------------------------------------------------------------------------------------
 // template pour les categories & techniques

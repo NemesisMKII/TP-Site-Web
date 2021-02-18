@@ -22,16 +22,14 @@ ul {
     overflow: hidden;
 }
 
-.show {
+.showlist {
     max-height: 300px !important;
 }
 
 /* navbar CSS END */
 /* theme color start */
 .themecontainer li{
-    display: inline-block;
     height: 25px;
-    width: 25px;
     cursor: pointer;
     list-style: none;
 }
@@ -196,11 +194,36 @@ ul {
     padding-left: 5%;
 }
 #zoom img{
-    width: 400px;
-    height: 400px;
+    max-width: 45%;
+    max-height: 95%;
     border: solid 4px #060606
 }
+/*overlay*/
+ #overlay {
+            position: absolute;
+            z-index: 3;
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            padding-top: 5%;
+            padding-bottom: 5%;
+            text-align: center;
+        }
+.imgReal{
+            height: 100%;
+        }
 
+.closeMe{
+            position: absolute;
+            mix-blend-mode: difference;
+            filter: invert(1);
+            font-size: 25px;
+            font-weight: bold;
+            left: 73%;
+            top: 10%;
+            cursor: pointer;
+        }
 /* CAROUSEL END */
 
 @media (min-width: 992px) {
