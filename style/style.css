@@ -9,18 +9,11 @@ header a {
 }
 
 header {
-    width: 100% !important;
     z-index: 11;
 }
 
 ul {
     list-style-type: none;
-}
-
-#technique_list, #categories_list, #themeList {
-    transition: max-height 1s;
-    max-height: 0;
-    overflow: hidden;
 }
 
 .showlist {
@@ -237,18 +230,21 @@ ul {
 
     header {
         height: 17%;
+        width: 100% !important;
     }
 
     header #logoDIV {
         height: 75%;
     }
-
-    header ul {
-        height: 25%;
-    }
     
     #categories, #techniques {
         width: 15%;
+    }
+
+    #technique_list, #categories_list, #themeList {
+        transition: max-height 1s;
+        max-height: 0;
+        overflow: hidden;
     }
 
     .album {
@@ -277,8 +273,9 @@ ul {
     }*/
     /* NAVBAR */
     header {
-        width: 10% !important;
+        width: 17%;
         height: 100%;
+        float: left;
     }
 
     header ul {
@@ -288,6 +285,10 @@ ul {
     header ul li {
         max-height: 50px;
         overflow-wrap: break-word;
+    }
+
+    main {
+        float: left;
     }
 
     /*CARROUSEL*/
@@ -309,6 +310,13 @@ ul {
         margin-bottom: auto;
     }
 
+    #technique_list, #categories_list, #themeList {
+        display: none;
+    }
+
+    #carroussel2 {
+        width: 17%;
+    }
 }
 
 
@@ -320,7 +328,7 @@ ul {
     }*/
     /* NAVBAR */
     header {
-        width: 10% !important;
+        width: 17% !important;
         height: 100%;
     }
 
@@ -337,6 +345,10 @@ ul {
         width: 100%;
         position: absolute;
     }
+
+    #technique_list, #categories_list, #themeList {
+        display: none;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -352,6 +364,10 @@ ul {
     
     header {
         width: 100% !important;
+    }
+
+    #technique_list, #categories_list, #themeList {
+        display: none;
     }
 }
 /* css formulaire */
