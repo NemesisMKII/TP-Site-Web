@@ -338,3 +338,9 @@ ul {
 #formulaire p{
     padding: 2%;
 }
+#listeCategories{
+    display: none;
+}
+#listeTechniques{
+    display:none;
+}
