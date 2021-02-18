@@ -423,7 +423,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
 //--------------------------------------------------------------------------------------------
 // template pour les categories & techniques
 var categoriesTemplate = 
-    `<div id="centerdiv" class="h-100">
+`<div id="centerdiv" class="h-100">
     <div class="h-100">	
         <div class="row h-100 align-items-center w-100">
             <img src="%imgcategorie%" class="col-5 ms-auto border border-dark p-0 img-photographer" alt="">
@@ -431,16 +431,24 @@ var categoriesTemplate =
                 <div class="row mb-3 w-50 mx-auto">
                     <h3 class="text-center align-self-start">%nomcategorie%</h3>
                 </div>
-                <div class="row w-75 mx-auto">
+            <div class="row w-75 mx-auto">
                 %textecategorie% 
-                </div>
+            </div>
         </div>
     </div>
-    </div>
-    `
-//fonction au click des categories
-        $("#blackandwhite").click(function(e){
-            e.preventDefault()   
+</div>`
+//fonction au click SUR categorie
+    $("#catego").click(function (e){
+        e.preventDefault()
+        $("main").hide()
+        $("#listeCategories").show()
+    })
+   
+// Fonction click noir et blanc
+      
+        $(".blackandwhite").click(function(e){
+            e.preventDefault()  
+            $("#listeCategories").hide() 
             var texte = categoriesTemplate
             var nom = "Noir & Blanc"
             var textecat = "La photographie en noir et blanc élimine les distractions La couleur peut être un très bon élément de composition. ... En supprimant ainsi les couleurs, vous réduisez grandement les sources de distractions visibles. Vous pourrez alors vous concentrer sur la forme et la texture des différents éléments de votre image."
@@ -449,9 +457,11 @@ var categoriesTemplate =
             $("main").empty()
             $("main").append(texte)  
         })
+    
 // fonction au click de portrait
-    $("#portrait").click(function(e){
+    $(".portrait").click(function(e){
         e.preventDefault()   
+        $("#listeCategories").hide()
         var texte = categoriesTemplate
         var nom = "Portrait"
         var textecat = "La photo de portrait est un art à part entière : il ne s’agit plus seulement d'immortaliser une scène ou une nature morte mais plutôt de capter une sensibilité, une personnalité, un trait d’humeur ou de caractère chez la personne qui joue les modèles devant l'objectif le temps d’une séance photo. De ce shooting photo, en studio, à domicile ou en extérieur vont naitre des images qui témoigneront d’une époque, d’une période de votre vie, d’un moment fort, peut être d’une réussite que vous aimeriez cristalliser.  Cette photo-portrait sera un concentré d'émotions pour revivre ces instants avec à chaque fois la même intensité. La photographie peut aussi avoir des vertus thérapeutiques et être un bon moyen de prendre confiance en soi, en son image, de s’accepter tel qu’on est. C’est encore le moyen de se mettre en valeur pour une photo corporate ou dans un cadre privé pour séduire de nouveaux partenaires."
@@ -461,7 +471,7 @@ var categoriesTemplate =
         $("main").append(texte)  
     })
 //fonction au click de paysage
-    $("#paysage").click(function(e){
+    $(".paysage").click(function(e){
         e.preventDefault()   
         var texte = categoriesTemplate
         var nom = "Paysage"
@@ -472,7 +482,7 @@ var categoriesTemplate =
         $("main").append(texte)  
     })
 // fonction au click d architecture
-    $("#architecture").click(function(e){
+    $(".architecture").click(function(e){
         e.preventDefault()   
         var texte = categoriesTemplate
         var nom = "Architecture"
@@ -483,7 +493,7 @@ var categoriesTemplate =
         $("main").append(texte)  
     })
 // fonction au click de graphisme
-$("#graphisme").click(function(e){
+$(".graphisme").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "graphisme"
@@ -494,7 +504,7 @@ $("#graphisme").click(function(e){
     $("main").append(texte)  
 })
  // fonction au click d evenement
-$("#evenement").click(function(e){
+$(".evenement").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "Evenement"
@@ -506,7 +516,7 @@ $("#evenement").click(function(e){
 })   
  // fonction au click de boudoir
  // faire une fonction pour autoriser l'acces a cette categorie
- $("#boudoir").click(function(e){
+ $(".boudoir").click(function(e){
     e.preventDefault()   
     var texte = categoriesTemplate
     var nom = "Boudoir"
@@ -519,6 +529,13 @@ $("#evenement").click(function(e){
 
 //------------------------------------------------------------------------------------------------
 // fonctions au click des TECHNIQUES
+// FONCTION CLICK TECH
+$("#tech").click(function (e){
+    e.preventDefault()
+    $("main").hide()
+    $("#listeTechniques").show()
+})
+
  // fonction au click de HDR
  $("#hdr").click(function(e){
     e.preventDefault()   
