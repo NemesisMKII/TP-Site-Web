@@ -194,7 +194,7 @@ ul {
     border: solid 4px #060606
 }
 /*overlay*/
- #overlay {
+ .overlay {
             position: absolute;
             z-index: 3;
             display: none;
