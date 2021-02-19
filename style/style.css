@@ -9,17 +9,11 @@ header a {
 }
 
 header {
-    width: 100% !important;
+    z-index: 11;
 }
 
 ul {
     list-style-type: none;
-}
-
-#technique_list, #categories_list, #themeList {
-    transition: max-height 1s;
-    max-height: 0;
-    overflow: hidden;
 }
 
 .showlist {
@@ -97,8 +91,9 @@ ul {
 
 /*class qui redimensionne les images dans la div slide*/
 .redimension{
-    width: 110px;
-    height: 110px; 
+    max-width: 110px;
+    min-width: 100px;
+    max-height: 80%; 
 }
 
 /*le slide*/
@@ -235,10 +230,21 @@ ul {
 
     header {
         height: 17%;
+        width: 100% !important;
+    }
+
+    header #logoDIV {
+        height: 75%;
     }
     
     #categories, #techniques {
         width: 15%;
+    }
+
+    #technique_list, #categories_list, #themeList {
+        transition: max-height 1s;
+        max-height: 0;
+        overflow: hidden;
     }
 
     .album {
@@ -247,6 +253,7 @@ ul {
   
     main {
         height: 67%;
+        overflow-y: scroll;
     }
 
     #centerdiv {
@@ -266,13 +273,24 @@ ul {
     }*/
     /* NAVBAR */
     header {
-        width: 10% !important;
+        width: 17%;
+        height: 100%;
+        float: left;
+    }
+
+    header ul {
         height: 100%;
     }
 
-    .flex-md-column {
-        flex-direction: column !important;
+    header ul li {
+        max-height: 50px;
+        overflow-wrap: break-word;
     }
+
+    main {
+        float: left;
+    }
+
     /*CARROUSEL*/
     #zoom{
         padding-top: 50px;
@@ -281,6 +299,23 @@ ul {
     #zoom img{
         width: 400px;
         height: 350px;
+    }
+
+    #logoDIV {
+        width: 100%;
+        position: absolute;
+    }
+
+    .album {
+        margin-bottom: auto;
+    }
+
+    #technique_list, #categories_list, #themeList {
+        display: none;
+    }
+
+    #carroussel2 {
+        width: 17%;
     }
 }
 
@@ -293,8 +328,30 @@ ul {
     }*/
     /* NAVBAR */
     header {
-        max-width: 14%;
-        color: white;
+        width: 17% !important;
+        height: 100%;
+    }
+
+    header ul {
+        height: 100%;
+    }
+
+    header ul li {
+        max-height: 50px;
+        overflow-wrap: break-word;
+    }
+
+    #logoDIV {
+        width: 100%;
+        position: absolute;
+    }
+
+    #technique_list, #categories_list, #themeList {
+        display: none;
+    }
+
+    .album {
+        margin-bottom: auto;
     }
 }
 
@@ -311,6 +368,10 @@ ul {
     
     header {
         width: 100% !important;
+    }
+
+    #technique_list, #categories_list, #themeList {
+        display: none;
     }
 }
 /* css formulaire */
