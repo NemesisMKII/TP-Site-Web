@@ -30,6 +30,7 @@ html, body {
 	margin:0px;
 	padding:0px;
 	overflow:auto;
+    height: 100%;
 }
 body, input, textarea, button{
 	font-family: "RalewayLight";
@@ -407,7 +408,8 @@ main{
     }
     .flex-md-column {
         flex-direction: column !important;
-      
+    }
+    
     header ul {
         height: 100%;
     }
