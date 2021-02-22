@@ -1,4 +1,40 @@
 $(document).ready (() => {
+
+    $('.accordeon-expand-btn').on('click', function () {
+
+        var otherDiv = $('#accordeon > .accordeon-expand-content'); // recupere toutes les div
+        var parentBtnClicked = $(this).parent();
+    
+        if (parentBtnClicked.hasClass('col-md-6')) {
+            parentBtnClicked.children('.collapse').collapse('toggle')
+            parentBtnClicked.removeClass('col-md-6');
+            parentBtnClicked.addClass('col-md-1');
+           
+            console.log("je suis ici");
+    
+        } else {
+            if (otherDiv.hasClass('col-md-6')) {
+                otherDiv.children('.collapse').collapse('hide')
+                otherDiv.removeClass('col-md-6');
+                otherDiv.addClass('col-md-1');
+               
+                parentBtnClicked.removeClass('col-md-1');
+                parentBtnClicked.addClass('col-md-6');
+                parentBtnClicked.children('.collapse').collapse('toggle')
+                console.log("je suis la");
+    
+    
+            } else {
+    
+                parentBtnClicked.removeClass('col-md-1');
+                parentBtnClicked.addClass('col-md-6');
+                parentBtnClicked.children('.collapse').collapse('toggle');
+    
+                console.log("je suis ici et la");
+            }
+        }
+    })
+
     var Connexion = false
     var mesUsers = {"users":    [{"id" : 1,
             "pseudo" : "Rudy",
