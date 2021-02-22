@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>   
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
@@ -14,10 +14,8 @@
 	<!--Detect mobile tablet pc-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.js" integrity="sha512-mKlod4zKRIIIrcTz1adxwkprNtUm1lZZL2yP+l9UEmK6mXndshkfPojjPkVOKOanqBM9b2Gc88eBjLCAgkWtHw==" crossorigin="anonymous"></script>
 	<!-- COMMENTAIRES -->
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link rel="StyleSheet" type="text/css" href="style/commentaires.css"></link><!-- style de la section comments -->
 	<script type="text/javascript" src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script> <!-- required login twitter -->
-	<script src="style/commentaires.js"></script><!-- Javascript de la section comments -->
 	<!-- FIN DE COMMENTAIRES-->
 </head>
 <body class="position-relative">
@@ -184,7 +182,7 @@
 		<div id="col1">
 			<!-- Affichage image zoom-->
 			<div id="zoom" class="row align-items-center h-100">		
-				<img src="" class="img-full p-0" alt="">
+				<img src="" class="img-full p-0" alt="" data-id="1">
 			</div>
 		</div>
 		<div id="col2">
@@ -293,7 +291,6 @@
 			<a href="#">
 				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" data-target="html"   name="TSPAvoiture" data-ex=".jpg">
 			</a>
-
 			</div>
 			<div id="suiv" class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
 			<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
@@ -304,7 +301,7 @@
 		<div id="carroussel2" class="position-absolute end-0" style="display: none;">
 			<div class="slider2">
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
 			</a>
 			<a href="#">
 					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA" data-target="html"  name="LPPAArbre" data-ex=".jfif">
@@ -631,5 +628,6 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 	<script src='./style/default.js'></script>
+	<script src="style/commentaires.js"></script><!-- Javascript de la section comments -->
 </body>
 </html>
