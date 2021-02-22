@@ -1,0 +1,27 @@
+body {
+    background-color: #323232;
+}
+
+main {
+    height: 600px;
+    width: 100%;
+    position: relative;
+    padding: 1.5%;
+}
+
+header h1 {
+    color: whitesmoke;
+}
+
+aside, .maincontainer {
+    height: 100%;
+}
+
+aside {
+    width: 15%;
+    margin-right: 1.5%;
+}
+
+.maincontainer {
+    width: 83.5%;
+}
