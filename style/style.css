@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+body {
+    background-color: #323232;
+}
+
 /* navbar CSS START */
 header a {
     text-decoration: none;
@@ -20,6 +24,31 @@ ul {
     max-height: 300px !important;
 }
 
+#generalMenu span{
+    color : #C00000;
+}
+#generalMenu span:hover{
+    color : #C00000;
+    opacity: 0.7;
+}
+
+#generalMenu a{
+    color : #939598;
+}
+#generalMenu a:hover{
+    color : #939598;
+    opacity: 0.7;
+}
+
+#generalMenu #black{
+    color : black;
+}
+#generalMenu #grey{
+    color : #939598;
+}
+#generalMenu #white{
+    color : white;
+}
 /* navbar CSS END */
 /* theme color start */
 .themecontainer li{
@@ -357,8 +386,8 @@ ul {
 
 @media (max-width: 575.98px) {
      /*background smartphone*/
-     body{
-        background-color:#000000;
+    body{
+        background-color: #323232;
         color: white;
     }
     /* NAVBAR */
