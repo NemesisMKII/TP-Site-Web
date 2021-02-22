@@ -142,6 +142,10 @@ function comm_add(user, sn){
 		var date = new Date().getTime(); // on définit la timestamp
 		var id = uuidv4() + "." + date; // pour minimiser un maxi les doublon j'aouter le timestamp (en ms) en plus du UUID
 		var idpost = $("div#zoom img").attr("data-id"); // on définit id du post
+		if(idpost === undefined){
+			alert("Erreur dans le code: data-id manquant dans 'div#zoom img' manquant.");
+			return false;
+		}
 		var commentaire = htmlEntities(comms_txt.val()); // on définit le commentaire
 		// var auteur = user;
 		//alert("date:" + date + "\rid " + " " + id + "\rpost " + idpost + "\rcomm: " + commentaire + "\rauth " + auteur + " (" + sn + ")");
@@ -260,35 +264,43 @@ function addzero(str){ // add a zeo if str.length > 2 --> used in fonction "show
 
 /* fonction pour afficher les commentaire en fonction de l'ID de la photo */
 function comments_show(idpost){ /* fonction pour afficher les commentaire en fonction de l'ID de la photo */
-  if(sessionStorage.getItem("sessionUser")){ // verifie si l'utilisateur est connecté à son compte pour la modo
-    var comm_userinfos = JSON.parse(sessionStorage.getItem('sessionUser')); // retrieve data from sessionStorage
-    for(i in comm_userinfos.userLog){ // parcours du json sessionStorage
-      var user = comm_userinfos.userLog[i];
-      var admin = 0;
-      if(comm_userinfos.userLog[i].role=="admin"){ // check if admin
-        var admin = 1;
-      }
-    }
-  }
+	$("div.comm_all").html(""); // j'efface les commentaire de la précédente photo
+	if(sessionStorage.getItem("sessionUser")){ // verifie si l'utilisateur est connecté à son compte pour la modo
+	var comm_userinfos = JSON.parse(sessionStorage.getItem('sessionUser')); // retrieve data from sessionStorage
+		for(i in comm_userinfos.userLog){ // parcours du json sessionStorage
+		  var user = comm_userinfos.userLog[i];
+		  var admin = 0;
+		  if(comm_userinfos.userLog[i].role=="admin"){ // check if admin
+			var admin = 1;
+		  }
+		}
+	}
 	if(localStorage.getItem("commentaires")){
 		var all_comments = JSON.parse(localStorage.getItem('commentaires'));
 		for(i in all_comments.liste){
 			var commmentaire = all_comments.liste[i];
 			if(idpost == commmentaire.idpost){ // si le commentaire est detiné à la photo affichée
-				//console.log(all_comments.liste[i]);
 				var auteur = decodeURIComponent(escape(window.atob(commmentaire.auteur)));
 				var content = decodeURIComponent(escape(window.atob(commmentaire.content)));
 				var date = new Date(commmentaire.date);
 				var date = "Le " + addzero(date.getDay()) + "/" + addzero(date.getMonth()) + "/" + date.getFullYear() + " à " + date.getHours() + ":" + date.getMinutes();
-				$("div.commentaires div.comm_all").append(`
+				var cmts = ``;
+				
+				cmts = `
 					<div class="comm" title="${date}" data-id="${commmentaire.id}">
 						<p class="auteur">
               <span class="${commmentaire.snet} ico send"></span> <span>${auteur}</span>
-              <span style="float:right;" class='ico del' alt='Supprimer le commentaire' title='Supprimer le commentaire' onclick='comm_del(\"${commmentaire.id}\")'></span>
-            </p>
+				`;
+				if(admin == 1){ // si admin option suppr
+					cmts += `
+              <span style="float:right;" class='ico del' alt='Supprimer le commentaire' title='Supprimer le commentaire' onclick='comm_del(\"${commmentaire.id}\")'></span>`;
+				}
+            cmts += `</p>
 						<p class="comm">${content}</p>
 					</div>
-				`);
+				`;
+				
+				$("div.commentaires div.comm_all").append(cmts);
 			}
 		}
 	}
@@ -367,11 +379,12 @@ window.onload = function(){
    /_/    \_\______|______|_|  \_\ |_|   
                                          
                                          
-  */
+*/
   // AVERTISSEMENT DEVELOPPEMENT
-  /* if(window.location.protocol !="https" || window.location.hostname != "localhost" || window.location.hostname=="127.0.0.1"){
+  if(window.location.protocol !="https" || window.location.hostname != "localhost" || window.location.hostname=="127.0.0.1"){
     console.log('%c⚠️AVERTISSEMENTS\n- PROTOCOLE HTTPS REQUIS POUR LES COMMENTAIRES (Connexion SSL exigée par les réseaux sociaux).\n- FONCTION PARTAGE FB EN MODE DEMO (--> faire pointer NDD sur le serveur pour désactiver le mode DEMO)\n   \'-> sinon FB retourne une erreur lors du partage.', 'font-size: 24px; color: red');
   }
+	/*
   if(window.location.protocol !="https" && window.location.hostname != "localhost"){
     alert("⛔️ Accès au site via https://localhost requis (contraintes de sécurité imposées par les API) pour les commentaires.");
   } */

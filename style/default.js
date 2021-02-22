@@ -1,3 +1,18 @@
+/* ESTHETIQUE */
+var onWindowResize = function(e) {
+    // on centre le main
+    width = window.innerWidth;
+    height = window.innerWidth;
+    var content = document.querySelector("main")
+    var margin = width - content.offsetWidth;
+    margin /= 2;
+    content.style.marginLeft = margin + "px";
+
+}
+window.addEventListener("resize", onWindowResize);
+window.addEventListener("load", onWindowResize);
+
+
 $(document).ready (() => {
     var Connexion = false
     var mesUsers = {"users":    [{"id" : 1,
@@ -308,7 +323,6 @@ $(document).ready (() => {
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
 //-----------------------------------------------
-    
 }) //celui  du ready
 
 
@@ -427,16 +441,22 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
      var nameFirst = $('.choixImg').attr('name')
      var fileExtension=$('.choixImg').attr('data-ex')
 
-  $('.img-full').attr("src",way+dossier+nameFirst+'Max'+fileExtension) //zoom de la 1er image
-  $('.choixImg').click(function(){ //zoom au click
-     //var srcImg= $(this).attr('src')
-     var way = "ress/imagesCarrou/miniature/" //le chemin
-     var dossier="grande/" //le dossier
-     var name = $(this).attr('name') //le nom
-     var fileExtension= $(this).attr('data-ex')//l'extension
+	$('.img-full').attr("src",way+dossier+nameFirst+'max'+fileExtension) //zoom de la 1er image
+	$("div#zoom img").attr("data-id", $("img.choixImg:first-child").attr("data-id")); // on attribut le data-id à div#zoom img
+	comments_show($("img.choixImg:first-child").attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
+	$('.choixImg').click(function(){ //zoom au click
+		 //var srcImg= $(this).attr('src')
+		 var way = "ress/imagesCarrou/miniature/" //le chemin
+		 var dossier="grande/" //le dossier
+		 var name = $(this).attr('name') //le nom
+		 var fileExtension= $(this).attr('data-ex')//l'extension
 
-     $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
-  })
+		 $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
+
+		 comments_show($(this).attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
+		 $("div#zoom img").attr("data-id", $(this).attr("data-id")); // on reaffecte le data-id de #zoom pour les commentaires
+
+	})
 }
 //fullScreen
 function fullScreen(){
