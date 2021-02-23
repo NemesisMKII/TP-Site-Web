@@ -23,7 +23,9 @@ ul {
 .showlist {
     max-height: 300px !important;
 }
-
+#generalMenu{
+    background-color:#323232 ;
+}
 #generalMenu span{
     color : #C00000;
 }
@@ -51,11 +53,7 @@ ul {
 }
 /* navbar CSS END */
 /* theme color start */
-.themecontainer li{
-    height: 25px;
-    cursor: pointer;
-    list-style: none;
-}
+
 .bg2{
     background:rgb(2, 2, 2);
 }
@@ -65,22 +63,7 @@ ul {
 .bg4{
     background: #323232;
 }
-.black{
-    background: black;
-    color: white;
-    border:rgb(255, 255, 255) solid 3px;
 
-}
-.white{
-    background: rgb(255, 255, 255);
-    border: rgb(3, 3, 3) solid 3px;
-}
-.grey{
-    background: #323232;
-    border: rgb(255, 255, 255) solid 3px;
-}
-/* theme color end*/
-/* CAROUSEL START */
 #carroussel{
 	overflow:hidden;
 	position: relative;
@@ -405,7 +388,7 @@ ul {
 }
 /* css formulaire */
 #pageformulaire{
-    background-image: url(photo.jpg);
+    background-image: url(paysage.jpg);
     background-size: cover;
     background-repeat:no-repeat;
 }

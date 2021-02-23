@@ -53,32 +53,30 @@ $(document).ready (() => {
 
 // background en fonction de la taille de l'ecran => function pour la couleur dédié
     function tablette(){
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#939598')
+        $("#generalMenu a").css('color','white')
+        $("main").css('color','white')
+        $(".commentaires").css('background','#323232')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','#323232')
+        $(".changecolor").css('background','#323232')
         $("body").removeClass("bg2 , bg3").addClass("bg4");
         console.log("tablette")
     }
     function ordinateur(){
-        $("header a").css('color','black')
-        $("header").removeClass('border-white')
-        $("header").addClass('border-dark')
-        $("header li").removeClass('border-white')
-        $("header li").addClass('border-dark')
-        $("header").css({'border-color':'dark', 'color':'black'})
+        $("#generalMenu").css('background','#323232')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
         console.log('ordinateur')
     }
     function telephone(){
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','black')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','black')
+        $(".changecolor").css('background','black')
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('mobile')
     }
@@ -139,33 +137,32 @@ $(document).ready (() => {
 
     //theme color black white grey au clic navbar
     $("li.black").click(function() {
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','black')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','black')
+        $(".changecolor").css('background','black')
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('noir')
     });
-    
+
     $("li.white").click(function() {
-        $("header a").css('color','black')
-        $("header").removeClass('border-white')
-        $("header").addClass('border-dark')
-        $("header li").removeClass('border-white')
-        $("header li").addClass('border-dark')
-        $("header").css({'border-color':'dark', 'color':'black'})
+        $("#generalMenu").css('background','#323232')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
     });
     
     $("li.grey").click(function() {
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#939598')
+        $("#generalMenu a").css('color','white')
+        $("main").css('color','white')
+        $(".commentaires").css('background','#323232')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','#323232')
+        $(".changecolor").css('background','#323232')
+        $("")
         $("body").removeClass("bg2 , bg3").addClass("bg4");
     })
     // enregistrement du choix des couleurs dans le localstorage
@@ -177,7 +174,7 @@ $(document).ready (() => {
     } else {
         themeObj = JSON.parse(localStorage.getItem('themeColor'))
     }
-    $("ul#themeList li").on('click', function(){
+    $("#themeMenu li").on('click', function(){
         var color = $(this).attr("value")
         var theme = {
             colorChoose : color
