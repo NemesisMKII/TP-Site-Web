@@ -8,18 +8,21 @@ var homeTEMPLATE = `
 var photosTEMPLATE = `
     <h2 class="text-center">Gestion des photos</h2>
     <div class='d-flex justify-content-around mt-4' id="photocontainer">
+        <img src="../ARphoto.jpg" class='m-2'/>
+        <img src="../BOphoto.jpg" class='m-2'/>
         <img src="../EVphoto.jpg" class='m-2'/>
         <img src="../GRphoto.jpg" class='m-2'/>
-        <img src="../NBphoto.jpg" class='m-2'/>
-        <img src="../EVphoto.jpg" class='m-2'/>
+        <img src="../HDphoto.png" class='m-2'/>
+        <img src="../HKphoto.jpg" class='m-2'/>
+        <img src="../HSphoto.jpg" class='m-2'/>
         <img src="../GRphoto.jpg" class='m-2'/>
+        <img src="../LPphoto.jpg" class='m-2'/>
         <img src="../NBphoto.jpg" class='m-2'/>
-        <img src="../EVphoto.jpg" class='m-2'/>
-        <img src="../GRphoto.jpg" class='m-2'/>
-        <img src="../NBphoto.jpg" class='m-2'/>
-        <img src="../EVphoto.jpg" class='m-2'/>
-        <img src="../GRphoto.jpg" class='m-2'/>
-        <img src="../NBphoto.jpg" class='m-2'/>
+        <img src="../PAphoto.jpg" class='m-2'/>
+        <img src="../PLphoto.jpg" class='m-2'/>
+        <img src="../POphoto.jpg" class='m-2'/>
+        <img src="../STphoto.jpg" class='m-2'/>
+        <img src="../TSphoto.jpg" class='m-2'/>
     </div>
 `
 var askloginTEMPLATE = `
@@ -61,6 +64,5 @@ $(document).ready(() => {
 
     function setURL() {
         window.location.href = `index.html?page=${$(this).data('id')}`
-
     }
 })
