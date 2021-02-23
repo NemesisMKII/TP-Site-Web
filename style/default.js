@@ -274,6 +274,7 @@ $(document).ready (() => {
         event.preventDefault()
         var pseudo = $("#myID").val()			//recup le pseudo
         var MdP = $("#myPassword").val()		//recup le mot de passe
+        var timeRegister = $("#")
         login(pseudo, MdP)						//lance la fonction Login
     })
 
@@ -319,14 +320,19 @@ $(document).ready (() => {
         if (pseudoExist) {
             var loginOK = false
             if (MdP == monUser.mdp) {							//MdP correspond au pseudo
-                alert("Content de vous revoir " + monUser.pseudo)
-                loginOK = true
-                monObjUser = {"userLog" : monUser}
-                sessionStorage.setItem("sessionUser", JSON.stringify(monObjUser))	//Stockage de l'user dans le sessionStorage
-                $("#modalLogin").hide()
-                //charger le theme s'il existe
-                $("#btnConnexion").text("Deconnexion")      //modifier le bouton "connexion" en déconnexion
-                Connexion = true
+                var timeLimit = (new Date()).getTime()
+                if (timeLimit < (monUser.date + (7*24*3600*1000))) {
+                    alert("Content de vous revoir " + monUser.pseudo)
+                    loginOK = true
+                    monObjUser = {"userLog" : monUser}
+                    sessionStorage.setItem("sessionUser", JSON.stringify(monObjUser))	//Stockage de l'user dans le sessionStorage
+                    $("#modalLogin").hide()
+                    //charger le theme s'il existe
+                    $("#btnConnexion").text("Deconnexion")      //modifier le bouton "connexion" en déconnexion
+                    Connexion = true
+                } else {
+                    alert("Limite d'acces de 7 jours dépassée")
+                }
             }
             if (loginOK) {						//pseudo + MdP OK => verif si Admin ou User
                 if (monUser.role == "admin") {
@@ -350,7 +356,7 @@ $(document).ready (() => {
         Connexion = false
         alert("Vous etes bien deconnecté")
     }
-    //fonction
+    //fonction REGISTER
     function register(){
       var firstName = $("#firstName").val()
       var objet = $("#objet").val()
