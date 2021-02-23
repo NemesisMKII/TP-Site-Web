@@ -209,7 +209,6 @@ main{
     width: 110px;
     height: 95px;
     max-height: 100%;
-
 }
 
 /*le slide*/
@@ -384,7 +383,7 @@ main{
         width: 100% !important;
     }
 
-    header #logoDIV {
+    header #titlelogo {
         height: 75%;
     }
     
@@ -453,7 +452,7 @@ main{
         height: 350px;
     }
 
-    #logoDIV {
+    #titlelogo {
         width: 100%;
         position: absolute;
     }
@@ -468,6 +467,19 @@ main{
 
     #carroussel2 {
         width: 17%;
+    }
+
+    #generalMenu {
+        height: 100%;
+        display: block;
+    }
+
+    #accordeon {
+        flex-direction: column;
+    }
+
+    .navbar-expand-md {
+        flex-wrap: wrap;
     }
 }
 
@@ -493,7 +505,7 @@ main{
         overflow-wrap: break-word;
     }
 
-    #logoDIV {
+    #titlelogo {
         width: 100%;
         position: absolute;
     }
