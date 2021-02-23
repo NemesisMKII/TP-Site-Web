@@ -472,6 +472,7 @@ var slider2 = function(id){
 $(window).resize(function(){
   carrousselMoove()
 });
+//ici la fonction carroussel
 function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
 
     var largeurWindow = $(window).width()
@@ -490,7 +491,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
       $('#carroussel2').hide()
       $('#carroussel').show()
       $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
+	  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
     }
 }
 //Ajout des miniatures
