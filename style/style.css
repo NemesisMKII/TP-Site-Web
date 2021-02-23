@@ -123,7 +123,6 @@ ul {
     background: #323232;
 }
 
-
 /* theme color end*/
 
 
@@ -169,6 +168,7 @@ main{
 	cursor: pointer;
 	position: absolute;
 	bottom: 25%;
+	top: 25%;
 	right: 0;
 	height: 50%;
 	width: 50px;
@@ -180,6 +180,7 @@ main{
 	cursor: pointer;
 	position: absolute;
 	bottom: 25%;
+	top: 25%;
 	left: -0;
 	height: 50%;
 	width: 50px;
@@ -200,7 +201,6 @@ main{
     width: 150px;
     height: 95px;
     max-height: 100%;
-
 }
 
 /*le slide*/
@@ -249,6 +249,7 @@ main{
     position: absolute;
     bottom: 0;
     right:25%;
+    left:25%;
     transform: rotate(90deg);
     height: 50px;
     width: 50%;
@@ -260,6 +261,7 @@ main{
     position: absolute;
     top: 0;
     right:25%;
+    left:25%;
     height: 50px;
     width: 50%;
     transform: rotate(-90deg);
@@ -291,6 +293,7 @@ main{
     background-repeat: repeat-y;
     background-size: contain;
 
+    background-size:100%;
 
 
 
@@ -373,7 +376,7 @@ main{
         width: 100% !important;
     }
 
-    header #logoDIV {
+    header #titlelogo {
         height: 75%;
     }
     
@@ -442,7 +445,7 @@ main{
         height: 350px;
     }
 
-    #logoDIV {
+    #titlelogo {
         width: 100%;
         position: absolute;
     }
@@ -457,6 +460,19 @@ main{
 
     #carroussel2 {
         width: 17%;
+    }
+
+    #generalMenu {
+        height: 100%;
+        display: block;
+    }
+
+    #accordeon {
+        flex-direction: column;
+    }
+
+    .navbar-expand-md {
+        flex-wrap: wrap;
     }
 }
 
@@ -482,7 +498,7 @@ main{
         overflow-wrap: break-word;
     }
 
-    #logoDIV {
+    #titlelogo {
         width: 100%;
         position: absolute;
     }
@@ -493,6 +509,11 @@ main{
 
     .album {
         margin-bottom: auto;
+    }
+
+    #generalMenu {
+        height: 100%;
+        display: block;
     }
 }
 
