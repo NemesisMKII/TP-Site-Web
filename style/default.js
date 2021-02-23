@@ -490,18 +490,28 @@ var slider2 = function(id){
 $(window).resize(function(){
   carrousselMoove()
 });
+//ici la fonction carroussel
 function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
 
     var largeurWindow = $(window).width()
     if (largeurWindow < 992) {
       $('#carroussel').hide()
       $('#carroussel2').show()
-      
+      $('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		 $('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
 
     }else {
       $('#carroussel2').hide()
       $('#carroussel').show()
-       
+
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+	    $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
+     }
+    if (largeurWindow < 570) {
+      $('#carroussel2').hide()
+      $('#carroussel').show()
+      $('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+	  $('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
     }
 }
 //Ajout des miniatures
