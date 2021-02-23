@@ -53,32 +53,30 @@ $(document).ready (() => {
 
 // background en fonction de la taille de l'ecran => function pour la couleur dédié
     function tablette(){
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#939598')
+        $("#generalMenu a").css('color','white')
+        $("main").css('color','white')
+        $(".commentaires").css('background','#323232')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','#323232')
+        $(".changecolor").css('background','#323232')
         $("body").removeClass("bg2 , bg3").addClass("bg4");
         console.log("tablette")
     }
     function ordinateur(){
-        $("header a").css('color','black')
-        $("header").removeClass('border-white')
-        $("header").addClass('border-dark')
-        $("header li").removeClass('border-white')
-        $("header li").addClass('border-dark')
-        $("header").css({'border-color':'dark', 'color':'black'})
+        $("#generalMenu").css('background','#323232')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
         console.log('ordinateur')
     }
     function telephone(){
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','black')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','black')
+        $(".changecolor").css('background','black')
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('mobile')
     }
@@ -139,33 +137,32 @@ $(document).ready (() => {
 
     //theme color black white grey au clic navbar
     $("li.black").click(function() {
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','black')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','black')
+        $(".changecolor").css('background','black')
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('noir')
     });
-    
+
     $("li.white").click(function() {
-        $("header a").css('color','black')
-        $("header").removeClass('border-white')
-        $("header").addClass('border-dark')
-        $("header li").removeClass('border-white')
-        $("header li").addClass('border-dark')
-        $("header").css({'border-color':'dark', 'color':'black'})
+        $("#generalMenu").css('background','#323232')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
     });
     
     $("li.grey").click(function() {
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#939598')
+        $("#generalMenu a").css('color','white')
+        $("main").css('color','white')
+        $(".commentaires").css('background','#323232')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','#323232')
+        $(".changecolor").css('background','#323232')
+        $("")
         $("body").removeClass("bg2 , bg3").addClass("bg4");
     })
     // enregistrement du choix des couleurs dans le localstorage
@@ -177,7 +174,7 @@ $(document).ready (() => {
     } else {
         themeObj = JSON.parse(localStorage.getItem('themeColor'))
     }
-    $("ul#themeList li").on('click', function(){
+    $("#themeMenu li").on('click', function(){
         var color = $(this).attr("value")
         var theme = {
             colorChoose : color
@@ -535,7 +532,7 @@ function fullScreen(){
       $('#zoom').show()
       }
   })
-}
+} 
 //End footer fct
 //--------------------------------------------------------------------------------------------
 // template pour les categories & techniques 
@@ -543,9 +540,10 @@ function fullScreen(){
 var categoriesTemplate = 
 `
 <div class="overlay">
-		<img src="" class="imgReal" alt="">
+		<img src="%overlayPhoto%" class="imgReal" alt="">
 		<div class="closeMe">X</div>
 	</div>
+
     <div id="centerdiv" class="h-100">
 <div class="h-100">	
     <div class="row h-100 align-items-center w-100" id="zoom">
@@ -558,7 +556,6 @@ var categoriesTemplate =
             %textecategorie% 
         </div>
     </div>
-</div>
 </div>
 `
 
@@ -577,8 +574,8 @@ var categoriesTemplate =
     $("main").show() 
     $("#listeCategories").hide() 
     $("#carroussel").show()
+    zoomImg()
     fullScreen()
-    
    }
 // Fonction click noir et blanc
         $(".blackandwhite").click(function(e){
@@ -587,10 +584,12 @@ var categoriesTemplate =
             var image = "ress/imagesCarrou/miniature/LPNBLion.png"
             var texte = categoriesTemplate
             var nom = "Noir & Blanc"
+            var overlayPhoto = $(".imgReal").attr("src", $(".img-full").attr("src"))
             var textecat = "La photographie en noir et blanc élimine les distractions La couleur peut être un très bon élément de composition. ... En supprimant ainsi les couleurs, vous réduisez grandement les sources de distractions visibles. Vous pourrez alors vous concentrer sur la forme et la texture des différents éléments de votre image."
             texte = texte.replace(/%nomcategorie%/g, nom)
             texte = texte.replace(/%textecategorie%/g , textecat)
             texte = texte.replace(/%image%/g , image)
+            texte = texte.replace(/%overlayPhoto%/g , overlayPhoto)
             $("main").append(texte)
             $("footer img:not([data-cat=NB])").parent().hide();
         })
@@ -601,7 +600,7 @@ var categoriesTemplate =
         CategorieDiv()   
         var texte = categoriesTemplate
         var nom = "Portrait"
-        var image = "POphoto.jpg"
+        var image = "ress/imagesCarrou/miniature/grande/STPOVisage3max.jpg"
         var textecat = "La photo de portrait est un art à part entière : il ne s’agit plus seulement d'immortaliser une scène ou une nature morte mais plutôt de capter une sensibilité, une personnalité, un trait d’humeur ou de caractère chez la personne qui joue les modèles devant l'objectif le temps d’une séance photo. De ce shooting photo, en studio, à domicile ou en extérieur vont naitre des images qui témoigneront d’une époque, d’une période de votre vie, d’un moment fort, peut être d’une réussite que vous aimeriez cristalliser.  Cette photo-portrait sera un concentré d'émotions pour revivre ces instants avec à chaque fois la même intensité. La photographie peut aussi avoir des vertus thérapeutiques et être un bon moyen de prendre confiance en soi, en son image, de s’accepter tel qu’on est. C’est encore le moyen de se mettre en valeur pour une photo corporate ou dans un cadre privé pour séduire de nouveaux partenaires."
         texte = texte.replace(/%nomcategorie%/g, nom)
         texte = texte.replace(/%textecategorie%/g , textecat)
@@ -694,6 +693,7 @@ $("#tech").click(function (e){
     $("#listeTechniques").show()
     $("#listeCategories").hide() 
     $("#carroussel").hide()
+    
 })
 // vider et cacher listetechniques
 function techniquesDiv(){
@@ -701,6 +701,8 @@ function techniquesDiv(){
     $("main").show() 
     $("#listeTechniques").hide() 
     $("#carroussel").show()
+    zoomImg()
+    fullScreen()
    }
 
  // fonction au click de HDR
