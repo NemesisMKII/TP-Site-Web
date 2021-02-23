@@ -477,11 +477,25 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
 		$('#carroussel2').show()
 		$('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
 		$('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		$('div#col2').css("padding-bottom","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+    	$('main').css("overflow","auto"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     }else {
 		$('#carroussel2').hide()
+<<<<<<< Updated upstream
 		$('#carroussel').show()
 		$('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
 		$('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+=======
+		$('#carroussel').show() 
+		$('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		$('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+    }
+    if (largeurWindow < 570) {
+		$('#carroussel2').hide()
+		$('#carroussel').show()
+		$('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		$('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
+>>>>>>> Stashed changes
     }
 }
 //Ajout des miniatures
