@@ -379,180 +379,6 @@ $(document).ready (() => {
     }     
 
 //----------------------------------------------------
-//FOOTER
-
-
-  carrousselMoove() //deplace le caroussel
-    slide2 = new slider2("#carroussel2");
-   slide = new slider("#carroussel");
-  zoomImg() //zoom 1er image et au click
-  fullScreen()
-
-//si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
-
-//-----------------------------------------------
-}) //celui  du ready
-
-
-//variable pour le footer
-  //fonction sans responsiv
-var slider = function(id){
-    var self=this
-   this.divCarrou = $(id); //recup la div carroussel
-   this.slider=this.divCarrou.find(".slider") //je vais rechercher mon slider
-   this.largeurCarrou= this.divCarrou.width() //recup la largeur de la div carroussel pour savoir de combien on doit decaler les photos
-   this.largeur=0
-   this.divCarrou.find("a").each(function(){ //fonction qui nous retourne le nbr images
-       self.largeur +=$(this).width() //on incrémente de la largeur de chaque images
-       //on recup aprés les écarts entre les photos aussi pour avoir toute la largeur du contenu
-       self.largeur +=parseInt($(this).css("padding-left")) //parseint pour recup un entier //on recup le padding left
-       self.largeur +=parseInt($(this).css("padding-right"))
-       self.largeur +=parseInt($(this).css("margin-left"))
-       self.largeur +=parseInt($(this).css("margin-right")) 
-
-   })
-   this.prec = this.divCarrou.find(".prec")// on va rechercher le bouton précendent
-   this.suiv= this.divCarrou.find(".suiv")
-   this.saut= this.largeurCarrou/3 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
-   this.nbEtapes =Math.ceil(this.largeur/this.saut -this.largeurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
-   //Match.ceil permet d'arrondir au nb superieur
-   this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
-   
-   //le comportement au click des boutons 
-   this.suiv.click(function(){ //fonction qui au click de la souris sur suivant va deplacer les images
-       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
-       if (self.courant<=self.nbEtapes) {
-           self.courant++
-           self.slider.animate({
-               left:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
-           },1000)
-       }
-   })
-   this.prec.click(function(){ //fonction qui au click de la souris sur précedent va deplacer les images
-       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
-       if (self.courant>0) {
-           self.courant--
-           self.slider.animate({
-               left:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
-           },1000)
-       }
-   })
-}
-//fct responsive footer
-var slider2 = function(id){
-    var self=this
-   this.divCarrou = $(id); //recup la div carroussel
-   this.slider=this.divCarrou.find(".slider2") //je vais rechercher mon slider
-   this.hauteurCarrou= this.divCarrou.height() //recup la largeur de la div carroussel pour savoir de combien on doit decaler les photos
-   this.hauteur=0
-   this.divCarrou.find("img").each(function(){ //fonction qui nous retourne le nbr images
-       self.hauteur +=$(this).width() //on incrémente de la largeur de chaque images
-       //on recup aprés les écarts entre les photos aussi pour avoir toute la largeur du contenu
-       self.hauteur +=parseInt($(this).css("padding-top")) //parseint pour recup un entier //on recup le padding left
-       self.hauteur +=parseInt($(this).css("padding-bottom"))
-       self.hauteur +=parseInt($(this).css("margin-top"))
-       self.hauteur +=parseInt($(this).css("margin-bottom")) 
-
-   })
-   this.prec = this.divCarrou.find(".prec2")// on va rechercher le bouton précendent
-   this.suiv= this.divCarrou.find(".suiv2")
-   this.saut= this.hauteurCarrou/2 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
-   this.nbEtapes =Math.ceil(this.hauteur/this.saut -this.hauteurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
-   //Match.ceil permet d'arrondir au nb superieur
-   this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
-   
-   //le comportement au click des boutons 
-   this.suiv.click(function(){ //fonction qui au click de la souris sur suivant va deplacer les images
-       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
-       if (self.courant<=self.nbEtapes) {
-           self.courant++
-           self.slider.animate({
-               top:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
-           },1000)
-       }
-   })
-   this.prec.click(function(){ //fonction qui au click de la souris sur précedent va deplacer les images
-       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
-       if (self.courant>0) {
-           self.courant--
-           self.slider.animate({
-               top:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
-           },1000)
-       }
-   })
-}
-$(window).resize(function(){
-  carrousselMoove()
-});
-function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
-
-    var largeurWindow = $(window).width()
-	if (largeurWindow < 992) {
-		$('#carroussel').hide()
-		$('#carroussel2').show()
-		$('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		$('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-    }else {
-      $('#carroussel2').hide()
-      $('#carroussel').show() 
-      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-    }
-    if (largeurWindow < 570) {
-      $('#carroussel2').hide()
-      $('#carroussel').show()
-      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
-    }
-}
-//Ajout des miniatures
-
-
-// zoom
-  function zoomImg(){
-    var way = "ress/imagesCarrou/miniature/"
-     var dossier="grande/"
-     var name = $(this).attr('name')
-     var nameFirst = $('.choixImg').attr('name')
-     var fileExtension=$('.choixImg').attr('data-ex')
-
-	$('.img-full').attr("src",way+dossier+nameFirst+'max'+fileExtension) //zoom de la 1er image
-	$("div#zoom img").attr("data-id", $("img.choixImg:first-child").attr("data-id")); // on attribut le data-id à div#zoom img
-	comments_show($("img.choixImg:first-child").attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
-	$('.choixImg').click(function(){ //zoom au click
-		 //var srcImg= $(this).attr('src')
-		 var way = "ress/imagesCarrou/miniature/" //le chemin
-		 var dossier="grande/" //le dossier
-		 var name = $(this).attr('name') //le nom
-		 var fileExtension= $(this).attr('data-ex')//l'extension
-
-		 $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
-
-		 comments_show($(this).attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
-		 $("div#zoom img").attr("data-id", $(this).attr("data-id")); // on reaffecte le data-id de #zoom pour les commentaires
-
-	})
-}
-//fullScreen
-function fullScreen(){
-  $('.img-full').click(function () {
-      $('.overlay').show()
-      $('.imgReal').attr("src", $(this).attr('src'))
-      $('#zoom').hide()
-  })
-  $('.closeMe').click(function () {
-      $('.overlay').hide()
-      $('#zoom').show()
-  })
-  $(document).keydown(function (event) {
-     if (event.keyCode == 27){
-      $('.overlay').hide()
-      $('#zoom').show()
-      }
-  })
-} 
-//End footer fct
-//--------------------------------------------------------------------------------------------
 // template pour les categories & techniques 
 // VERIFIER AU NIVEAU DU OVERLAY (affichage en grand de la photo)
 var categoriesTemplate = 
@@ -821,6 +647,181 @@ $(".lightpainting").click(function(e){
     $("main").append(texte) 
     $("footer img:not([data-tec=LP])").parent().hide(); 
 }) 
+
+//FOOTER
+
+
+  carrousselMoove() //deplace le caroussel
+    slide2 = new slider2("#carroussel2");
+   slide = new slider("#carroussel");
+  zoomImg() //zoom 1er image et au click
+  fullScreen()
+
+//si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
+
+//-----------------------------------------------
+}) //celui  du ready
+
+
+//variable pour le footer
+  //fonction sans responsiv
+var slider = function(id){
+    var self=this
+   this.divCarrou = $(id); //recup la div carroussel
+   this.slider=this.divCarrou.find(".slider") //je vais rechercher mon slider
+   this.largeurCarrou= this.divCarrou.width() //recup la largeur de la div carroussel pour savoir de combien on doit decaler les photos
+   this.largeur=0
+   this.divCarrou.find("a").each(function(){ //fonction qui nous retourne le nbr images
+       self.largeur +=$(this).width() //on incrémente de la largeur de chaque images
+       //on recup aprés les écarts entre les photos aussi pour avoir toute la largeur du contenu
+       self.largeur +=parseInt($(this).css("padding-left")) //parseint pour recup un entier //on recup le padding left
+       self.largeur +=parseInt($(this).css("padding-right"))
+       self.largeur +=parseInt($(this).css("margin-left"))
+       self.largeur +=parseInt($(this).css("margin-right")) 
+
+   })
+   this.prec = this.divCarrou.find(".prec")// on va rechercher le bouton précendent
+   this.suiv= this.divCarrou.find(".suiv")
+   this.saut= this.largeurCarrou/3 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
+   this.nbEtapes =Math.ceil(this.largeur/this.saut -this.largeurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
+   //Match.ceil permet d'arrondir au nb superieur
+   this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
+   
+   //le comportement au click des boutons 
+   this.suiv.click(function(){ //fonction qui au click de la souris sur suivant va deplacer les images
+       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
+       if (self.courant<=self.nbEtapes) {
+           self.courant++
+           self.slider.animate({
+               left:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
+           },1000)
+       }
+   })
+   this.prec.click(function(){ //fonction qui au click de la souris sur précedent va deplacer les images
+       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
+       if (self.courant>0) {
+           self.courant--
+           self.slider.animate({
+               left:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
+           },1000)
+       }
+   })
+}
+//fct responsive footer
+var slider2 = function(id){
+    var self=this
+   this.divCarrou = $(id); //recup la div carroussel
+   this.slider=this.divCarrou.find(".slider2") //je vais rechercher mon slider
+   this.hauteurCarrou= this.divCarrou.height() //recup la largeur de la div carroussel pour savoir de combien on doit decaler les photos
+   this.hauteur=0
+   this.divCarrou.find("img").each(function(){ //fonction qui nous retourne le nbr images
+       self.hauteur +=$(this).width() //on incrémente de la largeur de chaque images
+       //on recup aprés les écarts entre les photos aussi pour avoir toute la largeur du contenu
+       self.hauteur +=parseInt($(this).css("padding-top")) //parseint pour recup un entier //on recup le padding left
+       self.hauteur +=parseInt($(this).css("padding-bottom"))
+       self.hauteur +=parseInt($(this).css("margin-top"))
+       self.hauteur +=parseInt($(this).css("margin-bottom")) 
+
+   })
+   this.prec = this.divCarrou.find(".prec2")// on va rechercher le bouton précendent
+   this.suiv= this.divCarrou.find(".suiv2")
+   this.saut= this.hauteurCarrou/2 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
+   this.nbEtapes =Math.ceil(this.hauteur/this.saut -this.hauteurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
+   //Match.ceil permet d'arrondir au nb superieur
+   this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
+   
+   //le comportement au click des boutons 
+   this.suiv.click(function(){ //fonction qui au click de la souris sur suivant va deplacer les images
+       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
+       if (self.courant<=self.nbEtapes) {
+           self.courant++
+           self.slider.animate({
+               top:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
+           },1000)
+       }
+   })
+   this.prec.click(function(){ //fonction qui au click de la souris sur précedent va deplacer les images
+       //on creer ici une verification afin que si ya plus d'image il ne puisse plus click sur suivant
+       if (self.courant>0) {
+           self.courant--
+           self.slider.animate({
+               top:-self.courant*self.saut //on anime la position par rapport à la gauche(on va rettiré le saut vers la gauche sur le css)
+           },1000)
+       }
+   })
+}
+$(window).resize(function(){
+  carrousselMoove()
+});
+function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
+
+    var largeurWindow = $(window).width()
+	if (largeurWindow < 992) {
+		$('#carroussel').hide()
+		$('#carroussel2').show()
+		$('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		$('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+    }else {
+      $('#carroussel2').hide()
+      $('#carroussel').show() 
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+    }
+    if (largeurWindow < 570) {
+      $('#carroussel2').hide()
+      $('#carroussel').show()
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
+    }
+}
+//Ajout des miniatures
+
+
+// zoom
+  function zoomImg(){
+    var way = "ress/imagesCarrou/miniature/"
+     var dossier="grande/"
+     var name = $(this).attr('name')
+     var nameFirst = $('.choixImg').attr('name')
+     var fileExtension=$('.choixImg').attr('data-ex')
+
+	$('.img-full').attr("src",way+dossier+nameFirst+'max'+fileExtension) //zoom de la 1er image
+	$("div#zoom img").attr("data-id", $("img.choixImg:first-child").attr("data-id")); // on attribut le data-id à div#zoom img
+	comments_show($("img.choixImg:first-child").attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
+	$('.choixImg').click(function(){ //zoom au click
+		 //var srcImg= $(this).attr('src')
+		 var way = "ress/imagesCarrou/miniature/" //le chemin
+		 var dossier="grande/" //le dossier
+		 var name = $(this).attr('name') //le nom
+		 var fileExtension= $(this).attr('data-ex')//l'extension
+
+		 $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
+
+		 comments_show($(this).attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
+		 $("div#zoom img").attr("data-id", $(this).attr("data-id")); // on reaffecte le data-id de #zoom pour les commentaires
+
+	})
+}
+//fullScreen
+function fullScreen(){
+  $('.img-full').click(function () {
+      $('.overlay').show()
+      $('.imgReal').attr("src", $(this).attr('src'))
+      $('#zoom').hide()
+  })
+  $('.closeMe').click(function () {
+      $('.overlay').hide()
+      $('#zoom').show()
+  })
+  $(document).keydown(function (event) {
+     if (event.keyCode == 27){
+      $('.overlay').hide()
+      $('#zoom').show()
+      }
+  })
+} 
+//End footer fct
+//--------------------------------------------------------------------------------------------
 
  //----------------------------------------------------------------------------------------------       
 // a l'ext de onready
