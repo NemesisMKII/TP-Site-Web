@@ -373,7 +373,6 @@ $(document).ready (() => {
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
 //-----------------------------------------------
-    
 }) //celui  du ready
 
 
@@ -396,7 +395,7 @@ var slider = function(id){
    })
    this.prec = this.divCarrou.find(".prec")// on va rechercher le bouton précendent
    this.suiv= this.divCarrou.find(".suiv")
-   this.saut= this.largeurCarrou/2 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
+   this.saut= this.largeurCarrou/3 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
    this.nbEtapes =Math.ceil(this.largeur/this.saut -this.largeurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
    //Match.ceil permet d'arrondir au nb superieur
    this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
@@ -470,15 +469,22 @@ $(window).resize(function(){
 function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
 
     var largeurWindow = $(window).width()
-    if (largeurWindow < 992) {
-      $('#carroussel').hide()
-      $('#carroussel2').show()
-      
-
+	if (largeurWindow < 992) {
+		$('#carroussel').hide()
+		$('#carroussel2').show()
+		$('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		$('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     }else {
       $('#carroussel2').hide()
+      $('#carroussel').show() 
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+    }
+    if (largeurWindow < 570) {
+      $('#carroussel2').hide()
       $('#carroussel').show()
-       
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
     }
 }
 //Ajout des miniatures
@@ -492,16 +498,22 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
      var nameFirst = $('.choixImg').attr('name')
      var fileExtension=$('.choixImg').attr('data-ex')
 
-  $('.img-full').attr("src",way+dossier+nameFirst+'max'+fileExtension) //zoom de la 1er image
-  $('.choixImg').click(function(){ //zoom au click
-     //var srcImg= $(this).attr('src')
-     var way = "ress/imagesCarrou/miniature/" //le chemin
-     var dossier="grande/" //le dossier
-     var name = $(this).attr('name') //le nom
-     var fileExtension= $(this).attr('data-ex')//l'extension
+	$('.img-full').attr("src",way+dossier+nameFirst+'max'+fileExtension) //zoom de la 1er image
+	$("div#zoom img").attr("data-id", $("img.choixImg:first-child").attr("data-id")); // on attribut le data-id à div#zoom img
+	comments_show($("img.choixImg:first-child").attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
+	$('.choixImg').click(function(){ //zoom au click
+		 //var srcImg= $(this).attr('src')
+		 var way = "ress/imagesCarrou/miniature/" //le chemin
+		 var dossier="grande/" //le dossier
+		 var name = $(this).attr('name') //le nom
+		 var fileExtension= $(this).attr('data-ex')//l'extension
 
-     $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
-  })
+		 $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
+
+		 comments_show($(this).attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
+		 $("div#zoom img").attr("data-id", $(this).attr("data-id")); // on reaffecte le data-id de #zoom pour les commentaires
+
+	})
 }
 //fullScreen
 function fullScreen(){

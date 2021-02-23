@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>   
 <html lang="fr" class="">
 <head>
 	<meta charset="utf-8" />
@@ -14,10 +14,8 @@
 	<!--Detect mobile tablet pc-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.js" integrity="sha512-mKlod4zKRIIIrcTz1adxwkprNtUm1lZZL2yP+l9UEmK6mXndshkfPojjPkVOKOanqBM9b2Gc88eBjLCAgkWtHw==" crossorigin="anonymous"></script>
 	<!-- COMMENTAIRES -->
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link rel="StyleSheet" type="text/css" href="style/commentaires.css"></link><!-- style de la section comments -->
 	<script type="text/javascript" src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script> <!-- required login twitter -->
-	<script src="style/commentaires.js"></script><!-- Javascript de la section comments -->
 	<!-- FIN DE COMMENTAIRES-->
 </head>
 <body class="position-relative">
@@ -193,7 +191,7 @@
 		<div id="col1">
 			<!-- Affichage image zoom-->
 			<div id="zoom" class="row align-items-center h-100">		
-				<img src="" class="img-full p-0" alt="">
+				<img src="" class="img-full p-0" alt="" data-id="1">
 			</div>
 		</div>
 		<div id="col2">
@@ -230,79 +228,60 @@
 		<!-- carroussel non responsiv-->
 		<div id="carroussel" class="position-fixed bottom-0" style="display: none;">
 			<div class="slider">
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-cat="por" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA" data-target="html" name="LPPAArbre" data-ex=".jfif">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" data-tec="LP" data-cat="GR" data-target="html" name="LPGRCercle" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle2" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" data-tec="PL" data-cat="PA" data-target="html"  name="PLPACiel" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" data-tec="LP" data-cat="EV" data-target="html"  name="LPEVCoeur" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" data-tec="HS" data-cat="GR" data-target="html" name="HSGRFruit" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" data-tec="LP" data-cat="NB" data-target="html"  name="LPNBLion" data-ex=".png">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" data-tec="LP" data-cat="EV" data-target="html"  name="LPEVLove" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png" data-tec="LP" data-cat="NB" data-target="html"  name="LPNBPanthere" data-ex=".png">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" data-tec="HD" data-cat="PA" data-target="html"  name="HDPAPaysage" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" data-tec="HD" data-cat="GR" data-target="html"  name="HDGRRog" data-ex=".jpeg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" data-tec="TS" data-cat="AR" data-target="html"   name="TSARTrain" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" data-tec="HK" data-cat="por" data-target="html"  name="HKPOVisage" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" data-tec="LK" data-cat="por" data-target="html"  name="LKPOVisage2" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" data-tec="ST" data-cat="por" data-target="html"  name="STPOVisage3" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSPOVisage4.jpg" data-tec="HS" data-cat="por" data-target="html"  name="HSPOVisage4" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" data-tec="ST" data-cat="NB" data-target="html"  name="STNBVisage5" data-ex=".jpg">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRphoto.jpg" data-tec="HD" data-cat="GR" data-target="html"   name="HDGRphoto" data-ex=".jpg">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDNBvisage.jpg" data-tec="HD" data-cat="NB" data-target="html"   name="HDNBvisage" data-ex=".jpg">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAcampagne.png" data-tec="HD" data-cat="PA" data-target="html"   name="HDPAcampagne" data-ex=".png">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOdoublevisage.jpg" data-tec="HK" data-cat="PO" data-target="html"   name="HKPOdoublevisage" data-ex=".jpg">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPAcascade.jpg" data-tec="PL" data-cat="PA" data-target="html"   name="PLPAcascade" data-ex=".jpg">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" data-target="html"   name="TSPAvoiture" data-ex=".jpg">
-			</a>
-
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" name="LPPAArbre" data-ex=".jfif" data-id="2">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" name="LPGRCercle" data-ex=".jpg" data-id="3">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" name="LPGRCercle2" data-ex=".jpg" data-id="4">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" name="PLPACiel" data-ex=".jpg" data-id="5">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" name="LPEVCoeur" data-ex=".jpg" data-id="6">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" name="HSGRFruit" data-ex=".jpg" data-id="7">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" name="LPNBLion" data-ex=".png" data-id="8">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" name="LPEVLove" data-ex=".jpg" data-id="9">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png" name="LPNBPanthere" data-ex=".png" data-id="10">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" name="HDPAPaysage" data-ex=".jpg"data-id="11">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" name="HDGRRog" data-ex=".jpeg" data-id="12">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" name="TSARTrain" data-ex=".jpg" data-id="13">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" name="HKPOVisage" data-ex=".jpg" data-id="14">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" name="LKPOVisage2" data-ex=".jpg" data-id="15">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" name="STPOVisage3" data-ex=".jpg" data-id="16">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSPOVisage4.jpg" name="HSPOVisage4" data-ex=".jpg" data-id="17">
+				</a>
+				<a href="#">
+						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" name="STNBVisage5" data-ex=".jpg" data-id="18">
+				</a>
 			</div>
 			<div id="suiv" class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
 			<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
@@ -310,79 +289,79 @@
 		</div>
 
 		<!--carroussel responsiv-->
-		<div id="carroussel2" class="position-absolute end-0" style="display: none;">
+		<div id="carroussel2" class="position-fixed end-0" style="display: none;">
 			<div class="slider2">
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA" data-target="html"  name="LPPAArbre" data-ex=".jfif">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA" data-target="html"  name="LPPAArbre" data-ex=".jfif">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle2" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle2" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" data-tec="PL" data-cat="PA" data-target="html"  name="PLPACiel" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" data-tec="PL" data-cat="PA" data-target="html"  name="PLPACiel" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" data-tec="LP" data-cat="EV" data-target="html"  name="LPEVCoeur" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" data-tec="LP" data-cat="EV" data-target="html"  name="LPEVCoeur" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" data-tec="HS" data-cat="GR" data-target="html"   name="HSGRFruit" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" data-tec="HS" data-cat="GR" data-target="html"   name="HSGRFruit" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" data-tec="LP" data-cat="NB" data-target="html"   name="LPNBLion" data-ex=".png">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" data-tec="LP" data-cat="NB" data-target="html"   name="LPNBLion" data-ex=".png">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" data-tec="LP" data-cat="EV" data-target="html"   name="LPEVLove" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" data-tec="LP" data-cat="EV" data-target="html"   name="LPEVLove" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png" data-tec="LP" data-cat="NB" data-target="html"  name="LPNBPanthere" data-ex=".png">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png" data-tec="LP" data-cat="NB" data-target="html"  name="LPNBPanthere" data-ex=".png">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" data-tec="HD" data-cat="PA" data-target="html"  name="HDPAPaysage" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" data-tec="HD" data-cat="PA" data-target="html"  name="HDPAPaysage" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" data-tec="HD" data-cat="GR" data-target="html"  name="HDGRRog" data-ex=".jpeg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" data-tec="HD" data-cat="GR" data-target="html"  name="HDGRRog" data-ex=".jpeg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" data-tec="TS" data-cat="AR" data-target="html"   name="TSARTrain" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" data-tec="TS" data-cat="AR" data-target="html"   name="TSARTrain" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" data-tec="HK" data-cat="por" data-target="html"  name="HKPOVisage" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" data-tec="HK" data-cat="por" data-target="html"  name="HKPOVisage" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" data-tec="LK" data-cat="por" data-target="html"  name="LKPOVisage2" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" data-tec="LK" data-cat="por" data-target="html"  name="LKPOVisage2" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" data-tec="ST" data-cat="por" data-target="html"  name="STPOVisage3" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" data-tec="ST" data-cat="por" data-target="html"  name="STPOVisage3" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSpoVisage4.jpg" data-tec="HS" data-cat="por" data-target="html"  name="HSPOVisage4" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HSpoVisage4.jpg" data-tec="HS" data-cat="por" data-target="html"  name="HSPOVisage4" data-ex=".jpg">
 			</a>
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" data-tec="ST" data-cat="NB" data-target="html"   name="STNBVisage5" data-ex=".jpg">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" data-tec="ST" data-cat="NB" data-target="html"   name="STNBVisage5" data-ex=".jpg">
 			</a>
 			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRphoto.jpg" data-tec="HD" data-cat="GR" data-target="html"   name="HDGRphoto" data-ex=".jpg">
+				<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HDGRphoto.jpg" data-tec="HD" data-cat="GR" data-target="html"   name="HDGRphoto" data-ex=".jpg">
 		</a>
 		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDNBvisage.jpg" data-tec="HD" data-cat="NB" data-target="html"   name="HDNBvisage" data-ex=".jpg">
+			<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HDNBvisage.jpg" data-tec="HD" data-cat="NB" data-target="html"   name="HDNBvisage" data-ex=".jpg">
 		</a>
 		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAcampagne.png" data-tec="HD" data-cat="PA" data-target="html"   name="HDPAcampagne" data-ex=".png">
+			<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HDPAcampagne.png" data-tec="HD" data-cat="PA" data-target="html"   name="HDPAcampagne" data-ex=".png">
 		</a>
 		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOdoublevisage.jpg" data-tec="HK" data-cat="PO" data-target="html"   name="HKPOdoublevisage" data-ex=".jpg">
+			<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/HKPOdoublevisage.jpg" data-tec="HK" data-cat="PO" data-target="html"   name="HKPOdoublevisage" data-ex=".jpg">
 		</a>
 		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPAcascade.jpg" data-tec="PL" data-cat="PA" data-target="html"   name="PLPAcascade" data-ex=".jpg">
+			<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/PLPAcascade.jpg" data-tec="PL" data-cat="PA" data-target="html"   name="PLPAcascade" data-ex=".jpg">
 		</a>
 		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" data-target="html"   name="TSPAvoiture" data-ex=".jpg">
+			<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" data-target="html"   name="TSPAvoiture" data-ex=".jpg">
 		</a>
 		
 			</div>
@@ -640,5 +619,6 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 	<script src='./style/default.js'></script>
+	<script src="style/commentaires.js"></script><!-- Javascript de la section comments -->
 </body>
 </html>
