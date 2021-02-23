@@ -413,7 +413,7 @@ var slider = function(id){
    })
    this.prec = this.divCarrou.find(".prec")// on va rechercher le bouton précendent
    this.suiv= this.divCarrou.find(".suiv")
-   this.saut= this.largeurCarrou/2 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
+   this.saut= this.largeurCarrou/3 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
    this.nbEtapes =Math.ceil(this.largeur/this.saut -this.largeurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
    //Match.ceil permet d'arrondir au nb superieur
    this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
@@ -494,8 +494,11 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
 
     }else {
       $('#carroussel2').hide()
-      $('#carroussel').show()
-       
+      $('#carroussel').show()  
+    }
+    if (largeurWindow < 570) {
+      $('#carroussel2').hide()
+      $('#carroussel').show()     
     }
 }
 //Ajout des miniatures

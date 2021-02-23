@@ -164,32 +164,32 @@ main{
 #carroussel{
 	z-index:11;
 	overflow:hidden;
-	position: fixed;
+	position: absolute;
 	bottom:0px;
 	left:0px;
 	right:0px;
 	height: 17%;
 	width: 100%;
-	background: #807C7C
 
 /*fleches*/	
 }
 #suiv img{
 	cursor: pointer;
 	position: absolute;
-	top: 0;
+	top: 25%;
 	right: 0;
-	height: 100%;
+	height: 50%;
 	width: 50px;
+
 
 
 }
 #prec img{
 	cursor: pointer;
 	position: absolute;
-	top: 0;
+	top: 25%;
 	left: -0;
-	height: 100%;
+	height: 50%;
 	width: 50px;
 	transform: rotate(180deg);
 }
@@ -205,16 +205,19 @@ main{
 /*class qui redimensionne les images dans la div slide*/
 .redimension{
     width: 110px;
-    height: 110px;
+    height: 95px;
 }
 
 /*le slide*/
 
 .slider{
-	position:absolute;
-	top: 16px;
+	position:relative;
+	bottom:0px;
 	width: 5000px;
 	height: 100%;
+    background: url(img/pelpel.gif);
+    background-size:5.5%;
+    padding-top: 20px;
 
 }
 
@@ -229,7 +232,7 @@ main{
 	vertical-align:text-top;
 }
 #carroussel a img:hover{
-	border: solid 4px #F20707
+	border: solid 4px #3E3B3B
 }
 
 /*responsive carousel-----------------------*/
@@ -239,7 +242,7 @@ main{
     top: 0px;
     height: 100%;
     width: 17%;
-    background: #807C7C
+
 }
 /*fleches*/ 
 
@@ -247,9 +250,10 @@ main{
     cursor: pointer;
     position: absolute;
     bottom: 0;
+    left:25%;
     transform: rotate(90deg);
     height: 50px;
-    width: 100%;
+    width: 50%;
 
 
 }
@@ -257,8 +261,9 @@ main{
     cursor: pointer;
     position: absolute;
     top: 0;
+    left:25%;
     height: 50px;
-    width: 100%;
+    width: 50%;
     transform: rotate(-90deg);
 }
 /*passage de la souris, decalage flèche*/
@@ -272,14 +277,22 @@ main{
 
 /*class qui redimensionne les images dans la div slide*/
 
-
+.redimension2{
+    width: 73%;
+    height: 95px;
+}
 /*le slide*/
 .slider2{
     position: relative;
-    right: 10px;
+    right: 0px;
     /*top:-50px;*/
     height: 5000px;
     width: 100%;
+    background: url(img/pelpel2.gif);
+    background-size:100%;
+
+
+
 
 }
 /*les images/
@@ -293,7 +306,7 @@ main{
     border: solid 4px #060606
 }
 #carroussel2 a img:hover{
-    border: solid 4px #F20707
+    border: solid 4px #3E3B3B
 }
 
 
@@ -504,6 +517,10 @@ main{
         display: none;
     }
 }
+/*responsiv version smartphone paysage*/
+/*@media (orientation: landscape) and (max-device-width : 640px) {
+
+}*/
 /* css formulaire */
 #pageformulaire{
     background-image: url(photo.jpg);
