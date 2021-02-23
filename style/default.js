@@ -274,8 +274,11 @@ $(document).ready (() => {
         event.preventDefault()
         var pseudo = $("#myID").val()			//recup le pseudo
         var MdP = $("#myPassword").val()		//recup le mot de passe
-        var timeRegister = $("#")
         login(pseudo, MdP)						//lance la fonction Login
+        
+        /* if (JSON.parse(sessionStorage.getItem(sessionUser)).userLog.role == 'admin') {
+            window.location.href = './Administration/index.html?page=home'
+        } */
     })
 
     $("#btnConnexion").click(function(e) {
@@ -338,6 +341,7 @@ $(document).ready (() => {
                 if (monUser.role == "admin") {
                     // Mode Admin
                     alert("Mode Admin enclenché")
+                    window.location.href = './Administration/index.html?page=home'
                 } else {
                     // User Normal
                     alert("Mode Boudoir déverrouillé")
@@ -345,7 +349,9 @@ $(document).ready (() => {
             }
         } else {
         alert("Mauvaise identification, essayez encore")
-        location.reload()}
+        location.reload()
+        }
+        
     }
 
     // FIN Fonction LOGIN
