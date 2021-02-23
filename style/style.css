@@ -1,3 +1,9 @@
+#listeCategories, #listeTechniques{ /* debug ne pas mettre en production */
+    display: none; /* debug ne pas mettre en production */
+} /* debug ne pas mettre en production */
+
+
+
 /*
       _       __ _       _ _   _             
      | |     / _(_)     (_) | (_)            
@@ -76,7 +82,9 @@ ul {
 .showlist {
     max-height: 300px !important;
 }
-
+#generalMenu{
+    background-color:#323232 ;
+}
 #generalMenu span{
     color : #C00000;
 }
@@ -104,11 +112,7 @@ ul {
 }
 /* navbar CSS END */
 /* theme color start */
-.themecontainer li{
-    height: 25px;
-    cursor: pointer;
-    list-style: none;
-}
+
 .bg2{
     background:rgb(2, 2, 2);
 }
@@ -118,12 +122,7 @@ ul {
 .bg4{
     background: #323232;
 }
-.black{
-    background: black;
-    color: white;
-    border:rgb(255, 255, 255) solid 3px;
 
-}
 .white{
     background: rgb(255, 255, 255);
     border: rgb(3, 3, 3) solid 3px;
@@ -170,7 +169,6 @@ main{
 	left:0px;
 	height: 17%;
 	width: 100%;
-	background: #807C7C
 
 /*fleches*/	
 }
@@ -178,9 +176,11 @@ main{
 	cursor: pointer;
 	position: absolute;
 	bottom: 25%;
+	top: 25%;
 	right: 0;
-	height: 100%;
+	height: 50%;
 	width: 50px;
+
 
 
 }
@@ -188,8 +188,9 @@ main{
 	cursor: pointer;
 	position: absolute;
 	bottom: 25%;
+	top: 25%;
 	left: -0;
-	height: 100%;
+	height: 50%;
 	width: 50px;
 	transform: rotate(180deg);
 }
@@ -214,8 +215,8 @@ main{
 /*le slide*/
 
 .slider{
-	position:absolute;
-	top: 16px;
+	position:relative;
+	bottom:0px;
 	width: 5000px;
 	height: 100%;
     background: url(img/pelpel.gif);
@@ -238,7 +239,7 @@ main{
 	vertical-align:text-top;
 }
 #carroussel a img:hover{
-	border: solid 4px #F20707
+	border: solid 4px #3E3B3B
 }
 
 /*responsive carousel-----------------------*/
@@ -248,7 +249,7 @@ main{
     top: 0px;
     height: 100%;
     width: 17%;
-    background: #807C7C
+
 }
 /*fleches*/ 
 
@@ -257,9 +258,10 @@ main{
     position: absolute;
     bottom: 0;
     right:25%;
+    left:25%;
     transform: rotate(90deg);
     height: 50px;
-    width: 100%;
+    width: 50%;
 
 
 }
@@ -268,8 +270,9 @@ main{
     position: absolute;
     top: 0;
     right:25%;
+    left:25%;
     height: 50px;
-    width: 100%;
+    width: 50%;
     transform: rotate(-90deg);
 }
 /*passage de la souris, decalage flèche*/
@@ -291,7 +294,7 @@ main{
 /*le slide*/
 .slider2{
     position: relative;
-    right: 10px;
+    right: 0px;
     /*top:-50px;*/
     height: 5000px;
     width: 100%;
@@ -299,6 +302,7 @@ main{
     background-repeat: repeat-y;
     background-size: contain;
 
+    background-size:100%;
 
 
 
@@ -315,7 +319,7 @@ main{
     border: solid 4px #060606
 }
 #carroussel2 a img:hover{
-    border: solid 4px #F20707
+    border: solid 4px #3E3B3B
 }
 
 
@@ -439,11 +443,6 @@ main{
         max-height: 50px;
         overflow-wrap: break-word;
     }
-
-    main {
-        float: left;
-    }
-
     /*CARROUSEL*/
     #zoom{
         padding-top: 50px;
@@ -538,9 +537,13 @@ main{
 
     }
 }
+/*responsiv version smartphone paysage*/
+/*@media (orientation: landscape) and (max-device-width : 640px) {
+
+}*/
 /* css formulaire */
 #pageformulaire{
-    background-image: url(photo.jpg);
+    background-image: url(paysage.jpg);
     background-size: cover;
     background-repeat:no-repeat;
 }
