@@ -36,6 +36,7 @@ $(document).ready (() => {
     })
 
     var Connexion = false
+    var boudoirOk = false
     var mesUsers = {"users":    [{"id" : 1,
             "pseudo" : "Rudy",
             "mdp" : "789",
@@ -66,7 +67,7 @@ $(document).ready (() => {
     }
     function ordinateur(){
         $("#generalMenu").css('background','#323232')
-        $("main").css('color','white')
+        $("main").css('color','black')
         $(".commentaires").css('background','white')
         $(".commentaires").css('color','black')
         $(".commentaires p").css('color','black')
@@ -156,7 +157,7 @@ $(document).ready (() => {
 
     $("li.white").click(function() {
         $("#generalMenu").css('background','#323232')
-        $("main").css('color','white')
+        $("main").css('color','black')
         $(".commentaires").css('background','white')
         $(".commentaires").css('color','black')
         $(".commentaires p").css('color','black')
@@ -268,7 +269,6 @@ $(document).ready (() => {
         event.preventDefault()
         var pseudo = $("#myID").val()			//recup le pseudo
         var MdP = $("#myPassword").val()		//recup le mot de passe
-        var timeRegister = $("#")
         login(pseudo, MdP)						//lance la fonction Login
     })
 
@@ -335,6 +335,7 @@ $(document).ready (() => {
                 } else {
                     // User Normal
                     alert("Mode Boudoir déverrouillé")
+                    boudoirOk = true
                 }
             }
         } else {
@@ -378,15 +379,12 @@ $(document).ready (() => {
       }
     }     
 
-//----------------------------------------------------
+//----------------------------------------------------END
+
 // template pour les categories & techniques 
 // VERIFIER AU NIVEAU DU OVERLAY (affichage en grand de la photo)
 var categoriesTemplate = 
 `
-<div class="overlay">
-		<img src="%overlayPhoto%" class="imgReal" alt="">
-		<div class="closeMe">X</div>
-	</div>
 
     <div id="centerdiv" class="h-100">
 <div class="h-100">	
@@ -418,28 +416,35 @@ var categoriesTemplate =
     $("main").show() 
     $("#listeCategories").hide() 
     $("#carroussel").show()
+    $("footer img[data-cat]").parent().show(); 
     zoomImg()
     fullScreen()
+ 
    }
 // Fonction click noir et blanc
         $(".blackandwhite").click(function(e){
-            e.preventDefault() 
+            e.preventDefault()
             CategorieDiv() 
             var image = "ress/imagesCarrou/miniature/LPNBLion.png"
             var texte = categoriesTemplate
             var nom = "Noir & Blanc"
-            var overlayPhoto = $(".imgReal").attr("src", $(".img-full").attr("src"))
             var textecat = "La photographie en noir et blanc élimine les distractions La couleur peut être un très bon élément de composition. ... En supprimant ainsi les couleurs, vous réduisez grandement les sources de distractions visibles. Vous pourrez alors vous concentrer sur la forme et la texture des différents éléments de votre image."
             texte = texte.replace(/%nomcategorie%/g, nom)
             texte = texte.replace(/%textecategorie%/g , textecat)
             texte = texte.replace(/%image%/g , image)
-            texte = texte.replace(/%overlayPhoto%/g , overlayPhoto)
+           // texte = texte.replace(/%over%/g , over)
             $("main").append(texte)
             $("footer img:not([data-cat=NB])").parent().hide();
+            $('.img-full').click(function () {                              //// a recopier dans toutes 
+                $('.overlay').show()
+                $('.imgReal').attr("src", $(this).attr('src'))
+                $('#zoom').hide()
+            })
         })
     
 // fonction au click de portrait
     $(".portrait").click(function(e){
+        console.log("portrait")
         e.preventDefault() 
         CategorieDiv()   
         var texte = categoriesTemplate
@@ -450,7 +455,13 @@ var categoriesTemplate =
         texte = texte.replace(/%textecategorie%/g , textecat)
         texte = texte.replace(/%image%/g , image)
         $("main").append(texte) 
+        $("footer img:not([data-cat])").parent().show(); 
         $("footer img:not([data-cat=por])").parent().hide(); 
+        $('.img-full').click(function () {                               
+            $('.overlay').show()
+            $('.imgReal').attr("src", $(this).attr('src'))
+            $('#zoom').hide()
+        })
     })
 //fonction au click de paysage
     $(".paysage").click(function(e){
@@ -465,6 +476,11 @@ var categoriesTemplate =
         texte = texte.replace(/%image%/g , image)
         $("main").append(texte)  
         $("footer img:not([data-cat=PA])").parent().hide();
+        $('.img-full').click(function () {                               
+            $('.overlay').show()
+            $('.imgReal').attr("src", $(this).attr('src'))
+            $('#zoom').hide()
+        })
     })
 // fonction au click d architecture
     $(".architecture").click(function(e){
@@ -479,6 +495,11 @@ var categoriesTemplate =
         texte = texte.replace(/%image%/g , image)
         $("main").append(texte) 
         $("footer img:not([data-cat=AR])").parent().hide();
+        $('.img-full').click(function () {                               
+            $('.overlay').show()
+            $('.imgReal').attr("src", $(this).attr('src'))
+            $('#zoom').hide()
+        })
     })
 // fonction au click de graphisme
 $(".graphisme").click(function(e){
@@ -493,6 +514,11 @@ $(".graphisme").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)
     $("footer img:not([data-cat=GR])").parent().hide(); 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 })
  // fonction au click d evenement
 $(".evenement").click(function(e){
@@ -507,16 +533,17 @@ $(".evenement").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte) 
     $("footer img:not([data-cat=EV])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 })   
- /*// fonction au click de boudoir
- $(".boudoir").hover(function (e){
-     // a rajouter :  si l utilisateur n'est pas connecté alors 
-    alert("vous devez être connecté  ou remplir le formulaire pour accèder a cette catégorie ")
- })*/
- // faire une fonction pour autoriser l'acces a cette categorie
+ // fonction au click de boudoir
  $(".boudoir").click(function(e){
-    alert("vous devez être connecté ou remplir le formulaire pour accéder a ce formulaire" )
-    e.preventDefault()  
+    e.preventDefault() 
+ 
+    if (boudoirOk == true){ //pour l'acces 
     CategorieDiv() 
     var texte = categoriesTemplate
     var nom = "Boudoir"
@@ -525,9 +552,17 @@ $(".evenement").click(function(e){
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
     texte = texte.replace(/%image%/g , image)
+    $("footer img:not([data-cat=BO])").parent().hide();
     $("main").append(texte) 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
+    }else{
+        alert("vous devez etre connecter ou faire une demande d'accés via le formulaire de contact")
+    }
 })   
-
 //------------------------------------------------------------------------------------------------
 // fonctions au click des TECHNIQUES
 // FONCTION CLICK TECH
@@ -545,8 +580,10 @@ function techniquesDiv(){
     $("main").show() 
     $("#listeTechniques").hide() 
     $("#carroussel").show()
+    $("footer img[data-cat]").parent().show();   // pour afficher les images du  footer 
     zoomImg()
     fullScreen()
+   
    }
 
  // fonction au click de HDR
@@ -562,6 +599,11 @@ function techniquesDiv(){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)   
     $("footer img:not([data-tec=HD])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click high key low key
 $(".highkey").click(function(e){
@@ -576,6 +618,11 @@ $(".highkey").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)  
     $("footer img:not([data-tec=HK])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 })  
 // click high speed
 $(".highspeed").click(function(e){
@@ -590,6 +637,11 @@ $(".highspeed").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte) 
     $("footer img:not([data-tec=HS])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click studio
 $(".studio").click(function(e){
@@ -604,6 +656,11 @@ $(".studio").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)
     $("footer img:not([data-tec=ST])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click tilt shift
 $(".tiltshift").click(function(e){
@@ -618,6 +675,11 @@ $(".tiltshift").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)  
     $("footer img:not([data-tec=TS])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click POSE LONGUE
 $(".poselongue").click(function(e){
@@ -632,6 +694,11 @@ $(".poselongue").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)
     $("footer img:not([data-tec=PL])").parent().hide(); 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click light painting
 $(".lightpainting").click(function(e){
@@ -646,8 +713,14 @@ $(".lightpainting").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte) 
     $("footer img:not([data-tec=LP])").parent().hide(); 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
-
+// END categories et techniquess fonction
+//--------------------------------------------------------------------------------------------------------------------------------------------
 //FOOTER
 
 
@@ -660,7 +733,7 @@ $(".lightpainting").click(function(e){
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
 //-----------------------------------------------
-}) //celui  du ready
+})//celui  du ready
 
 
 //variable pour le footer
@@ -822,9 +895,6 @@ function fullScreen(){
 } 
 //End footer fct
 //--------------------------------------------------------------------------------------------
-
- //----------------------------------------------------------------------------------------------       
-// a l'ext de onready
 function captcha_new(){
     var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
     var chiffre2 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
