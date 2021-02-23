@@ -123,14 +123,6 @@ ul {
     background: #323232;
 }
 
-.white{
-    background: rgb(255, 255, 255);
-    border: rgb(3, 3, 3) solid 3px;
-}
-.grey{
-    background: #323232;
-    border: rgb(255, 255, 255) solid 3px;
-}
 /* theme color end*/
 
 
@@ -169,9 +161,9 @@ main{
 	left:0px;
 	height: 17%;
 	width: 100%;
-
-/*fleches*/	
 }
+/*fleches*/	
+
 #suiv img{
 	cursor: pointer;
 	position: absolute;
@@ -206,7 +198,7 @@ main{
 /*class qui redimensionne les images dans la div slide*/
 
 .redimension{
-    width: 110px;
+    width: 150px;
     height: 95px;
     max-height: 100%;
 }
@@ -221,8 +213,8 @@ main{
     background: url(img/pelpel.gif);
     background-repeat: repeat-x;
     background-size: contain;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
 
 }
@@ -231,14 +223,14 @@ main{
 	/*les encadrés des images*/
 
 #carroussel a{
-	padding: 0 20px;
+
 }
 #carroussel a img{
-	border: solid 4px #060606;
+	border: solid 6px #060606;
 	vertical-align:text-top;
 }
 #carroussel a img:hover{
-	border: solid 4px #3E3B3B
+	border: solid 4px #C00000;
 }
 
 /*responsive carousel-----------------------*/
@@ -287,7 +279,7 @@ main{
 
 .redimension2{
     width: 73%;
-    height: 95px;
+    height: 120px;
     max-width: 100%;
 }
 /*le slide*/
@@ -314,11 +306,11 @@ main{
     padding: 0 20px;
 }
 #carroussel2 a img{
-    margin-top: 20px;
-    border: solid 4px #060606
+    margin-top: 3px;
+    border: solid 6px #060606
 }
 #carroussel2 a img:hover{
-    border: solid 4px #3E3B3B
+    border: solid 4px #C00000;
 }
 
 
@@ -341,7 +333,8 @@ main{
     padding-left: 5%;
 }
 #zoom img{
-    border: solid 4px #060606
+    border: outset 10px #C00000;
+    box-shadow: 0px 4px 4px #1c1a19;
 }
 /*overlay*/
  .overlay {
