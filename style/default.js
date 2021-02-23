@@ -66,6 +66,12 @@ $(document).ready (() => {
     }
     function ordinateur(){
         $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','white')
+        $(".commentaires").css('color','black')
+        $(".commentaires p").css('color','black')
+        $(".container").css('background','white')
+        $(".changecolor").css('background','white')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
         console.log('ordinateur')
     }
@@ -150,6 +156,12 @@ $(document).ready (() => {
 
     $("li.white").click(function() {
         $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','white')
+        $(".commentaires").css('color','black')
+        $(".commentaires p").css('color','black')
+        $(".container").css('background','white')
+        $(".changecolor").css('background','white')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
     });
     
