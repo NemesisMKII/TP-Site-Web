@@ -517,6 +517,11 @@ main{
     .album {
         margin-bottom: auto;
     }
+
+    #generalMenu {
+        height: 100%;
+        display: block;
+    }
 }
 
 @media (max-width: 575.98px) {
