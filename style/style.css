@@ -1,3 +1,9 @@
+#listeCategories, #listeTechniques{ /* debug ne pas mettre en production */
+    display: none; /* debug ne pas mettre en production */
+} /* debug ne pas mettre en production */
+
+
+
 /*
       _       __ _       _ _   _             
      | |     / _(_)     (_) | (_)            
@@ -429,11 +435,6 @@ main{
         max-height: 50px;
         overflow-wrap: break-word;
     }
-
-    main {
-        float: left;
-    }
-
     /*CARROUSEL*/
     #zoom{
         padding-top: 50px;

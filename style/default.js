@@ -1,18 +1,3 @@
-/* ESTHETIQUE */
-var onWindowResize = function(e) {
-    // on centre le main
-    width = window.innerWidth;
-    height = window.innerWidth;
-    var content = document.querySelector("main")
-    var margin = width - content.offsetWidth;
-    margin /= 2;
-    content.style.marginLeft = margin + "px";
-
-}
-window.addEventListener("resize", onWindowResize);
-window.addEventListener("load", onWindowResize);
-
-
 $(document).ready (() => {
 
     $('.accordeon-expand-btn').on('click', function () {
@@ -487,18 +472,22 @@ $(window).resize(function(){
 function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
 
     var largeurWindow = $(window).width()
-    if (largeurWindow < 992) {
-      $('#carroussel').hide()
-      $('#carroussel2').show()
-      
-
+	if (largeurWindow < 992) {
+		$('#carroussel').hide()
+		$('#carroussel2').show()
+		$('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		$('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     }else {
       $('#carroussel2').hide()
-      $('#carroussel').show()  
+      $('#carroussel').show() 
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     }
     if (largeurWindow < 570) {
       $('#carroussel2').hide()
-      $('#carroussel').show()     
+      $('#carroussel').show()
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
     }
 }
 //Ajout des miniatures
