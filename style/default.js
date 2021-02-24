@@ -380,7 +380,7 @@ $(document).ready (() => {
     }     
 
 //----------------------------------------------------END
-
+  
 // template pour les categories & techniques 
 // VERIFIER AU NIVEAU DU OVERLAY (affichage en grand de la photo)
 var categoriesTemplate = 
