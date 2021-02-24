@@ -1,4 +1,4 @@
-$(document).ready (() => {
+$(document).ready (() => { 
     /* FONCTION DE GESTION DES ERREURS DE CHARGEMENT D'IMAGES*/
     $("img").on("error", function () {
         $(this).attr("src", "/ress/nothumb.jpg"); 
