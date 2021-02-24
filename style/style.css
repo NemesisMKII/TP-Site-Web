@@ -435,6 +435,13 @@ main{
         max-height: 50px;
         overflow-wrap: break-word;
     }
+    #menu{
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        width: 17%;
+    }
     /*CARROUSEL*/
     #zoom{
         padding-top: 50px;
@@ -457,7 +464,9 @@ main{
     #technique_list, #categories_list, #themeList {
         display: none;
     }
-
+    main{
+        margin-left:17%;
+    }
     #carroussel2 {
         width: 17%;
     }
@@ -497,7 +506,13 @@ main{
         max-height: 50px;
         overflow-wrap: break-word;
     }
-
+    #menu{
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        width: 17%;
+    }
     #titlelogo {
         width: 100%;
         position: absolute;
@@ -514,6 +529,9 @@ main{
     #generalMenu {
         height: 100%;
         display: block;
+    }
+    main{
+        margin-left:17%;
     }
 }
 
