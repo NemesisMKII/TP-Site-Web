@@ -1,4 +1,25 @@
 /* PAGE TEMPLATES START */
+
+var photosShowTEMPLATE = `
+<div class='d-flex justify-content-around mt-2 overflowscroll' id="photocontainer">
+    <img src="../ARphoto.jpg" class='m-2'/>
+    <img src="../BOphoto.jpg" class='m-2'/>
+    <img src="../EVphoto.jpg" class='m-2'/>
+    <img src="../GRphoto.jpg" class='m-2'/>
+    <img src="../HDphoto.png" class='m-2'/>
+    <img src="../HKphoto.jpg" class='m-2'/>
+    <img src="../HSphoto.jpg" class='m-2'/>
+    <img src="../GRphoto.jpg" class='m-2'/>
+    <img src="../LPphoto.jpg" class='m-2'/>
+    <img src="../NBphoto.jpg" class='m-2'/>
+    <img src="../PAphoto.jpg" class='m-2'/>
+    <img src="../PLphoto.jpg" class='m-2'/>
+    <img src="../POphoto.jpg" class='m-2'/>
+    <img src="../STphoto.jpg" class='m-2'/>
+    <img src="../TSphoto.jpg" class='m-2'/>
+</div>
+`
+
 var homeTEMPLATE = `
     <h2 class="text-center">Panel de gestion administrateur</h2>
     <div class='m-3 mt-4 bg-success contentdiv'>
@@ -8,26 +29,10 @@ var homeTEMPLATE = `
 var photosTEMPLATE = `
     <h2 class="text-center">Gestion des photos</h2>
     <div class='m-3 mt-4 border border-dark contentdiv overflowscroll'>
-        <div class='d-flex justify-content-around mt-4' id="photocontainer">
-            <img src="../ARphoto.jpg" class='m-2'/>
-            <img src="../BOphoto.jpg" class='m-2'/>
-            <img src="../EVphoto.jpg" class='m-2'/>
-            <img src="../GRphoto.jpg" class='m-2'/>
-            <img src="../HDphoto.png" class='m-2'/>
-            <img src="../HKphoto.jpg" class='m-2'/>
-            <img src="../HSphoto.jpg" class='m-2'/>
-            <img src="../GRphoto.jpg" class='m-2'/>
-            <img src="../LPphoto.jpg" class='m-2'/>
-            <img src="../NBphoto.jpg" class='m-2'/>
-            <img src="../PAphoto.jpg" class='m-2'/>
-            <img src="../PLphoto.jpg" class='m-2'/>
-            <img src="../POphoto.jpg" class='m-2'/>
-            <img src="../STphoto.jpg" class='m-2'/>
-            <img src="../TSphoto.jpg" class='m-2'/>
-        </div>
+        ${photosShowTEMPLATE}
     </div>
-    
 `
+
 var askloginTEMPLATE = `
     <h2 class="text-center">Demandes de connexion</h2>
 `
@@ -84,6 +89,8 @@ $(document).ready(() => {
                     for (albumitem in albumlist) {
                         $('#albumcontainer').append(`
                         <div class='album'>
+                            <img src="${albumlist[albumitem].photos[0]}" class="img-fluid fit" />
+                            <p class="text-center">${albumlist[albumitem].name}</p>
                         </div>
                         `)
                     }
@@ -109,23 +116,7 @@ $(document).ready(() => {
                 <input type="text" placeholder="Entrez un nom d'album ..." id="albumtitle"/>
             </div>
             <h4 class="text-center mt-3">Choisissez une ou plusieurs photos</h4>
-            <div class='d-flex justify-content-around mt-2 overflowscroll' id="photocontainer">
-                <img src="../ARphoto.jpg" class='m-2'/>
-                <img src="../BOphoto.jpg" class='m-2'/>
-                <img src="../EVphoto.jpg" class='m-2'/>
-                <img src="../GRphoto.jpg" class='m-2'/>
-                <img src="../HDphoto.png" class='m-2'/>
-                <img src="../HKphoto.jpg" class='m-2'/>
-                <img src="../HSphoto.jpg" class='m-2'/>
-                <img src="../GRphoto.jpg" class='m-2'/>
-                <img src="../LPphoto.jpg" class='m-2'/>
-                <img src="../NBphoto.jpg" class='m-2'/>
-                <img src="../PAphoto.jpg" class='m-2'/>
-                <img src="../PLphoto.jpg" class='m-2'/>
-                <img src="../POphoto.jpg" class='m-2'/>
-                <img src="../STphoto.jpg" class='m-2'/>
-                <img src="../TSphoto.jpg" class='m-2'/>
-            </div>
+            ${photosShowTEMPLATE}
         </div>
         <button class="btn btn-success d-block mx-auto" id="confirm">Confirmer</button>
         `)
@@ -150,7 +141,12 @@ $(document).ready(() => {
 
         $('#confirm').click(() => {
             if ($('#albumtitle').val().length != 0) {
-                albumlist.push(album)
+                albumobject = {
+                    photos: album,
+                    name: $('#albumtitle').val()
+                }
+
+                albumlist.push(albumobject)
                 console.log(albumlist);
                 localStorage.setItem('albumlist', JSON.stringify(albumlist))
                 location.reload()
