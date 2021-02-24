@@ -41,7 +41,7 @@ $(document).ready (() => {
             "pseudo" : "Rudy",
             "mdp" : "789",
             "role" : "admin",
-            "date" : 1,
+            "date" : (new Date()).getTime(),
             "theme" : 1}]}
 //
  var monJsonUsers               //recup du Json dans localStorage
@@ -332,10 +332,10 @@ $(document).ready (() => {
                 if (monUser.role == "admin") {
                     // Mode Admin
                     alert("Mode Admin enclenché")
+                    window.location.href = './Administration/index.html?page=home'
                 } else {
                     // User Normal
                     alert("Mode Boudoir déverrouillé")
-                    boudoirOk = true
                 }
             }
         } else {
