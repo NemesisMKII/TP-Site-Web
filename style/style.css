@@ -65,6 +65,10 @@ header a {
 header {
     z-index: 11;
 }
+
+.nav > .nav-item { 
+    cursor: pointer;
+}
 /*
 @media screen and (max-width: 980){ 
         width:100%;
@@ -222,9 +226,6 @@ main{
 /*les images/
 	/*les encadrés des images*/
 
-#carroussel a{
-
-}
 #carroussel a img{
 	border: solid 6px #060606;
 	vertical-align:text-top;
@@ -410,8 +411,22 @@ main{
     .img-photographer {
         width: 350px;
     }
+
+    #boudoiralert {
+        background-color: whitesmoke;
+        border: 1px solid black;
+        height: 25px;
+        width: 375px;
+        top: -10%;
+        left: 65%;
+        right: 0;
+        bottom: 0;
+        cursor: auto;
+        padding-left: 2px;
+        font-weight: bold;
+    }
 }
-@media (min-width: 778px) and (max-width: 991.98px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
     /* background tablette
     body{
         background-color:#323232;
@@ -477,7 +492,7 @@ main{
 }
 
 
-@media (min-width: 576px) and (max-width: 777.98px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
     /*background tablette
     body{
         background-color:#323232;

@@ -1,4 +1,11 @@
 $(document).ready (() => {
+    $('#boudoiralert').hide()
+
+    $('#boudoir').hover(() => {
+        ($(window).width() >= 992 ? $('#boudoiralert').fadeIn(200) : 0)
+    }, () => {
+        ($(window).width() >= 992 ? $('#boudoiralert').fadeOut(200) : 0)
+    })
 
     $('.accordeon-expand-btn').on('click', function () {
 

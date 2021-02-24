@@ -51,6 +51,12 @@ img {
     flex-wrap: wrap;
 }
 
-.testdiv {
-    height: 84%;
+#albumontainer {
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.contentdiv {
+    height: 75%;
+    overflow-y: scroll;
 }
