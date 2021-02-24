@@ -36,6 +36,7 @@ $(document).ready (() => {
     })
 
     var Connexion = false
+    var boudoirOk = false
     var mesUsers = {"users":    [{"id" : 1,
             "pseudo" : "Rudy",
             "mdp" : "789",
@@ -53,32 +54,36 @@ $(document).ready (() => {
 
 // background en fonction de la taille de l'ecran => function pour la couleur dédié
     function tablette(){
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#939598')
+        $("#generalMenu a").css('color','white')
+        $("main").css('color','white')
+        $(".commentaires").css('background','#323232')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','#323232')
+        $(".changecolor").css('background','#323232')
         $("body").removeClass("bg2 , bg3").addClass("bg4");
         console.log("tablette")
     }
     function ordinateur(){
-        $("header a").css('color','black')
-        $("header").removeClass('border-white')
-        $("header").addClass('border-dark')
-        $("header li").removeClass('border-white')
-        $("header li").addClass('border-dark')
-        $("header").css({'border-color':'dark', 'color':'black'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','black')
+        $(".commentaires").css('background','white')
+        $(".commentaires").css('color','black')
+        $(".commentaires p").css('color','black')
+        $(".container").css('background','white')
+        $(".changecolor").css('background','white')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
         console.log('ordinateur')
     }
     function telephone(){
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','black')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','black')
+        $(".changecolor").css('background','black')
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('mobile')
     }
@@ -139,33 +144,38 @@ $(document).ready (() => {
 
     //theme color black white grey au clic navbar
     $("li.black").click(function() {
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','white')
+        $(".commentaires").css('background','black')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','black')
+        $(".changecolor").css('background','black')
         $("body").removeClass("bg3 , bg4").addClass("bg2");
         console.log('noir')
     });
-    
+
     $("li.white").click(function() {
-        $("header a").css('color','black')
-        $("header").removeClass('border-white')
-        $("header").addClass('border-dark')
-        $("header li").removeClass('border-white')
-        $("header li").addClass('border-dark')
-        $("header").css({'border-color':'dark', 'color':'black'})
+        $("#generalMenu").css('background','#323232')
+        $("main").css('color','black')
+        $(".commentaires").css('background','white')
+        $(".commentaires").css('color','black')
+        $(".commentaires p").css('color','black')
+        $(".container").css('background','white')
+        $(".changecolor").css('background','white')
         $("body").removeClass("bg2 , bg4").addClass("bg3");
     });
     
     $("li.grey").click(function() {
-        $("header a").css('color','white')
-        $("header li").removeClass('border-dark')
-        $("header li").addClass('border-white')
-        $("header ").removeClass('border-dark')
-        $("header").addClass('border-white')
-        $("header").css({'border-color':'white', 'color':'white'})
+        $("#generalMenu").css('background','#939598')
+        $("#generalMenu a").css('color','white')
+        $("main").css('color','white')
+        $(".commentaires").css('background','#323232')
+        $(".commentaires").css('color','white')
+        $(".commentaires p").css('color','white')
+        $(".container").css('background','#323232')
+        $(".changecolor").css('background','#323232')
+        $("")
         $("body").removeClass("bg2 , bg3").addClass("bg4");
     })
     // enregistrement du choix des couleurs dans le localstorage
@@ -177,7 +187,7 @@ $(document).ready (() => {
     } else {
         themeObj = JSON.parse(localStorage.getItem('themeColor'))
     }
-    $("ul#themeList li").on('click', function(){
+    $("#themeMenu li").on('click', function(){
         var color = $(this).attr("value")
         var theme = {
             colorChoose : color
@@ -304,14 +314,19 @@ $(document).ready (() => {
         if (pseudoExist) {
             var loginOK = false
             if (MdP == monUser.mdp) {							//MdP correspond au pseudo
-                alert("Content de vous revoir " + monUser.pseudo)
-                loginOK = true
-                monObjUser = {"userLog" : monUser}
-                sessionStorage.setItem("sessionUser", JSON.stringify(monObjUser))	//Stockage de l'user dans le sessionStorage
-                $("#modalLogin").hide()
-                //charger le theme s'il existe
-                $("#btnConnexion").text("Deconnexion")      //modifier le bouton "connexion" en déconnexion
-                Connexion = true
+                var timeLimit = (new Date()).getTime()
+                if (timeLimit < (monUser.date + (7*24*3600*1000))) {
+                    alert("Content de vous revoir " + monUser.pseudo)
+                    loginOK = true
+                    monObjUser = {"userLog" : monUser}
+                    sessionStorage.setItem("sessionUser", JSON.stringify(monObjUser))	//Stockage de l'user dans le sessionStorage
+                    $("#modalLogin").hide()
+                    //charger le theme s'il existe
+                    $("#btnConnexion").text("Deconnexion")      //modifier le bouton "connexion" en déconnexion
+                    Connexion = true
+                } else {
+                    alert("Limite d'acces de 7 jours dépassée")
+                }
             }
             if (loginOK) {						//pseudo + MdP OK => verif si Admin ou User
                 if (monUser.role == "admin") {
@@ -320,6 +335,7 @@ $(document).ready (() => {
                 } else {
                     // User Normal
                     alert("Mode Boudoir déverrouillé")
+                    boudoirOk = true
                 }
             }
         } else {
@@ -335,7 +351,7 @@ $(document).ready (() => {
         Connexion = false
         alert("Vous etes bien deconnecté")
     }
-    //fonction
+    //fonction REGISTER
     function register(){
       var firstName = $("#firstName").val()
       var objet = $("#objet").val()
@@ -363,7 +379,10 @@ $(document).ready (() => {
       }
     }     
 
-//----------------------------------------------------
+//----------------------------------------------------END
+
+// END categories et techniquess fonction
+//--------------------------------------------------------------------------------------------------------------------------------------------
 //FOOTER
 
 
@@ -376,7 +395,7 @@ $(document).ready (() => {
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
 //-----------------------------------------------
-}) //celui  du ready
+})//celui  du ready
 
 
 //variable pour le footer
@@ -398,7 +417,7 @@ var slider = function(id){
    })
    this.prec = this.divCarrou.find(".prec")// on va rechercher le bouton précendent
    this.suiv= this.divCarrou.find(".suiv")
-   this.saut= this.largeurCarrou/2 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
+   this.saut= this.largeurCarrou/3 //variable saut qui permet de deplacer les image de la moitié du carousselle //on enleve le/2 si on veux decaler tout le contenu de la div et pas que la moitié
    this.nbEtapes =Math.ceil(this.largeur/this.saut -this.largeurCarrou/this.saut) //nombre etapes, donc de click sur suivant avant datteindre le bout //on soustrait le nb étapes en trop
    //Match.ceil permet d'arrondir au nb superieur
    this.courant=0 //permet si on l'incrément de savoir ou on est(si on a deplacé x fois ver la gauche)
@@ -480,22 +499,16 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
 		$('div#col2').css("padding-bottom","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     	$('main').css("overflow","auto"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     }else {
-		$('#carroussel2').hide()
-<<<<<<< Updated upstream
-		$('#carroussel').show()
-		$('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		$('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-=======
-		$('#carroussel').show() 
-		$('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		$('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+      $('#carroussel2').hide()
+      $('#carroussel').show() 
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
     }
     if (largeurWindow < 570) {
-		$('#carroussel2').hide()
-		$('#carroussel').show()
-		$('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		$('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
->>>>>>> Stashed changes
+      $('#carroussel2').hide()
+      $('#carroussel').show()
+      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
     }
 }
 //Ajout des miniatures
@@ -543,31 +556,28 @@ function fullScreen(){
       $('#zoom').show()
       }
   })
-}
+} 
 //End footer fct
 //--------------------------------------------------------------------------------------------
+
 // template pour les categories & techniques 
 // VERIFIER AU NIVEAU DU OVERLAY (affichage en grand de la photo)
 var categoriesTemplate = 
-`
-<div class="overlay">
-		<img src="" class="imgReal" alt="">
-		<div class="closeMe">X</div>
-	</div>
-    <div id="centerdiv" class="h-100">
-<div class="h-100">	
-    <div class="row h-100 align-items-center w-100" id="zoom">
-        <img src="%image%"  class="col-5 ms-auto border border-dark img-full p-0 " alt="">
-        <div class="col-7">
-            <div class="row mb-3 w-50 mx-auto">
-                <h3 class="text-center align-self-start">%nomcategorie%</h3>
-            </div>
-        <div class="row w-75 mx-auto">
-            %textecategorie% 
+` <div id="centerdiv" class="h-100">
+        <div class="h-100">	
+            <div class="row h-100 align-items-center w-100" id="zoom">
+                <img src="%image%"  class="col-5 ms-auto border border-dark img-full p-0 " alt="">
+                <div class="col-7">
+                    <div class="row mb-3 w-50 mx-auto">
+                         <h3 class="text-center align-self-start">%nomcategorie%</h3>
+                    </div>
+                        <div class="row w-75 mx-auto">
+                            %textecategorie% 
+                         </div>
+                 </div>
+            </div>     
         </div>
     </div>
-</div>
-</div>
 `
 
 
@@ -585,12 +595,14 @@ var categoriesTemplate =
     $("main").show() 
     $("#listeCategories").hide() 
     $("#carroussel").show()
+    $("footer img[data-cat]").parent().show(); // pour bien afficher les images du footer
+    zoomImg()
     fullScreen()
-    
+ 
    }
 // Fonction click noir et blanc
         $(".blackandwhite").click(function(e){
-            e.preventDefault() 
+            e.preventDefault()
             CategorieDiv() 
             var image = "ress/imagesCarrou/miniature/LPNBLion.png"
             var texte = categoriesTemplate
@@ -599,23 +611,36 @@ var categoriesTemplate =
             texte = texte.replace(/%nomcategorie%/g, nom)
             texte = texte.replace(/%textecategorie%/g , textecat)
             texte = texte.replace(/%image%/g , image)
+           // texte = texte.replace(/%over%/g , over)
             $("main").append(texte)
             $("footer img:not([data-cat=NB])").parent().hide();
+            $('.img-full').click(function () {                              //// a recopier dans toutes 
+                $('.overlay').show()
+                $('.imgReal').attr("src", $(this).attr('src'))
+                $('#zoom').hide()
+            })
         })
     
 // fonction au click de portrait
     $(".portrait").click(function(e){
+        console.log("portrait")
         e.preventDefault() 
         CategorieDiv()   
         var texte = categoriesTemplate
         var nom = "Portrait"
-        var image = "POphoto.jpg"
+        var image = "ress/imagesCarrou/miniature/grande/STPOVisage3max.jpg"
         var textecat = "La photo de portrait est un art à part entière : il ne s’agit plus seulement d'immortaliser une scène ou une nature morte mais plutôt de capter une sensibilité, une personnalité, un trait d’humeur ou de caractère chez la personne qui joue les modèles devant l'objectif le temps d’une séance photo. De ce shooting photo, en studio, à domicile ou en extérieur vont naitre des images qui témoigneront d’une époque, d’une période de votre vie, d’un moment fort, peut être d’une réussite que vous aimeriez cristalliser.  Cette photo-portrait sera un concentré d'émotions pour revivre ces instants avec à chaque fois la même intensité. La photographie peut aussi avoir des vertus thérapeutiques et être un bon moyen de prendre confiance en soi, en son image, de s’accepter tel qu’on est. C’est encore le moyen de se mettre en valeur pour une photo corporate ou dans un cadre privé pour séduire de nouveaux partenaires."
         texte = texte.replace(/%nomcategorie%/g, nom)
         texte = texte.replace(/%textecategorie%/g , textecat)
         texte = texte.replace(/%image%/g , image)
         $("main").append(texte) 
+        $("footer img:not([data-cat])").parent().show(); 
         $("footer img:not([data-cat=por])").parent().hide(); 
+        $('.img-full').click(function () {                               
+            $('.overlay').show()
+            $('.imgReal').attr("src", $(this).attr('src'))
+            $('#zoom').hide()
+        })
     })
 //fonction au click de paysage
     $(".paysage").click(function(e){
@@ -630,6 +655,11 @@ var categoriesTemplate =
         texte = texte.replace(/%image%/g , image)
         $("main").append(texte)  
         $("footer img:not([data-cat=PA])").parent().hide();
+        $('.img-full').click(function () {                               
+            $('.overlay').show()
+            $('.imgReal').attr("src", $(this).attr('src'))
+            $('#zoom').hide()
+        })
     })
 // fonction au click d architecture
     $(".architecture").click(function(e){
@@ -644,6 +674,11 @@ var categoriesTemplate =
         texte = texte.replace(/%image%/g , image)
         $("main").append(texte) 
         $("footer img:not([data-cat=AR])").parent().hide();
+        $('.img-full').click(function () {                               
+            $('.overlay').show()
+            $('.imgReal').attr("src", $(this).attr('src'))
+            $('#zoom').hide()
+        })
     })
 // fonction au click de graphisme
 $(".graphisme").click(function(e){
@@ -658,6 +693,11 @@ $(".graphisme").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)
     $("footer img:not([data-cat=GR])").parent().hide(); 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 })
  // fonction au click d evenement
 $(".evenement").click(function(e){
@@ -672,16 +712,17 @@ $(".evenement").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte) 
     $("footer img:not([data-cat=EV])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 })   
- /*// fonction au click de boudoir
- $(".boudoir").hover(function (e){
-     // a rajouter :  si l utilisateur n'est pas connecté alors 
-    alert("vous devez être connecté  ou remplir le formulaire pour accèder a cette catégorie ")
- })*/
- // faire une fonction pour autoriser l'acces a cette categorie
+ // fonction au click de boudoir
  $(".boudoir").click(function(e){
-    alert("vous devez être connecté ou remplir le formulaire pour accéder a ce formulaire" )
-    e.preventDefault()  
+    e.preventDefault() 
+ 
+    if (boudoirOk == true){ //pour l'acces 
     CategorieDiv() 
     var texte = categoriesTemplate
     var nom = "Boudoir"
@@ -690,9 +731,17 @@ $(".evenement").click(function(e){
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
     texte = texte.replace(/%image%/g , image)
+    $("footer img:not([data-cat=BO])").parent().hide();
     $("main").append(texte) 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
+    }else{
+        alert("vous devez etre connecter ou faire une demande d'accés via le formulaire de contact")
+    }
 })   
-
 //------------------------------------------------------------------------------------------------
 // fonctions au click des TECHNIQUES
 // FONCTION CLICK TECH
@@ -702,6 +751,7 @@ $("#tech").click(function (e){
     $("#listeTechniques").show()
     $("#listeCategories").hide() 
     $("#carroussel").hide()
+    
 })
 // vider et cacher listetechniques
 function techniquesDiv(){
@@ -709,6 +759,10 @@ function techniquesDiv(){
     $("main").show() 
     $("#listeTechniques").hide() 
     $("#carroussel").show()
+    $("footer img[data-cat]").parent().show();   // pour afficher les images du  footer 
+    zoomImg()
+    fullScreen()
+   
    }
 
  // fonction au click de HDR
@@ -724,6 +778,11 @@ function techniquesDiv(){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)   
     $("footer img:not([data-tec=HD])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click high key low key
 $(".highkey").click(function(e){
@@ -738,6 +797,11 @@ $(".highkey").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)  
     $("footer img:not([data-tec=HK])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 })  
 // click high speed
 $(".highspeed").click(function(e){
@@ -752,6 +816,11 @@ $(".highspeed").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte) 
     $("footer img:not([data-tec=HS])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click studio
 $(".studio").click(function(e){
@@ -766,6 +835,11 @@ $(".studio").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)
     $("footer img:not([data-tec=ST])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click tilt shift
 $(".tiltshift").click(function(e){
@@ -780,6 +854,11 @@ $(".tiltshift").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)  
     $("footer img:not([data-tec=TS])").parent().hide();
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click POSE LONGUE
 $(".poselongue").click(function(e){
@@ -794,6 +873,11 @@ $(".poselongue").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte)
     $("footer img:not([data-tec=PL])").parent().hide(); 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
 // click light painting
 $(".lightpainting").click(function(e){
@@ -808,10 +892,12 @@ $(".lightpainting").click(function(e){
     texte = texte.replace(/%image%/g , image)
     $("main").append(texte) 
     $("footer img:not([data-tec=LP])").parent().hide(); 
+    $('.img-full').click(function () {                               
+        $('.overlay').show()
+        $('.imgReal').attr("src", $(this).attr('src'))
+        $('#zoom').hide()
+    })
 }) 
-
- //----------------------------------------------------------------------------------------------       
-// a l'ext de onready
 function captcha_new(){
     var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
     var chiffre2 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
@@ -847,3 +933,4 @@ function generateMdp(){
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
   });
 }
+////////////////////////////////////////

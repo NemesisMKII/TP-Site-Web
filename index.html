@@ -28,8 +28,9 @@
 
 	<!--entete et menu du site-->
 	<header class="row m-0" id="headerPage">
-		<div class="col-12 d-flex align-items-center justify-content-center p-0" id="title&logo">
-			<img src="./ress/Logo RudyArtWAll.png" alt="">
+		<div class="col-12 d-flex align-items-center p-0" id="titlelogo">
+			<a href="./Administration/index.html?page=home" class="btn btn-success float-start" role="button">Gérer</a>
+			<img src="./ress/Logo RudyArtWAll.png" alt="" class="mx-auto">
 		</div>
 		<div class="col-12 p-0 border border-dark" id="menu">
 			<!--barre de navigation-->
@@ -55,10 +56,13 @@
 								<div class="collapse" id="aboutMe">
 									<ul class="nav">
 										<li class="nav-item">
-											<a class="nav-link" href="#">Mon portrait</a>
+											<a class="nav-link" href="aboutme.html">Mon portrait</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="#">Mes prestations</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="contact.html#pageformulaire">Contact</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="#">CGU / CGV</a>
@@ -73,25 +77,28 @@
 								<div class="collapse" id="technicalMenu">
 									<ul class="nav">
 										<li class="nav-item">
-											<a class="nav-link" href="#">HDR</a>
+											<a class="nav-link" id="tech">Liste des techniques</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">HK/LK</a>
+											<a class="nav-link hdr">HDR</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">High Speed</a>
+											<a class="nav-link highkey">HK/LK</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Studio</a>
+											<a class="nav-link highspeed">High Speed</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Tilt Shift</a>
+											<a class="nav-link studio">Studio</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Pose Longue</a>
+											<a class="nav-link tiltshift">Tilt Shift</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Light Painting</a>
+											<a class="nav-link poselongue">Pose Longue</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link lightpainting">Light Painting</a>
 										</li>
 									</ul>
 								</div>
@@ -103,25 +110,28 @@
 								<div class="collapse" id="galerieMenu">
 									<ul class="nav">
 										<li class="nav-item">
-											<a class="nav-link" href="#">noir et blanc</a>
+											<a class="nav-link" id="catego">Liste des categories</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Portrait</a>
+											<a class="nav-link blackandwhite">Noir et blanc</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Paysage</a>
+											<a class="nav-link portrait ">Portrait</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Architecture</a>
+											<a class="nav-link paysage">Paysage</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Graphisme</a>
+											<a class="nav-link architecture">Architecture</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Evenement</a>
+											<a class="nav-link graphisme">Graphisme</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">Boudoir</a>
+											<a class="nav-link evenement">Evenement</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link boudoir">Boudoir</a>
 										</li>
 									</ul>
 								</div>
@@ -153,21 +163,21 @@
 								</button>
 								<div class="collapse" id="themeMenu">
 									<ul class="nav">
-										<li class="nav-item">
-											<span data-bs-toggle="tooltip" data-bs-placement="right" title="Theme noir" class="nav-link" id="black"><i class="fas fa-fill-drip fa-flip-horizontal fa-lg"></i></span>
+										<li class="nav-item black">
+											<span data-bs-toggle="tooltip" data-bs-placement="right" title="Theme noir" class="nav-link black" class="bg2"  id="black" value="noir"><i class="fas fa-fill-drip fa-flip-horizontal fa-lg"></i></span>
 										</li>
-										<li class="nav-item">
-											<span data-bs-toggle="tooltip" data-bs-placement="right" title="Theme gris" class="nav-link" id="grey"><i class="fas fa-fill-drip fa-flip-horizontal fa-lg"></i></span>
+										<li class="nav-item grey">
+											<span data-bs-toggle="tooltip" data-bs-placement="right" title="Theme gris" class="nav-link grey" class="bg4" id="grey" value="gris"><i class="fas fa-fill-drip fa-flip-horizontal fa-lg"></i></span>
 										</li>
-										<li class="nav-item">
-											<span data-bs-toggle="tooltip" data-bs-placement="right" title="Theme blanc" class="nav-link" id="white"><i class="fas fa-fill-drip fa-flip-horizontal fa-lg"></i></span>
+										<li class="nav-item white">
+											<span data-bs-toggle="tooltip" data-bs-placement="right" title="Theme blanc" class="nav-link" class="bg3" id="white" value="blanc" ><i class="fas fa-fill-drip fa-flip-horizontal fa-lg"></i></span>
 										</li>
 									</ul>
 								</div>
 							</div>
 							<div class="accordeon-expand-content nav-item col-12 col-md-1 d-sm-flex">
 								<button type="button" class="btn accordeon-expand-btn">
-									<span data-bs-toggle="tooltip" data-bs-placement="right" title="Connexion"> <i class="fas fa-fingerprint fa-lg"></i></span>
+									<span data-bs-toggle="tooltip" data-bs-placement="right" title="Connexion" id="btnConnexion"><i class="fas fa-fingerprint fa-lg"></i></span>
 								</button>
 							</div>
 						</div>
@@ -220,59 +230,83 @@
 		<div id="carroussel" class="position-fixed bottom-0" style="display: none;">
 			<div class="slider">
 				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA"  name="LPPAArbre" data-ex=".jfif" data-id="2">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" data-tec="LP" data-cat="GR"   name="LPGRCercle" data-ex=".jpg" data-id="3">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" data-tec="LP" data-cat="GR" name="LPGRCercle2" data-ex=".jpg" data-id="4">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" data-tec="PL" data-cat="PA" name="PLPACiel" data-ex=".jpg" data-id="5">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" data-tec="LP" data-cat="EV" name="LPEVCoeur" data-ex=".jpg" data-id="6">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" data-tec="HS" data-cat="GR" name="HSGRFruit" data-ex=".jpg" data-id="7">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" data-tec="LP" data-cat="NB" name="LPNBLion" data-ex=".png" data-id="8">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" data-tec="LP" data-cat="EV" name="LPEVLove" data-ex=".jpg" data-id="9">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png"  data-tec="LP" data-cat="NB" name="LPNBPanthere" data-ex=".png" data-id="10">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" data-tec="HD" data-cat="PA" name="HDPAPaysage" data-ex=".jpg"data-id="11">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" data-tec="HD" data-cat="GR" name="HDGRRog" data-ex=".jpeg" data-id="12">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" data-tec="TS" data-cat="AR" name="TSARTrain" data-ex=".jpg" data-id="13">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" data-tec="HK" data-cat="por" name="HKPOVisage" data-ex=".jpg" data-id="14">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" data-tec="LK" data-cat="por"  name="LKPOVisage2" data-ex=".jpg" data-id="15">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" data-tec="ST" data-cat="por" name="STPOVisage3" data-ex=".jpg" data-id="16">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSPOVisage4.jpg" data-tec="HS" data-cat="por"  name="HSPOVisage4" data-ex=".jpg" data-id="17">
+			</a>
+			<a href="#">
+					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" data-tec="ST" data-cat="NB" name="STNBVisage5" data-ex=".jpg" data-id="18">
+			</a>
+			<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDBOphoto.jpg" data-tec="HD" data-cat="BO"   name="HDBOphoto" data-ex=".jpg" data-id="28">
 				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" name="LPPAArbre" data-ex=".jfif" data-id="2">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" name="LPGRCercle" data-ex=".jpg" data-id="3">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" name="LPGRCercle2" data-ex=".jpg" data-id="4">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" name="PLPACiel" data-ex=".jpg" data-id="5">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" name="LPEVCoeur" data-ex=".jpg" data-id="6">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" name="HSGRFruit" data-ex=".jpg" data-id="7">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" name="LPNBLion" data-ex=".png" data-id="8">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" name="LPEVLove" data-ex=".jpg" data-id="9">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png" name="LPNBPanthere" data-ex=".png" data-id="10">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" name="HDPAPaysage" data-ex=".jpg"data-id="11">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" name="HDGRRog" data-ex=".jpeg" data-id="12">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" name="TSARTrain" data-ex=".jpg" data-id="13">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" name="HKPOVisage" data-ex=".jpg" data-id="14">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" name="LKPOVisage2" data-ex=".jpg" data-id="15">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" name="STPOVisage3" data-ex=".jpg" data-id="16">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSPOVisage4.jpg" name="HSPOVisage4" data-ex=".jpg" data-id="17">
-				</a>
-				<a href="#">
-						<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" name="STNBVisage5" data-ex=".jpg" data-id="18">
-				</a>
+		<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRphoto.jpg" data-tec="HD" data-cat="GR"   name="HDGRphoto" data-ex=".jpg" data-id="19">
+			</a>
+			<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDNBvisage.jpg" data-tec="HD" data-cat="NB"    name="HDNBvisage" data-ex=".jpg" data-id="20">
+			</a>
+			<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAcampagne.png" data-tec="HD" data-cat="PA"  name="HDPAcampagne" data-ex=".png" data-id="21">
+			</a>
+			<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOdoublevisage.jpg" data-tec="HK" data-cat="PO" name="HKPOdoublevisage" data-ex=".jpg" data-id="22">
+			</a>
+			<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPAcascade.jpg" data-tec="PL" data-cat="PA" name="PLPAcascade" data-ex=".jpg" data-id="23">
+			</a>
+			<a href="#">
+				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" name="TSPAvoiture" data-ex=".jpg" data-id="24">
+			</a>
+			<a href="#">
+			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDBOphoto.jpg" data-tec="HD" data-cat="BO"   name="HDBOphoto" data-ex=".jpg" data-id="25">
+			</a>
 			</div>
 			<div id="suiv" class="suiv"><img src="ress/imagesCarrou/fd1.png"></div>
 			<div id="prec" class="prec"><img src="ress/imagesCarrou/fd1.png"></div>
@@ -280,82 +314,12 @@
 		</div>
 
 		<!--carroussel responsiv-->
-		<div id="carroussel2" class="position-absolute end-0" style="display: none;">
+		<div id="carroussel2" class="position-fixed end-0" style="display: none;">
 			<div class="slider2">
 			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
+					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/1.jpg" name="1" data-ex=".jpg" data-id="1">
 			</a>
 			<a href="#">
-<<<<<<< Updated upstream
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA" data-target="html"  name="LPPAArbre" data-ex=".jfif">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPGRCercle2.jpg" data-tec="LP" data-cat="GR" data-target="html"  name="LPGRCercle2" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPACiel.jpg" data-tec="PL" data-cat="PA" data-target="html"  name="PLPACiel" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVCoeur.jpg" data-tec="LP" data-cat="EV" data-target="html"  name="LPEVCoeur" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSGRFruit.jpg" data-tec="HS" data-cat="GR" data-target="html"   name="HSGRFruit" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBLion.png" data-tec="LP" data-cat="NB" data-target="html"   name="LPNBLion" data-ex=".png">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPEVLove.jpg" data-tec="LP" data-cat="EV" data-target="html"   name="LPEVLove" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LPNBPanthere.png" data-tec="LP" data-cat="NB" data-target="html"  name="LPNBPanthere" data-ex=".png">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAPaysage.jpg" data-tec="HD" data-cat="PA" data-target="html"  name="HDPAPaysage" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRRog.jpeg" data-tec="HD" data-cat="GR" data-target="html"  name="HDGRRog" data-ex=".jpeg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSARTrain.jpg" data-tec="TS" data-cat="AR" data-target="html"   name="TSARTrain" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOVisage.jpg" data-tec="HK" data-cat="por" data-target="html"  name="HKPOVisage" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/LKPOVisage2.jpg" data-tec="LK" data-cat="por" data-target="html"  name="LKPOVisage2" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STPOVisage3.jpg" data-tec="ST" data-cat="por" data-target="html"  name="STPOVisage3" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HSpoVisage4.jpg" data-tec="HS" data-cat="por" data-target="html"  name="HSPOVisage4" data-ex=".jpg">
-			</a>
-			<a href="#">
-					<img class="redimension choixImg" src="ress/imagesCarrou/miniature/STNBVisage5.jpg" data-tec="ST" data-cat="NB" data-target="html"   name="STNBVisage5" data-ex=".jpg">
-			</a>
-			<a href="#">
-				<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDGRphoto.jpg" data-tec="HD" data-cat="GR" data-target="html"   name="HDGRphoto" data-ex=".jpg">
-		</a>
-		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDNBvisage.jpg" data-tec="HD" data-cat="NB" data-target="html"   name="HDNBvisage" data-ex=".jpg">
-		</a>
-		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HDPAcampagne.png" data-tec="HD" data-cat="PA" data-target="html"   name="HDPAcampagne" data-ex=".png">
-		</a>
-		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/HKPOdoublevisage.jpg" data-tec="HK" data-cat="PO" data-target="html"   name="HKPOdoublevisage" data-ex=".jpg">
-		</a>
-		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/PLPAcascade.jpg" data-tec="PL" data-cat="PA" data-target="html"   name="PLPAcascade" data-ex=".jpg">
-		</a>
-		<a href="#">
-			<img class="redimension choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" data-target="html"   name="TSPAvoiture" data-ex=".jpg">
-		</a>
-=======
 					<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/LPPAArbre.jfif" data-tec="LP" data-cat="PA" data-target="html"  name="LPPAArbre" data-ex=".jfif" data-id="2">
 			</a>
 			<a href="#">
@@ -424,7 +388,6 @@
 			<a href="#">
 				<img class="redimension2 choixImg" src="ress/imagesCarrou/miniature/TSPAvoiture.jpg" data-tec="TS" data-cat="PA" data-target="html"   name="TSPAvoiture" data-ex=".jpg"  data-id="24">
 			</a>
->>>>>>> Stashed changes
 		
 			</div>
 			<div id="suiv2" class="suiv2"><img src="ress/imagesCarrou/fd1.png"></div>
@@ -455,9 +418,9 @@
 	</div>
 
 	<!-- click categories -->
-	<div id="listeCategories">
+	<div id="listeCategories" class="changecolor">
                 
-		<div class="album py-5 bg-light">
+		<div class="album py-5 bg">
 		  <div class="container">
 	  
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -525,7 +488,7 @@
 					<p class="card-text">Graphisme</p>
 					<div class="d-flex justify-content-between align-items-center">
 					  <div class="btn-group">
-						<button type="button" class="btn btn-sm btn-outline-secondary graphisme ">View</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary graphisme ">Voir</button>
 					  </div>
 					</div>
 				  </div>
@@ -567,9 +530,9 @@
 		  
 <!-- click techniques -->
 
-  <div id="listeTechniques">
+  <div id="listeTechniques" class="changecolor">
 	  
-	<div class="album py-5 bg-light">
+	<div class="album py-5 bg">
 	  <div class="container">
   
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -637,7 +600,7 @@
 				<p class="card-text">Tilt Shift</p>
 				<div class="d-flex justify-content-between align-items-center">
 				  <div class="btn-group">
-					<button type="button" class="btn btn-sm btn-outline-secondary tiltshift">View</button>
+					<button type="button" class="btn btn-sm btn-outline-secondary tiltshift">Voir</button>
 				  </div>
 				</div>
 			  </div>
@@ -675,6 +638,8 @@
 	  </div>
 	</div>
   </div>
+
+  
 
   	<!--cdn script js pour fontawesome de mon compte -->
 	  <script src="https://kit.fontawesome.com/ba31fbaee6.js" crossorigin="anonymous"></script>

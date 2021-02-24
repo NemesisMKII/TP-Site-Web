@@ -36,6 +36,7 @@ html, body {
 	margin:0px;
 	padding:0px;
 	overflow:auto;
+    height: 100%;
 }
 body, input, textarea, button{
 	font-family: "RalewayLight";
@@ -81,7 +82,9 @@ ul {
 .showlist {
     max-height: 300px !important;
 }
-
+#generalMenu{
+    background-color:#323232 ;
+}
 #generalMenu span{
     color : #C00000;
 }
@@ -109,11 +112,7 @@ ul {
 }
 /* navbar CSS END */
 /* theme color start */
-.themecontainer li{
-    height: 25px;
-    cursor: pointer;
-    list-style: none;
-}
+
 .bg2{
     background:rgb(2, 2, 2);
 }
@@ -123,20 +122,7 @@ ul {
 .bg4{
     background: #323232;
 }
-.black{
-    background: black;
-    color: white;
-    border:rgb(255, 255, 255) solid 3px;
 
-}
-.white{
-    background: rgb(255, 255, 255);
-    border: rgb(3, 3, 3) solid 3px;
-}
-.grey{
-    background: #323232;
-    border: rgb(255, 255, 255) solid 3px;
-}
 /* theme color end*/
 
 
@@ -170,32 +156,33 @@ main{
 #carroussel{
 	z-index:11;
 	overflow:hidden;
-	position: fixed;
-	bottom:0px;
+	position: absolute;
+	bottom:0px !important;
 	left:0px;
-	right:0px;
 	height: 17%;
 	width: 100%;
-	background: #807C7C
-
-/*fleches*/	
 }
+/*fleches*/	
+
 #suiv img{
 	cursor: pointer;
 	position: absolute;
-	top: 0;
+	bottom: 25%;
+	top: 25%;
 	right: 0;
-	height: 100%;
+	height: 50%;
 	width: 50px;
+
 
 
 }
 #prec img{
 	cursor: pointer;
 	position: absolute;
-	top: 0;
+	bottom: 25%;
+	top: 25%;
 	left: -0;
-	height: 100%;
+	height: 50%;
 	width: 50px;
 	transform: rotate(180deg);
 }
@@ -209,18 +196,26 @@ main{
 
 
 /*class qui redimensionne les images dans la div slide*/
+
 .redimension{
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 95px;
+    max-height: 100%;
 }
 
 /*le slide*/
 
 .slider{
-	position:absolute;
-	top: 16px;
+	position:relative;
+	bottom:0px;
 	width: 5000px;
 	height: 100%;
+    background: url(img/pelpel.gif);
+    background-repeat: repeat-x;
+    background-size: contain;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
 
 }
 
@@ -228,14 +223,14 @@ main{
 	/*les encadrés des images*/
 
 #carroussel a{
-	padding: 0 20px;
+
 }
 #carroussel a img{
-	border: solid 4px #060606;
+	border: solid 6px #060606;
 	vertical-align:text-top;
 }
 #carroussel a img:hover{
-	border: solid 4px #F20707
+	border: solid 4px #C00000;
 }
 
 /*responsive carousel-----------------------*/
@@ -245,7 +240,7 @@ main{
     top: 0px;
     height: 100%;
     width: 17%;
-    background: #807C7C
+
 }
 /*fleches*/ 
 
@@ -253,9 +248,11 @@ main{
     cursor: pointer;
     position: absolute;
     bottom: 0;
+    right:25%;
+    left:25%;
     transform: rotate(90deg);
     height: 50px;
-    width: 100%;
+    width: 50%;
 
 
 }
@@ -263,8 +260,10 @@ main{
     cursor: pointer;
     position: absolute;
     top: 0;
+    right:25%;
+    left:25%;
     height: 50px;
-    width: 100%;
+    width: 50%;
     transform: rotate(-90deg);
 }
 /*passage de la souris, decalage flèche*/
@@ -278,14 +277,26 @@ main{
 
 /*class qui redimensionne les images dans la div slide*/
 
-
+.redimension2{
+    width: 73%;
+    height: 120px;
+    max-width: 100%;
+}
 /*le slide*/
 .slider2{
     position: relative;
-    right: 10px;
+    right: 0px;
     /*top:-50px;*/
     height: 5000px;
     width: 100%;
+    background: url(img/pelpel2.gif);
+    background-repeat: repeat-y;
+    background-size: contain;
+
+    background-size:100%;
+
+
+
 
 }
 /*les images/
@@ -295,11 +306,11 @@ main{
     padding: 0 20px;
 }
 #carroussel2 a img{
-    margin-top: 20px;
-    border: solid 4px #060606
+    margin-top: 3px;
+    border: solid 6px #060606
 }
 #carroussel2 a img:hover{
-    border: solid 4px #F20707
+    border: solid 4px #C00000;
 }
 
 
@@ -322,12 +333,13 @@ main{
     padding-left: 5%;
 }
 #zoom img{
-    border: solid 4px #060606
+    border: outset 10px #C00000;
+    box-shadow: 0px 4px 4px #1c1a19;
 }
 /*overlay*/
  .overlay {
             position: absolute;
-            z-index: 3;
+            z-index: 21;
             display: none;
             width: 100%;
             height: 100%;
@@ -364,7 +376,7 @@ main{
         width: 100% !important;
     }
 
-    header #logoDIV {
+    header #titlelogo {
         height: 75%;
     }
     
@@ -413,7 +425,8 @@ main{
     }
     .flex-md-column {
         flex-direction: column !important;
-      
+    }
+    
     header ul {
         height: 100%;
     }
@@ -432,7 +445,7 @@ main{
         height: 350px;
     }
 
-    #logoDIV {
+    #titlelogo {
         width: 100%;
         position: absolute;
     }
@@ -447,6 +460,19 @@ main{
 
     #carroussel2 {
         width: 17%;
+    }
+
+    #generalMenu {
+        height: 100%;
+        display: block;
+    }
+
+    #accordeon {
+        flex-direction: column;
+    }
+
+    .navbar-expand-md {
+        flex-wrap: wrap;
     }
 }
 
@@ -472,7 +498,7 @@ main{
         overflow-wrap: break-word;
     }
 
-    #logoDIV {
+    #titlelogo {
         width: 100%;
         position: absolute;
     }
@@ -483,6 +509,11 @@ main{
 
     .album {
         margin-bottom: auto;
+    }
+
+    #generalMenu {
+        height: 100%;
+        display: block;
     }
 }
 
@@ -504,10 +535,25 @@ main{
     #technique_list, #categories_list, #themeList {
         display: none;
     }
+    .slider{
+        position:relative;
+        bottom:0px;
+        width: 5000px;
+        height: 100%;
+        background: url(img/pelpel.gif);
+        background-repeat: repeat-x;
+        background-size: contain;
+        padding-top: 20px;
+
+    }
 }
+/*responsiv version smartphone paysage*/
+/*@media (orientation: landscape) and (max-device-width : 640px) {
+
+}*/
 /* css formulaire */
 #pageformulaire{
-    background-image: url(photo.jpg);
+    background-image: url(paysage.jpg);
     background-size: cover;
     background-repeat:no-repeat;
 }
