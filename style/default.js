@@ -1,17 +1,21 @@
-$(document).ready (() => {
+$(document).ready (() => { 
+    /* FONCTION DE GESTION DES ERREURS DE CHARGEMENT D'IMAGES*/
+    $("img").on("error", function () {
+        $(this).attr("src", "/ress/nothumb.jpg"); 
+        $(this).bind( "click", function() {
+           alert("Image introuvable");
+        });
+    });
+
 
     $('.accordeon-expand-btn').on('click', function () {
-
         var otherDiv = $('#accordeon > .accordeon-expand-content'); // recupere toutes les div
         var parentBtnClicked = $(this).parent();
-    
         if (parentBtnClicked.hasClass('col-md-6')) {
             parentBtnClicked.children('.collapse').collapse('toggle')
             parentBtnClicked.removeClass('col-md-6');
             parentBtnClicked.addClass('col-md-1');
-           
             console.log("je suis ici");
-    
         } else {
             if (otherDiv.hasClass('col-md-6')) {
                 otherDiv.children('.collapse').collapse('hide')
@@ -22,10 +26,7 @@ $(document).ready (() => {
                 parentBtnClicked.addClass('col-md-6');
                 parentBtnClicked.children('.collapse').collapse('toggle')
                 console.log("je suis la");
-    
-    
             } else {
-    
                 parentBtnClicked.removeClass('col-md-1');
                 parentBtnClicked.addClass('col-md-6');
                 parentBtnClicked.children('.collapse').collapse('toggle');
@@ -828,22 +829,27 @@ $(window).resize(function(){
 function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fct de la taille de l'écran
 
     var largeurWindow = $(window).width()
-	if (largeurWindow < 992) {
+	if (largeurWindow < 992) { // à droite
 		$('#carroussel').hide()
 		$('#carroussel2').show()
 		$('div#col1').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
 		$('div#col2').css("padding-right","17%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-    }else {
-      $('#carroussel2').hide()
-      $('#carroussel').show() 
-      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+        $('main').css("border","0px");
+    }else { // en bas
+        $('#carroussel2').hide()
+        $('#carroussel').show() 
+        $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+        $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+        $('main').css("border","0px");
     }
-    if (largeurWindow < 570) {
-      $('#carroussel2').hide()
-      $('#carroussel').show()
-      $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-		  $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
+    if (largeurWindow < 570) { // en bas
+        $('#carroussel2').hide()
+        $('#carroussel').show()
+        $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
+        $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
+        var hauteurcarrou = document.querySelector("#carroussel").offsetHeight;
+        //alert(hauteurcarrou);
+        $('main').css("border",hauteurcarrou+"px solid transparent")
     }
 }
 //Ajout des miniatures
