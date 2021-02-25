@@ -1,9 +1,14 @@
+html {
+    height: 100%;
+}
+
 body {
     background-color: #323232;
+    height: 97%;
 }
 
 main {
-    height: 550px;
+    height: 95%;
     width: 100%;
     position: relative;
     padding: 1.5%;
@@ -28,7 +33,6 @@ aside {
 
 .maincontainer {
     width: 83.5%;
-    overflow: scroll;
 }
 
 aside ul li {
@@ -49,8 +53,33 @@ img {
 
 #photocontainer {
     flex-wrap: wrap;
+    height: 80%;
 }
 
-.testdiv {
-    height: 84%;
+#albumcontainer {
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.album {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.contentdiv {
+    height: 85%;
+}
+
+.overflowscroll {
+    overflow-y: scroll;
+}
+
+.selection {
+    border: 3px solid red;
+}
+
+.fit {
+    height: 100%;
 }
