@@ -413,6 +413,7 @@ var categoriesTemplate =
 //fonction au click SUR categorie
     $("#catego").click(function (e){
         e.preventDefault()
+     //   window.location.replace('index.html#listeCategories')
         $("main").hide()
         $("#listeCategories").show()
         $("#listeTechniques").hide() 
@@ -576,14 +577,15 @@ $(".evenement").click(function(e){
 // FONCTION CLICK TECH
 $("#tech").click(function (e){
     e.preventDefault()
+  //  window.location.replace('index.html#listeTechniques')
     $("main").hide()
     $("#listeTechniques").show()
     $("#listeCategories").hide() 
     $("#carroussel").hide()
-    
 })
 // vider et cacher listetechniques
 function techniquesDiv(){
+    //$("#pageformulaire").hide()
     $("main").empty()
     $("main").show() 
     $("#listeTechniques").hide() 
@@ -591,6 +593,7 @@ function techniquesDiv(){
     $("footer img[data-cat]").parent().show();   // pour afficher les images du  footer 
     zoomImg()
     fullScreen()
+  
    
    }
 
@@ -727,7 +730,7 @@ $(".lightpainting").click(function(e){
         $('#zoom').hide()
     })
 }) 
-// END categories et techniquess fonction
+// END categories et techniquess fonction*/
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //info photo
 /*
@@ -964,6 +967,7 @@ function fullScreen(){
 } 
 //End footer fct
 //--------------------------------------------------------------------------------------------
+
 function captcha_new(){
     var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
     var chiffre2 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9

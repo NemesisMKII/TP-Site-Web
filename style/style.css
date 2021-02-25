@@ -57,10 +57,7 @@ b{
 */
 
 /* navbar CSS START */
-header a {
-    text-decoration: none;
-    color: black;
-}
+
 
 header {
     z-index: 11;
@@ -565,9 +562,6 @@ main{
         width: 100% !important;
     }
 
-    #technique_list, #categories_list, #themeList {
-        display: none;
-    }
     .slider{
         position:relative;
         bottom:0px;
@@ -589,6 +583,7 @@ main{
     background-image: url(paysage.jpg);
     background-size: cover;
     background-repeat:no-repeat;
+    margin-top: 2%;
 }
 #formulaire{
     text-align: center;
@@ -601,22 +596,25 @@ main{
 #titreContact {
     background-color: #323232 ;
     opacity: 0.70;
-   
     color: white;
     padding: 0%;
-    
+  
 }
 #formulaire p{
     padding: 2%;
 }
 #listeCategories{
     display: none;
+    margin-top: 2%;
 }
 #listeTechniques{
     display:none;
+    margin-top: 2%;
+
 }
 /* border info photo*/
 #infophoto{
     border: outset 10px #C00000;
     box-shadow: 0px 4px 4px #1c1a19;
+    font-family: RalewayRegular;
 }
