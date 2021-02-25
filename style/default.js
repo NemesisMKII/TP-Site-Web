@@ -468,7 +468,7 @@ var categoriesTemplate =
         CategorieDiv() 
         var texte = categoriesTemplate
         var nom = "Paysage"
-        var image = "PAphoto.jpg"
+        var image = "photo/PAphoto.jpg"
         var textecat = "Les paysages n’ont pas seulement enthousiasmés les grands peintres. D’innombrables photographes mondialement connus ont traité ce sujet fascinant. Dès l’Antiquité, des genres picturaux apparaissent. Ainsi, il existait en Grèce de grands portraitistes comme Zeuxis ou Appelle. Mais le paysage n’était pas à cette époque un genre pictural autonome. Il pouvait servir d’arrière-plan ou d’élément décoratif mais ne constituait pas en lui-même un sujet. Il faut attendre le 19e siècle pour que le paysage s’affirme comme un genre pictural dominant. Au paysage réaliste des peintres anglais ou des français de l’École de Barbizon succèdera le paysage impressionniste."
         texte = texte.replace(/%nomcategorie%/g, nom)
         texte = texte.replace(/%textecategorie%/g , textecat)
@@ -487,7 +487,7 @@ var categoriesTemplate =
         CategorieDiv() 
         var texte = categoriesTemplate
         var nom = "Architecture"
-        var image = "ARphoto.jpg"
+        var image = "photo/ARphoto.jpg"
         var textecat = "La photographie d'architecture, est l’un des principaux thèmes de la photographie. Elle consiste à réaliser des photographies d’édifices, cette restitution pouvant être fidèle, ou magnifiée selon le désir, la volonté et la sensibilité artistique du photographe"
         texte = texte.replace(/%nomcategorie%/g, nom)
         texte = texte.replace(/%textecategorie%/g , textecat)
@@ -506,7 +506,7 @@ $(".graphisme").click(function(e){
     CategorieDiv() 
     var texte = categoriesTemplate
     var nom = "Graphisme"
-    var image = "GRphoto.jpg"
+    var image = "photo/GRphoto.jpg"
     var textecat = "Le graphisme est une discipline qui consiste à créer, choisir et utiliser des éléments graphiques (dessins, caractères typographiques, photos, couleurs, etc.) ... Le designer graphique est alors un médiateur qui agit sur les conditions de réception et d'appropriation des informations et des savoirs qu'il met en forme"
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -525,7 +525,7 @@ $(".evenement").click(function(e){
     CategorieDiv() 
     var texte = categoriesTemplate
     var nom = "Evenement"
-    var image = "EVphoto.jpg"
+    var image = "photo/EVphoto.jpg"
     var textecat = "L’art de la photographie ne s’improvise pas. Entre lumières, positions, angles, cadre, vous mettre en valeur, vous et vos événements. Et au-delà de cette mise en valeur, il est votre référent pour votre image et vos souvenirs."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -546,7 +546,7 @@ $(".evenement").click(function(e){
     CategorieDiv() 
     var texte = categoriesTemplate
     var nom = "Boudoir"
-    var image = "BOphoto.jpg"
+    var image = "photo/BOphoto.jpg"
     var textecat = "La photo boudoir mêle féminité, douceur, sensualité et émotion. A la différence de la photo de nu, les photos boudoir sont généralement prises dans un décor naturel, en studio, en chambre ou dans votre salon afin de vous représenter dans votre univers."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -591,7 +591,7 @@ function techniquesDiv(){
     techniquesDiv()
     var texte = categoriesTemplate
     var nom = "HDR"
-    var image = "HDphoto.png"
+    var image = "photo/HDphoto.png"
     var textecat = "Le HDR (abréviation du terme High Dynamic Range signifiant grande plage dynamique) désigne des formats et des standards de vidéos et d'images numériques permettant de représenter des niveaux de luminosités plus élevés que la limite de 100 nits des contenus du standard SDR. Le HDR permet d'augmenter la gamme dynamique pouvant être enregistrée dans une image ou une vidéo numérique et permet d'obtenir des hautes-lumières plus lumineuses, plus détaillées et plus saturées en couleur. Les technologies liées au HDR permettent également d'améliorer le détail dans les zones sombres."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -610,7 +610,7 @@ $(".highkey").click(function(e){
     techniquesDiv() 
     var texte = categoriesTemplate
     var nom = "High Key/Low Key"
-    var image = "HKphoto.jpg"
+    var image = "photo/HKphoto.jpg"
     var textecat = "Une photo High-key est une image qui présente une forte prédominance des teintes claires. Légèrement surexposé sans pour autant être «brûlé » et dépourvu d’ombres, le portrait high-key se présente comme une image très claire, presque blanche sur laquelle, seuls quelques reliefs ou détails stratégiques plus foncés sont mis en évidence. Le portrait high-key propose une vision légère, romantique, douce et pure d’un visage en lumière diffuse et uniforme.<br>Une photo Low-key, quant à elle, est une image qui présente une prédominance des teintes foncées. Volontairement sous-exposé, le portrait low-key regroupe plusieurs styles d’images dont les visuels en clair-obscur. Réalisé en général avec une seule source lumineuse, le portrait low-key se présente comme une image noire sur laquelle, seuls quelques reliefs ou détails stratégiques ont été mis en lumière. Au contraire du high-key, le portrait low-key propose une vision caractérisée d’un visage en lumière contrastée."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -627,7 +627,7 @@ $(".highkey").click(function(e){
 $(".highspeed").click(function(e){
     e.preventDefault()   
     techniquesDiv()
-    var image = "HSphoto.jpg"
+    var image = "photo/HSphoto.jpg"
     var texte = categoriesTemplate
     var nom = "High Speed"
     var textecat = "La photographie High Speed est une approche technique répondant à deux enjeux : une durée d'exposition aussi courte que possible et un déclenchement précis dans le temps pour le synchroniser avec le phénomène à saisir. Le but est de capter des phénomènes trop rapides pour être perçus à l'œil nu."
@@ -648,7 +648,7 @@ $(".studio").click(function(e){
     techniquesDiv()
     var texte = categoriesTemplate
     var nom = "Studio"
-    var image = "STphoto.jpg"
+    var image = "photo/STphoto.jpg"
     var textecat = "Profitez de la qualité studio professionnelle, composé de plusieurs flashs avec diffuseur de lumière et de fonds unis ou imprimés et une multitude d'accessoires et vêtements."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -667,7 +667,7 @@ $(".tiltshift").click(function(e){
     techniquesDiv()
     var texte = categoriesTemplate
     var nom = "Tilt Shift"
-    var image = "TSphoto.jpg"
+    var image = "photo/TSphoto.jpg"
     var textecat = "Le Tilt-Shift, plus communément appelé effet maquette, est à la base un effet créé par les objectifs à bascule. Il permet -grâce à un flou qui entoure le sujet- de donner une impression de miniaturisation à une photo."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -686,7 +686,7 @@ $(".poselongue").click(function(e){
     techniquesDiv()
     var texte = categoriesTemplate
     var nom = "Pose Longue"
-    var image = "PLphoto.jpg"
+    var image = "photo/PLphoto.jpg"
     var textecat = "Une pose longue consiste, en photographie, à utiliser, de jour, un temps de pose assez long pour capturer nettement les éléments fixes d'une scène tout en supprimant les éléments en mouvement ou en les rendant flous et, de nuit, à transformer les sources lumineuses mobiles en trainées lumineuses"
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -705,7 +705,7 @@ $(".lightpainting").click(function(e){
     techniquesDiv() 
     var texte = categoriesTemplate
     var nom = "Light Painting"
-    var image = "LPphoto.jpg"
+    var image = "photo/LPphoto.jpg"
     var textecat = "Le light painting est une technique visuelle de prise de vue photographique fondée sur la captation de la lumière, peu importe sa forme et son intensité, sur un capteur optique ou numérique. Cela permet de fixer la lumière dans un état temporel et d’espace."
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
@@ -720,6 +720,63 @@ $(".lightpainting").click(function(e){
 }) 
 // END categories et techniquess fonction
 //--------------------------------------------------------------------------------------------------------------------------------------------
+//info photo
+/*
+var infoTemplate = `
+<div id="col2">
+<div id="centerdiv" class="h-100">			
+<div id="infophoto">
+<div class="row mt-3">
+
+    <div class="col col-md-6">
+        <ul>
+            <li>Date de création :  %date% </li>
+            <li>Modèle du boitier reflex utilisé : %modele%</li>
+            <li>Objectif utilisé :%objectif% </li>
+            <li>Longueur de la focale :%longueur% </li>
+        
+            </ul>
+    </div>
+    <div class="col col-md-6 ">
+    
+        <ul>
+          
+            <li>Temps d'exposition : %exposition% </li>
+            <li>Iso : %iso%</li>
+            <li>Utilisation du flash : %flash%</li>
+            </ul>
+    </div>
+</div>
+</div>
+</div>
+</div>
+`
+
+
+$('.choixImg').click(function(e){
+    e.preventDefault()
+    console.log("infophoto")
+    var texte = infoTemplate 
+    var idImg = $(".slider img").attr("data-id")
+    var date = "20/09/2020"
+    var modele = "Nikon D850"
+    var objectif = "EF"
+    var longueur ="50 mm"
+    var exposition = "2 sec"
+    var iso ="3200"
+    var flash = "oui"
+    texte = texte.replace(/%modele%/g, modele)
+    texte = texte.replace(/%objectif%/g , objectif)
+    texte = texte.replace(/%longueur%/g , longueur)
+    texte = texte.replace(/%exposition%/g, exposition)
+    texte = texte.replace(/%iso%/g , iso)
+    texte = texte.replace(/%flash%/g , flash)
+    $("main").append("")
+    $("main").append(texte) 
+   
+})
+*/
+// end info photo-----------------------------------------------------------------------------------
 //FOOTER
 
 
@@ -870,8 +927,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
 		 $('.img-full').attr("src",way+dossier+name+'max'+fileExtension) //reecris le src de pour le zoom avec les diffrents attributs
 
 		 comments_show($(this).attr("data-id")); // affichage en fonction de l'id de la photo (data-id)
-		 $("div#zoom img").attr("data-id", $(this).attr("data-id")); // on reaffecte le data-id de #zoom pour les commentaires
-
+		 
 	})
 }
 //fullScreen
