@@ -179,27 +179,25 @@ $(document).ready(() => {
 
         $('#form').submit((e) => {
             e.preventDefault()
+            var urlref = $('#photoURL').val().split('/')
+            urlref = urlref[urlref.length - 1]
+            console.log(urlref);
             if ($('#technique').val().length == 0 || $('#category').val().length == 0) {
                 alert('erreur')
             } else {
-                if (photolist.length == 0) {
-                    dataid = 1
-                } else {
-                    dataid++
-                }
                 var photo = {
-                    urlminiature: $('#photoURL').val().split('/')[2],
+                    urlminiature: urlref,
                     datatec: $('#technique').val(),
                     datacat: $('#category').val(),
                     datatarget: 'html',
-                    name: $('#photoURL').val().split('/')[2].split('.')[0],
-                    dataex: '.' + $('#photoURL').val().split('/')[2].split('.')[1],
-                    data_id: $('#photoURL').val().split('/')[2]
+                    name: urlref.split('.')[0],
+                    dataex: '.' + urlref.split('.')[1],
+                    data_id: urlref
                 }
                 photolist.push(photo)
                 localStorage.setItem('photolist', JSON.stringify(photolist))
-                location.reload()
             }
+            location.reload()
         })
     }
 

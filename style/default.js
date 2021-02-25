@@ -4,7 +4,7 @@ var mincarouselTEMPLATE = `
 </a>
 `
 
-$(document).ready (() => {
+$(document).ready (() => {  
 
     if (localStorage.getItem('photolist')) {
         var photolist = JSON.parse(localStorage.getItem('photolist'))
@@ -17,7 +17,10 @@ $(document).ready (() => {
             carouselitem = carouselitem.replace(/%name%/g, photolist[photoitem].name)
             carouselitem = carouselitem.replace(/%ex%/g, photolist[photoitem].dataex)
             carouselitem = carouselitem.replace(/%dataid%/g, photolist[photoitem].data_id)
+            carouselitem2 = carouselitem
+            carouselitem2 = carouselitem2.replace(/redimension/g, 'redimension2')
             $('.slider').prepend(carouselitem)
+            $('.slider2').prepend(carouselitem2)
         }   
     }
 
