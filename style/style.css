@@ -368,7 +368,7 @@ main{
 @media (min-width: 992px) {
     /*background pc*/
    body{
-    background-color: white;
+        background-color: white;
     }
     /* NAVBAR */
 
@@ -380,7 +380,10 @@ main{
     header #titlelogo {
         height: 75%;
     }
-    
+    main{
+        margin-top:5%;
+        overflow-y:auto;
+    }
     #categories, #techniques {
         width: 15%;
     }
@@ -437,6 +440,9 @@ main{
         width: 17%;
         height: 100%;
         float: left;
+    }
+    nav{
+        height:150px;
     }
     .flex-md-column {
         flex-direction: column !important;
@@ -510,7 +516,7 @@ main{
     /* NAVBAR */
     header {
         width: 17% !important;
-        height: 100%;
+
     }
 
     header ul {
@@ -547,6 +553,7 @@ main{
     }
     main{
         margin-left:17%;
+        margin-top:50px;
     }
 }
 
