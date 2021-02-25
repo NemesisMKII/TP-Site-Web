@@ -1,4 +1,12 @@
-$(document).ready (() => { 
+$(document).ready (() => {
+    $('#boudoiralert').hide()
+
+    $('#boudoir').hover(() => {
+        ($(window).width() >= 992 ? $('#boudoiralert').fadeIn(200) : 0)
+    }, () => {
+        ($(window).width() >= 992 ? $('#boudoiralert').fadeOut(200) : 0)
+    })
+  
     /* FONCTION DE GESTION DES ERREURS DE CHARGEMENT D'IMAGES*/
     $("img").on("error", function () {
         $(this).attr("src", "/ress/nothumb.jpg"); 
