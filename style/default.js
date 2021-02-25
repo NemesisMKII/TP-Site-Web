@@ -35,7 +35,7 @@ $(document).ready (() => {
     $("img").on("error", function () {
         $(this).attr("src", "/ress/nothumb.jpg"); 
         $(this).bind( "click", function() {
-           alert("Image introuvable");
+           console.log("Image introuvable");
         });
     });
 
@@ -929,7 +929,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
         $('#carroussel').show() 
         $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
         $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-        $('main').css("border","0px");
+        $('main').css("border-bottom","0px");
     }
     if (largeurWindow < 570) { // en bas
         $('#carroussel2').hide()
@@ -938,7 +938,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
         $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
         var hauteurcarrou = document.querySelector("#carroussel").offsetHeight;
         //alert(hauteurcarrou);
-        $('main').css("border",hauteurcarrou+"px solid transparent")
+        $('main').css("border-bottom",hauteurcarrou+"px solid transparent")
     }
 }
 //Ajout des miniatures
