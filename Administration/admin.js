@@ -1,25 +1,5 @@
 /* PAGE TEMPLATES START */
 
-var photosShowTEMPLATE = `
-<div class='d-flex justify-content-around mt-2 overflowscroll' id="photocontainer">
-    <img src="../ARphoto.jpg" class='m-2'/>
-    <img src="../BOphoto.jpg" class='m-2'/>
-    <img src="../EVphoto.jpg" class='m-2'/>
-    <img src="../GRphoto.jpg" class='m-2'/>
-    <img src="../HDphoto.png" class='m-2'/>
-    <img src="../HKphoto.jpg" class='m-2'/>
-    <img src="../HSphoto.jpg" class='m-2'/>
-    <img src="../GRphoto.jpg" class='m-2'/>
-    <img src="../LPphoto.jpg" class='m-2'/>
-    <img src="../NBphoto.jpg" class='m-2'/>
-    <img src="../PAphoto.jpg" class='m-2'/>
-    <img src="../PLphoto.jpg" class='m-2'/>
-    <img src="../POphoto.jpg" class='m-2'/>
-    <img src="../STphoto.jpg" class='m-2'/>
-    <img src="../TSphoto.jpg" class='m-2'/>
-</div>
-`
-
 var homeTEMPLATE = `
     <h2 class="text-center">Panel de gestion administrateur</h2>
     <div class='m-3 mt-4 bg-success contentdiv'>
@@ -29,7 +9,12 @@ var homeTEMPLATE = `
 var photosTEMPLATE = `
     <h2 class="text-center">Gestion des photos</h2>
     <div class='m-3 mt-4 border border-dark contentdiv overflowscroll'>
-        ${photosShowTEMPLATE}
+        <div class='d-flex justify-content-around mt-2 overflowscroll' id="photocontainer">
+        </div>
+    </div>
+    <div class='d-flex justify-content-center'>
+        <button class='btn btn-warning mx-1' id="addphoto" >Ajouter une photo ...</button>
+        <button class='btn btn-warning ms-1' id="delphoto" >Supprimer une photo ...</button>
     </div>
 `
 
@@ -62,6 +47,14 @@ $(document).ready(() => {
     } else {
         var albumlist = JSON.parse(localStorage.getItem('albumlist'))
     }
+    if (!localStorage.getItem('photolist')) {
+        var dataid;
+        var photolist = []
+        localStorage.setItem('photolist', JSON.stringify(photolist))
+    } else {
+        var photolist = JSON.parse(localStorage.getItem('photolist'))
+        var dataid = photolist.length + 1
+    }
 
     var page = window.location.href.split('?')[1]
     if (page != undefined) {
@@ -77,6 +70,11 @@ $(document).ready(() => {
                     break
                 case 'photos':
                     $('main div.maincontainer').append(photosTEMPLATE)
+                    for (photoitem in photolist) {
+                        $('#photocontainer').append(`
+                        <img src="../ress/imagesCarrou/miniature/${photolist[photoitem].urlminiature}" data-tec="${photolist[photoitem].datatec}" data-cat="${photolist[photoitem].datacat}" data-target="${photolist[photoitem].datatarget}"  name="${photolist[photoitem].name}" data-ex="${photolist[photoitem].dataex}" data-id="${photolist[photoitem].data_id}">
+                        `)
+                    }
                     break
                 case 'asklogin':
                     $('main div.maincontainer').append(askloginTEMPLATE)
@@ -104,6 +102,148 @@ $(document).ready(() => {
 
     $('#addalbum').click(addAlbum)
     $('#delalbum').click(delAlbum)
+    $('#addphoto').click(addPhoto)
+    $('#delphoto').click(delPhoto)
+
+    function addPhoto() {
+        var photoloaded = false
+        $('.maincontainer').empty()
+        $('.maincontainer').append(`
+        <h2 class="text-center">Ajouter une photo </h2>
+        <div class="m-3 mt-4 border border-dark contentdiv overflowscroll">
+            <form action="" class="d-flex p-5" id="form">
+                <div class="d-block mx-auto" id="photoloaddiv">
+                    <p class="mb-1">Entrez l'URL de la photo (miniature)</p>
+                    <input type="text" placeholder="Entrez l'URL ..." class="mb-2" id="photoURL">
+                    <input type="button" value="charger photo" id="photoload">
+                </div>
+                <div class="d-flex">
+                    <div class="row justify-content-around">
+                        <div class="col">
+                            <p class="mb-1">Catégorie:</p>
+                            <input type="text" class="mb-2" id="category" placeholder="initiales CAT MAJ ex: AR">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Technique:</p>
+                            <input type="text" class="mb-2" id="technique" placeholder="initiales TEC MAJ ex: AR">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Date de prise de la photo:</p>
+                            <input type="text" class="mb-2" id="date" placeholder="inutile">
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col">
+                            <p class="mb-1">Focale:</p>
+                            <input type="text" class="mb-2" id="focale" placeholder="inutile">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Temps d'exposition:</p>
+                            <input type="text" class="mb-2" id="exposition" placeholder="inutile">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Iso:</p>
+                            <input type="text" class="mb-2" id="iso" placeholder="inutile">
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col">
+                            <p class="mb-1">Utilisation du flash:</p>
+                            <input type="text" class="mb-2" id="flash" placeholder="inutile">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Longueur de la focale:</p>
+                            <input type="text" class="mb-2" id="focalelength" placeholder="inutile">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="d-block mx-auto">
+            </form>
+        </div>
+        `)
+
+        $('#photoload').click(() => {
+            $('#photoload').unbind('click')
+            if (photoloaded) {
+                $('#photoloaddiv').empty()
+                $('#photoloaddiv').after(`
+                <img src="${$('#photoURL').val()}" alt="" class="row">
+                `)
+            } else {
+                $('#photoloaddiv').after(`
+                <img src="${$('#photoURL').val()}" alt="" class="row">
+                `)
+            }
+            
+        })
+
+        $('#form').submit((e) => {
+            e.preventDefault()
+            if ($('#technique').val().length == 0 || $('#category').val().length == 0) {
+                alert('erreur')
+            } else {
+                if (photolist.length == 0) {
+                    dataid = 1
+                } else {
+                    dataid++
+                }
+                var photo = {
+                    urlminiature: $('#photoURL').val().split('/')[2],
+                    datatec: $('#technique').val(),
+                    datacat: $('#category').val(),
+                    datatarget: 'html',
+                    name: $('#photoURL').val().split('/')[2].split('.')[0],
+                    dataex: '.' + $('#photoURL').val().split('/')[2].split('.')[1],
+                    data_id: $('#photoURL').val().split('/')[2]
+                }
+                photolist.push(photo)
+                localStorage.setItem('photolist', JSON.stringify(photolist))
+                location.reload()
+            }
+        })
+    }
+
+    function delPhoto() {
+        var supimage = []
+        $('.contentdiv').prepend(`
+        <h2 class="text-center">Choisissez les photos à supprimer</h2>
+        `)
+        $('.contentdiv').append(`
+        <button class="btn btn-success d-block mx-auto" id="confirm">Confirmer</button>
+        `)
+        $('img').click((e) => {
+            var photo = $(e.target)
+            var isalreadyselected = false
+            console.log(photo.attr('name'));
+            for (item in supimage) {
+                if (photo.attr('name') == supimage[item].name) {
+                    photo.removeClass('selection')
+                    isalreadyselected = true
+                    supimage.splice(supimage[item], 1)
+                }
+            }
+            if (isalreadyselected == false) {
+                for (photoitem in photolist) {
+                    if (photo.attr('name') == photolist[photoitem].name) {
+                        photo.addClass('selection')
+                        supimage.push(photolist[photoitem])
+                    }
+                }
+            }
+        })
+
+        $('#confirm').click(() => {
+            for (item in supimage) {
+                for (photoitem in photolist) {
+                    if (supimage[item].name == photolist[photoitem].name) {
+                        photolist.splice(photolist[photoitem], 1)
+                    }
+                }
+            }
+            localStorage.setItem('photolist', JSON.stringify(photolist))
+            location.reload()
+        })
+    }
 
     function addAlbum() {
         var album = []
@@ -116,10 +256,17 @@ $(document).ready(() => {
                 <input type="text" placeholder="Entrez un nom d'album ..." id="albumtitle"/>
             </div>
             <h4 class="text-center mt-3">Choisissez une ou plusieurs photos</h4>
-            ${photosShowTEMPLATE}
+            <div class='d-flex justify-content-around mt-2 overflowscroll' id="photocontainer">
+            </div>
         </div>
         <button class="btn btn-success d-block mx-auto" id="confirm">Confirmer</button>
         `)
+
+        for (photoitem in photolist) {
+            $('#photocontainer').append(`
+            <img src="../ress/imagesCarrou/miniature/${photolist[photoitem].urlminiature}" data-tec="${photolist[photoitem].datatec}" data-cat="${photolist[photoitem].datacat}" data-target="${photolist[photoitem].datatarget}"  name="${photolist[photoitem].name}" data-ex="${photolist[photoitem].dataex}" data-id="${photolist[photoitem].data_id}">
+            `)
+        }
         
         $('img').click((e) => {
             var photo = $(e.target)
