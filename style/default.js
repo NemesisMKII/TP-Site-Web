@@ -1,4 +1,28 @@
+var mincarouselTEMPLATE = `
+<a href="#">
+    <img class="redimension choixImg" src="ress/imagesCarrou/miniature/%urlmin%" data-tec="%tec%" data-cat="%cat%" data-target="%target%"  name="%name%" data-ex="%ex%" data-id="%dataid%">
+</a>
+`
+
 $(document).ready (() => {
+
+    if (localStorage.getItem('photolist')) {
+        var photolist = JSON.parse(localStorage.getItem('photolist'))
+        for (photoitem in photolist) {
+            var carouselitem = mincarouselTEMPLATE
+            carouselitem = carouselitem.replace(/%urlmin%/g, photolist[photoitem].urlminiature)
+            carouselitem = carouselitem.replace(/%tec%/g, photolist[photoitem].datatec)
+            carouselitem = carouselitem.replace(/%cat%/g, photolist[photoitem].datacat)
+            carouselitem = carouselitem.replace(/%target%/g, photolist[photoitem].datatarget)
+            carouselitem = carouselitem.replace(/%name%/g, photolist[photoitem].name)
+            carouselitem = carouselitem.replace(/%ex%/g, photolist[photoitem].dataex)
+            carouselitem = carouselitem.replace(/%dataid%/g, photolist[photoitem].data_id)
+            $('.slider').prepend(carouselitem)
+        }   
+    }
+
+    
+
     $('#boudoiralert').hide()
 
     $('#boudoir').hover(() => {

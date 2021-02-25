@@ -83,3 +83,7 @@ img {
 .fit {
     height: 100%;
 }
+
+#form {
+    flex-wrap: wrap;
+}
