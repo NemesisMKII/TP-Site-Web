@@ -5,6 +5,21 @@ var mincarouselTEMPLATE = `
 `
 
 $(document).ready (() => {
+    // masque le formulaire au chargement
+    $("#pageformulaire").hide();
+
+// function masque affiche main formulaire
+    function contact_cyril(){
+        $("main").toggle();
+        $("#pageformulaire").toggle();
+    }
+    
+    // au click function click formulaire
+    $(".inscription").on('click', function(){
+        contact_cyril();
+        $("#carroussel").hide()
+        
+    })
 
     if (localStorage.getItem('photolist')) {
         var photolist = JSON.parse(localStorage.getItem('photolist'))
@@ -20,8 +35,6 @@ $(document).ready (() => {
             $('.slider').prepend(carouselitem)
         }   
     }
-
-    
 
     $('#boudoiralert').hide()
 
@@ -434,16 +447,22 @@ var categoriesTemplate =
     </div>
 `
 
+
 //fonction au click SUR categorie
+
     $("#catego").click(function (e){
         e.preventDefault()
+         $("#listeCategories").show()
         $("main").hide()
-        $("#listeCategories").show()
         $("#listeTechniques").hide() 
         $("#carroussel").hide()
+        $("#pageformulaire").hide()
+
+        
     })
 // fonction pour vider le main et cacher listecategories (idem pour techniques) 
    function CategorieDiv(){
+    $("#pageformulaire").hide()
     $("main").empty()
     $("main").show() 
     $("#listeCategories").hide() 
@@ -453,6 +472,27 @@ var categoriesTemplate =
     fullScreen()
  
    }
+// click sur presentation 
+   $(".presentation").click(function(e) {
+    e.preventDefault()
+    $("#pageformulaire").hide()
+    $("main").empty()
+    $("main").show() 
+    var image = "presentation.jpg"
+    var texte = categoriesTemplate
+    var nom = "Rudy lesur"
+    var textecat = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus vero molestias suscipit, sapiente repellat enim, ab laudantium fugiat voluptatem voluptatibus est impedit laborum non rem, earum aliquid consequuntur atque.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium dolores facilis quod facere voluptate recusandae mollitia sint, libero reprehenderit laborum ea voluptatibus magnam laboriosam sapiente animi, ducimus veritatis qui explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem minus voluptates dolor obcaecati eum, commodi, blanditiis fuga quisquam maxime qui, corrupti culpa quam aliquid non temporibus. Eos necessitatibus beatae minus."
+    texte = texte.replace(/%nomcategorie%/g, nom)
+    texte = texte.replace(/%textecategorie%/g , textecat)
+    texte = texte.replace(/%image%/g , image)
+    $("#carroussel").show()
+    $("main").append(texte)
+    $('.img-full').click(function () {                              //// a recopier dans toutes 
+    $('.overlay').show()
+    $('.imgReal').attr("src", $(this).attr('src'))
+    $('#zoom').hide()
+        })
+    })
 // Fonction click noir et blanc
         $(".blackandwhite").click(function(e){
             e.preventDefault()
@@ -464,7 +504,6 @@ var categoriesTemplate =
             texte = texte.replace(/%nomcategorie%/g, nom)
             texte = texte.replace(/%textecategorie%/g , textecat)
             texte = texte.replace(/%image%/g , image)
-           // texte = texte.replace(/%over%/g , over)
             $("main").append(texte)
             $("footer img:not([data-cat=NB])").parent().hide();
             $('.img-full').click(function () {                              //// a recopier dans toutes 
@@ -600,14 +639,16 @@ $(".evenement").click(function(e){
 // FONCTION CLICK TECH
 $("#tech").click(function (e){
     e.preventDefault()
+  //  window.location.replace('index.html#listeTechniques')
     $("main").hide()
     $("#listeTechniques").show()
     $("#listeCategories").hide() 
     $("#carroussel").hide()
-    
+    $("#pageformulaire").hide()
 })
 // vider et cacher listetechniques
 function techniquesDiv(){
+    $("#pageformulaire").hide()
     $("main").empty()
     $("main").show() 
     $("#listeTechniques").hide() 
@@ -615,6 +656,7 @@ function techniquesDiv(){
     $("footer img[data-cat]").parent().show();   // pour afficher les images du  footer 
     zoomImg()
     fullScreen()
+  
    
    }
 
@@ -751,7 +793,7 @@ $(".lightpainting").click(function(e){
         $('#zoom').hide()
     })
 }) 
-// END categories et techniquess fonction
+// END categories et techniquess fonction*/
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //info photo
 /*
@@ -988,6 +1030,7 @@ function fullScreen(){
 } 
 //End footer fct
 //--------------------------------------------------------------------------------------------
+
 function captcha_new(){
     var chiffre1 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
     var chiffre2 = Math.floor(Math.random() * 10);     // retourne un chiffre entre 0 et 9
