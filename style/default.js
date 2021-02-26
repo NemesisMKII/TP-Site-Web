@@ -449,25 +449,25 @@ var categoriesTemplate =
     fullScreen()
  
    }
-
+// click sur presentation 
    $(".presentation").click(function(e) {
-   e.preventDefault()
-   $("main").empty()
+    e.preventDefault()
+    $("main").empty()
     $("main").show() 
-   var image = "ress/imagesCarrou/miniature/LPNBLion.png"
-            var texte = categoriesTemplate
-            var nom = "Rudy lesur"
-            var textecat = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus vero molestias suscipit, sapiente repellat enim, ab laudantium fugiat voluptatem voluptatibus est impedit laborum non rem, earum aliquid consequuntur atque.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium dolores facilis quod facere voluptate recusandae mollitia sint, libero reprehenderit laborum ea voluptatibus magnam laboriosam sapiente animi, ducimus veritatis qui explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem minus voluptates dolor obcaecati eum, commodi, blanditiis fuga quisquam maxime qui, corrupti culpa quam aliquid non temporibus. Eos necessitatibus beatae minus."
-            texte = texte.replace(/%nomcategorie%/g, nom)
-            texte = texte.replace(/%textecategorie%/g , textecat)
-            texte = texte.replace(/%image%/g , image)
-            $("main").append(texte)
-            $('.img-full').click(function () {                              //// a recopier dans toutes 
-                $('.overlay').show()
-                $('.imgReal').attr("src", $(this).attr('src'))
-                $('#zoom').hide()
-            })
+    var image = "presentation.jpg"
+    var texte = categoriesTemplate
+    var nom = "Rudy lesur"
+    var textecat = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus vero molestias suscipit, sapiente repellat enim, ab laudantium fugiat voluptatem voluptatibus est impedit laborum non rem, earum aliquid consequuntur atque.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium dolores facilis quod facere voluptate recusandae mollitia sint, libero reprehenderit laborum ea voluptatibus magnam laboriosam sapiente animi, ducimus veritatis qui explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem minus voluptates dolor obcaecati eum, commodi, blanditiis fuga quisquam maxime qui, corrupti culpa quam aliquid non temporibus. Eos necessitatibus beatae minus."
+    texte = texte.replace(/%nomcategorie%/g, nom)
+    texte = texte.replace(/%textecategorie%/g , textecat)
+    texte = texte.replace(/%image%/g , image)
+    $("main").append(texte)
+    $('.img-full').click(function () {                              //// a recopier dans toutes 
+    $('.overlay').show()
+    $('.imgReal').attr("src", $(this).attr('src'))
+    $('#zoom').hide()
         })
+    })
 // Fonction click noir et blanc
         $(".blackandwhite").click(function(e){
             e.preventDefault()
