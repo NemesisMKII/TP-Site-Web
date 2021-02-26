@@ -581,9 +581,18 @@ main{
     }
 }
 /*responsiv version smartphone paysage*/
-/*@media (orientation: landscape) and (max-device-width : 640px) {
+@media (orientation: landscape) and (max-device-width : 640px) { 
+    #jordanslide{
+        display: block !important;
+    }
+    #main2{
+        display: none !important;
+    }
+    #jordanslide{
+        margin-right: 17%;
+    }
 
-}*/
+}
 /* css formulaire */
 #pageformulaire{
     background-image: url(paysage.jpg);

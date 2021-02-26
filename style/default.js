@@ -797,6 +797,38 @@ $('.choixImg').click(function(e){
 
 //si j'en crée une deuxieme je remet -- slide = new slider("idDuNouveauCarroussel");
 
+// on récupere le type et l'orientation puis on configure le site en fonction 
+    userDeviceType = checkDeviceType();
+    userDeviceOrientation = checkDeviceOrientation();
+    loadActualizedWebsite(userDeviceType, userDeviceOrientation);
+
+    
+    // si on est sur pc on va ecouté l'evenement resize pour recalculer l'orientation avec un delai de 2 secondes avant d'agir pour laisser le temps à l'utilisateur de finir son redimentionnement
+    if (userDeviceType === "PC") {
+        $(window).on("resize", function () {
+            //timeout pour attendre la fin du redimentionnment
+            clearTimeout(window.resizeEventFinished);
+            window.resizeEventFinished = setTimeout(function () {
+                // on recalcule l'orientation et on recharge la config adaptée
+                userDeviceOrientation = checkDeviceOrientation();
+                loadActualizedWebsite(userDeviceType, userDeviceOrientation);
+            }, 2000);
+        });
+
+    } 
+    // Sinon on est sur support mobile donc on ecoute l'evenement orientationchange qui se declanche quand on fait pivoter son smartphone ou sa tablette avec le meme delai
+    else {
+        $(window).on("orientationchange", function () {
+            //timeout pour attendre la fin du redimentionnment
+            clearTimeout(window.orientationEventFinished);
+            window.orientationEventFinished = setTimeout(function () {
+                // on recalcule l'orientation et on recharge la config
+                userDeviceOrientation = checkDeviceOrientation();
+                loadActualizedWebsite(userDeviceType, userDeviceOrientation);
+            }, 2000);
+        });
+    }
+
 //-----------------------------------------------
 })//celui  du ready
 
@@ -961,7 +993,14 @@ function fullScreen(){
       $('#zoom').show()
       }
   })
-} 
+}
+//slide
+/*function flechePrev(){
+    $("#previousSlide").click(function(){
+        var monId = $("div#zoom img").attr("data-id"); // id en cours
+        $(`footer div.slider img[data-id=${monId}]`).parent().prev(). children().attr("src");
+    })
+} */
 //End footer fct
 //--------------------------------------------------------------------------------------------
 function captcha_new(){
@@ -999,4 +1038,79 @@ function generateMdp(){
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
   });
 }
+
+//fonction control d'orientation 
+var userDeviceType;
+var userDeviceOrientation;
+// Fonction qui controle le type d'appareil utilisé pour afficher le site web
+function checkDeviceType() {
+    // instance d'un objet permettant d'avoir les information du navigateur et de l'appareil sur le quel il est utilisé
+    var deviceTypeDetect = new MobileDetect(window.navigator.userAgent);
+    // premier controle si on est sur mobile. si la reponse est null alors on est soit sur pc sinon sur tablette ou mobile
+    if (deviceTypeDetect.mobile() === null) {
+        return "PC";
+    } else {
+        // deuxieme controle si on est sur tablette ou sur mobile. si la reponse est null alors on est sur mobile sinon sur tablette
+        if (deviceTypeDetect.tablet() === null) {
+            return "MO";
+        } else {
+            return "TA";
+        }
+    }
+}
+// Fonction qui controle l'orientation de l'appareil utilisé pour afficher le site web
+function checkDeviceOrientation() {
+    // controle si on est en mode paysage sur l'orientation si la reponse est positive on est en paysage sinon on est en portrait
+    if (window.matchMedia("(orientation: landscape)").matches) {
+        return "LA";
+    } else {
+        return "PO"
+    }
+}
+
+// fonction qui va effectuer des taches spécifiques en fonction du cas dans lequel on se trouve, on a besoin de 2 parametres : le type d'appareil et son orientation
+function loadActualizedWebsite(deviceType, orientation) {
+
+    var useCase = deviceType + orientation;
+
+    switch (useCase) {
+        // PC Portrait
+        case 'PCPO':
+            // DO stuff
+            console.log(" vous etes sur un pc en mode portrait !")
+            break;
+            // PC Paysage
+        case 'PCLA':
+            // DO stuff
+            console.log(" vous etes sur un pc en mode paysage !")
+            break;
+            // Mobile Portrait
+        case 'MOPO':
+            // DO stuff
+            console.log(" vous etes sur un smartphone en mode portrait !")
+            break;
+            // Mobile Paysage
+        case 'MOLA':
+            // DO stuff
+            console.log(" vous etes sur un smartphone en mode paysage !")
+            break;
+            // Tablet Portrait
+        case 'TAPO':
+            // DO stuff
+            console.log(" vous etes sur une tablette en mode portrait !")
+            break;
+            // Tablet Paysage
+        case 'TALA':
+            // DO stuff
+            console.log(" vous etes sur une tablette en mode paysage !")
+            break;
+        default:
+            alert("Ho dude, You're the matrix");
+
+
+
+
+    }
+}
+
 ////////////////////////////////////////
