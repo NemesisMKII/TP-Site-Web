@@ -74,7 +74,9 @@ header {
 }
 */
 
-
+#adminbutton {
+    display: none;
+}
 
 ul {
     list-style-type: none;

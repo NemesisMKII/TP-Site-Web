@@ -5,10 +5,11 @@ var mincarouselTEMPLATE = `
 `
 
 $(document).ready (() => {
+
     // masque le formulaire au chargement
     $("#pageformulaire").hide();
 
-// function masque affiche main formulaire
+    // function masque affiche main formulaire
     function contact_cyril(){
         $("main").toggle();
         $("#pageformulaire").toggle();
@@ -47,13 +48,13 @@ $(document).ready (() => {
         ($(window).width() >= 992 ? $('#boudoiralert').fadeOut(200) : 0)
     })
   
-    /* FONCTION DE GESTION DES ERREURS DE CHARGEMENT D'IMAGES*/
+    /* FONCTION DE GESTION DES ERREURS DE CHARGEMENT D'IMAGES
     $("img").on("error", function () {
         $(this).attr("src", "/ress/nothumb.jpg"); 
         $(this).bind( "click", function() {
            console.log("Image introuvable");
         });
-    });
+    }); */
 
 
     $('.accordeon-expand-btn').on('click', function () {
