@@ -1,3 +1,9 @@
+var mincarouselTEMPLATE = `
+<a href="#">
+    <img class="redimension choixImg" src="ress/imagesCarrou/miniature/%urlmin%" data-tec="%tec%" data-cat="%cat%" data-target="%target%"  name="%name%" data-ex="%ex%" data-id="%dataid%">
+</a>
+`
+
 $(document).ready (() => {
     // masque le formulaire au chargement
     $("#pageformulaire").hide();
@@ -15,6 +21,21 @@ $(document).ready (() => {
         
     })
 
+    if (localStorage.getItem('photolist')) {
+        var photolist = JSON.parse(localStorage.getItem('photolist'))
+        for (photoitem in photolist) {
+            var carouselitem = mincarouselTEMPLATE
+            carouselitem = carouselitem.replace(/%urlmin%/g, photolist[photoitem].urlminiature)
+            carouselitem = carouselitem.replace(/%tec%/g, photolist[photoitem].datatec)
+            carouselitem = carouselitem.replace(/%cat%/g, photolist[photoitem].datacat)
+            carouselitem = carouselitem.replace(/%target%/g, photolist[photoitem].datatarget)
+            carouselitem = carouselitem.replace(/%name%/g, photolist[photoitem].name)
+            carouselitem = carouselitem.replace(/%ex%/g, photolist[photoitem].dataex)
+            carouselitem = carouselitem.replace(/%dataid%/g, photolist[photoitem].data_id)
+            $('.slider').prepend(carouselitem)
+        }   
+    }
+
     $('#boudoiralert').hide()
 
     $('#boudoir').hover(() => {
@@ -27,7 +48,7 @@ $(document).ready (() => {
     $("img").on("error", function () {
         $(this).attr("src", "/ress/nothumb.jpg"); 
         $(this).bind( "click", function() {
-           alert("Image introuvable");
+           console.log("Image introuvable");
         });
     });
 
@@ -950,7 +971,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
         $('#carroussel').show() 
         $('div#col1').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
         $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carroussel
-        $('main').css("border","0px");
+        $('main').css("border-bottom","0px");
     }
     if (largeurWindow < 570) { // en bas
         $('#carroussel2').hide()
@@ -959,7 +980,7 @@ function carrousselMoove(){ //cache le carroussel et affiche sur la droite en fc
         $('div#col2').css("padding-right","0%"); // pour que la photo (grande) et les commentaires passent pas en dessous du carrou
         var hauteurcarrou = document.querySelector("#carroussel").offsetHeight;
         //alert(hauteurcarrou);
-        $('main').css("border",hauteurcarrou+"px solid transparent")
+        $('main').css("border-bottom",hauteurcarrou+"px solid transparent")
     }
 }
 //Ajout des miniatures
