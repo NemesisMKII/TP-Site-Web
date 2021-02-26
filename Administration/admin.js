@@ -234,7 +234,11 @@ $(document).ready(() => {
             for (item in supimage) {
                 for (photoitem in photolist) {
                     if (supimage[item].name == photolist[photoitem].name) {
-                        photolist.splice(photolist[photoitem], 1)
+                        console.log(photoitem); 
+                        console.log(photolist);
+                        console.log(photolist[photoitem]);
+                        photolist.splice(photoitem, 1)
+                        console.log(photolist);
                     }
                 }
             }
