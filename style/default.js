@@ -11,6 +11,8 @@ $(document).ready (() => {
     // au click function click formulaire
     $(".inscription").on('click', function(){
         contact_cyril();
+        $("#carroussel").hide()
+        
     })
 
     $('#boudoiralert').hide()
@@ -452,6 +454,7 @@ var categoriesTemplate =
 // click sur presentation 
    $(".presentation").click(function(e) {
     e.preventDefault()
+    $("#pageformulaire").hide()
     $("main").empty()
     $("main").show() 
     var image = "presentation.jpg"
@@ -461,6 +464,7 @@ var categoriesTemplate =
     texte = texte.replace(/%nomcategorie%/g, nom)
     texte = texte.replace(/%textecategorie%/g , textecat)
     texte = texte.replace(/%image%/g , image)
+    $("#carroussel").show()
     $("main").append(texte)
     $('.img-full').click(function () {                              //// a recopier dans toutes 
     $('.overlay').show()
