@@ -5,6 +5,13 @@ var mincarouselTEMPLATE = `
 `
 
 $(document).ready (() => {
+    //Affiche le bouton "gérer" réversé à l'admin s'il est connecté
+    if (!sessionStorage.getItem('sessionUser')) {
+    } else {
+        if (JSON.parse(sessionStorage.getItem('sessionUser')).userLog.role == 'admin') {
+            $('#adminbutton').show()
+        }
+    }
 
     // masque le formulaire au chargement
     $("#pageformulaire").hide();
