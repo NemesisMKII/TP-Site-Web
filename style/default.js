@@ -9,16 +9,11 @@ $(document).ready (() => {
     // masque le formulaire au chargement
     $("#pageformulaire").hide();
 
-    // function masque affiche main formulaire
-    function contact_cyril(){
-        $("main").toggle();
-        $("#pageformulaire").toggle();
-    }
-    
     // au click function click formulaire
     $(".inscription").on('click', function(){
-        contact_cyril();
         $("#carroussel").hide()
+        $("#pageformulaire").show();
+        $("main").hide()
         
     })
 
@@ -456,6 +451,7 @@ var categoriesTemplate =
 
     $("#catego").click(function (e){
         e.preventDefault()
+        $("#pageformulaire").hide()
          $("#listeCategories").show()
         $("main").hide()
         $("#listeTechniques").hide() 
