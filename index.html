@@ -56,13 +56,13 @@
 								<div class="collapse" id="aboutMe">
 									<ul class="nav">
 										<li class="nav-item">
-											<a class="nav-link" href="aboutme.html">Mon portrait</a>
+											<a class="nav-link presentation" >Mon portrait</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="#">Mes prestations</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="contact.html#pageformulaire">Contact</a>
+											<a class="nav-link inscription">Contact</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="#">CGU / CGV</a>
@@ -669,6 +669,58 @@
 	</div>
   </div>
 
+  <div class="inscription" id="pageformulaire">
+	<!--formulaire-->
+	   <div id="titreContact">
+		   <h1>Contact</h1>
+		   <p>Remplissez le formulaire de contact pour m’exposer votre demande.<br>
+		   <br>Si vous souhaitez accéder à l'album boudoire, faites votre demande ici ,un login et un mot de passe vous serons transmis.</p>
+	   </div>
+   <div id="formulaire"> <!--formulaire-->
+		 <form method="POST" action=""  id="myForm">
+		   <div>
+			   <div class="row mb-3">
+				   <div class="col">
+			   <input type="text" class="form-control" name="firstName" id="firstName"  placeholder="Votre prénom" />
+				   </div>
+				   <div class="col">
+			   <input type="text" class="form-control" name="name" id="name" placeholder="Votre nom" /><br>
+				   </div>
+			   </div>
+			   <div class="col-md-4 mb-3">
+				   <div class="col">
+			   <input type="email" class="form-control" name="mail" id="mail" placeholder="Votre e-mail"/>
+					   </div>
+		   </div>
+		   <div class="form-group">
+			   <label for="objet">Renseignez le sujet concernant votre demande</label>
+			   <select id="objet" class="form-control">
+				   <option id="information" value="information" >Demande d'informations</option>
+				   <option id="devis" value ="devis">Demande de devis</option>
+				   <option id="rdv" value ="rdv">Demande de rendez-vous</option>
+				   <option id="bouboire" value ="boudoir">Demande d'accés à l'album boudoir</option>
+			   </select>
+			   </div>
+			   <div class="form-group">
+				   <label for="message"></label>
+				   <textarea class="form-control" name="message" id="message" cols="45" rows="8" placeholder="Votre message"></textarea>
+				   </div>
+			   <div>
+				   <input class="form-check-input" type="checkbox" id="age" name="subscribe" value="ageLegal">
+				   <label class="form-check-label" for="age">Je certifie avoir plus de 18 ans</label><br>
+			   </div>
+			   <!--captcha-->
+			   <p id="dyna">xxx</p>
+			   <input type="text" maxlength="50" required id="captcha"/> 
+		   
+			   <button class="btn btn-primary" type="submit" id="submitForm" value="Envoyez">
+				   Envoyez
+			   </button>
+			   </div>  
+		   </form>
+   </div>
+</div>
+   
   
 
   	<!--cdn script js pour fontawesome de mon compte -->
