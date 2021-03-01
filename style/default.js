@@ -485,7 +485,7 @@ var categoriesTemplate =
     $("#pageformulaire").hide()
     $("main").empty()
     $("main").show() 
-    var image = "presentation.jpg"
+    var image = "photo/presentation.jpg"
     var texte = categoriesTemplate
     var nom = "Rudy lesur"
     var textecat = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus vero molestias suscipit, sapiente repellat enim, ab laudantium fugiat voluptatem voluptatibus est impedit laborum non rem, earum aliquid consequuntur atque.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium dolores facilis quod facere voluptate recusandae mollitia sint, libero reprehenderit laborum ea voluptatibus magnam laboriosam sapiente animi, ducimus veritatis qui explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem minus voluptates dolor obcaecati eum, commodi, blanditiis fuga quisquam maxime qui, corrupti culpa quam aliquid non temporibus. Eos necessitatibus beatae minus."
@@ -494,7 +494,7 @@ var categoriesTemplate =
     texte = texte.replace(/%image%/g , image)
     $("#carroussel").show()
     $("main").append(texte)
-    $('.img-full').click(function () {                              //// a recopier dans toutes 
+    $('.img-full').click(function () {                              //// a recopier dans toutes pour le overlay
     $('.overlay').show()
     $('.imgReal').attr("src", $(this).attr('src'))
     $('#zoom').hide()
@@ -513,7 +513,7 @@ var categoriesTemplate =
             texte = texte.replace(/%image%/g , image)
             $("main").append(texte)
             $("footer img:not([data-cat=NB])").parent().hide();
-            $('.img-full').click(function () {                              //// a recopier dans toutes 
+            $('.img-full').click(function () {                              //// a recopier dans toutes pour le overlay
                 $('.overlay').show()
                 $('.imgReal').attr("src", $(this).attr('src'))
                 $('#zoom').hide()
@@ -527,7 +527,7 @@ var categoriesTemplate =
         CategorieDiv()   
         var texte = categoriesTemplate
         var nom = "Portrait"
-        var image = "ress/imagesCarrou/miniature/grande/STPOVisage3max.jpg"
+        var image = "photo/POphoto.jpg"
         var textecat = "La photo de portrait est un art à part entière : il ne s’agit plus seulement d'immortaliser une scène ou une nature morte mais plutôt de capter une sensibilité, une personnalité, un trait d’humeur ou de caractère chez la personne qui joue les modèles devant l'objectif le temps d’une séance photo. De ce shooting photo, en studio, à domicile ou en extérieur vont naitre des images qui témoigneront d’une époque, d’une période de votre vie, d’un moment fort, peut être d’une réussite que vous aimeriez cristalliser.  Cette photo-portrait sera un concentré d'émotions pour revivre ces instants avec à chaque fois la même intensité. La photographie peut aussi avoir des vertus thérapeutiques et être un bon moyen de prendre confiance en soi, en son image, de s’accepter tel qu’on est. C’est encore le moyen de se mettre en valeur pour une photo corporate ou dans un cadre privé pour séduire de nouveaux partenaires."
         texte = texte.replace(/%nomcategorie%/g, nom)
         texte = texte.replace(/%textecategorie%/g , textecat)
@@ -802,63 +802,6 @@ $(".lightpainting").click(function(e){
 }) 
 // END categories et techniquess fonction*/
 //--------------------------------------------------------------------------------------------------------------------------------------------
-//info photo
-/*
-var infoTemplate = `
-<div id="col2">
-<div id="centerdiv" class="h-100">			
-<div id="infophoto">
-<div class="row mt-3">
-
-    <div class="col col-md-6">
-        <ul>
-            <li>Date de création :  %date% </li>
-            <li>Modèle du boitier reflex utilisé : %modele%</li>
-            <li>Objectif utilisé :%objectif% </li>
-            <li>Longueur de la focale :%longueur% </li>
-        
-            </ul>
-    </div>
-    <div class="col col-md-6 ">
-    
-        <ul>
-          
-            <li>Temps d'exposition : %exposition% </li>
-            <li>Iso : %iso%</li>
-            <li>Utilisation du flash : %flash%</li>
-            </ul>
-    </div>
-</div>
-</div>
-</div>
-</div>
-`
-
-
-$('.choixImg').click(function(e){
-    e.preventDefault()
-    console.log("infophoto")
-    var texte = infoTemplate 
-    var idImg = $(".slider img").attr("data-id")
-    var date = "20/09/2020"
-    var modele = "Nikon D850"
-    var objectif = "EF"
-    var longueur ="50 mm"
-    var exposition = "2 sec"
-    var iso ="3200"
-    var flash = "oui"
-    texte = texte.replace(/%modele%/g, modele)
-    texte = texte.replace(/%objectif%/g , objectif)
-    texte = texte.replace(/%longueur%/g , longueur)
-    texte = texte.replace(/%exposition%/g, exposition)
-    texte = texte.replace(/%iso%/g , iso)
-    texte = texte.replace(/%flash%/g , flash)
-    $("main").append("")
-    $("main").append(texte) 
-   
-})
-*/
-// end info photo-----------------------------------------------------------------------------------
 //FOOTER
 
 
