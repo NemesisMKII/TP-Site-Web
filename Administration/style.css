@@ -88,3 +88,7 @@ img {
 #form {
     flex-wrap: wrap;
 }
+
+#albumlisting {
+    overflow-y: scroll;
+}

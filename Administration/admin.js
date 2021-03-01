@@ -252,7 +252,7 @@ $(document).ready(() => {
         $('.maincontainer').empty()
         $('.maincontainer').append(`
         <h2 class="text-center">Ajouter un album </h2>
-        <div class="m-3 mt-4 border border-dark contentdiv">
+        <div class="m-3 mt-4 border border-dark contentdiv" id="albumlisting">
             <div class="text-center pt-1">
                 <p class="mb-1">Nom de l'album</p>
                 <input type="text" placeholder="Entrez un nom d'album ..." id="albumtitle"/>
