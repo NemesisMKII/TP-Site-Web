@@ -63,6 +63,10 @@ header {
     z-index: 11;
 }
 
+#headerPage {
+    position: relative;
+}
+
 .nav > .nav-item { 
     cursor: pointer;
 }
@@ -74,9 +78,10 @@ header {
 }
 */
 
-#adminbutton {
+#adminbutton, #disconnectbutton {
     display: none;
 }
+
 
 ul {
     list-style-type: none;
@@ -143,7 +148,12 @@ main{
 	z-index:0px;
 }
 
+.photoalbum {
+    max-width: fit-content;
+    max-height: 300px;
+}
 
+.albumphoto {flex-wrap: wrap;}
 
 /*
                                          _ 
