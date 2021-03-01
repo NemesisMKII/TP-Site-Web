@@ -10,8 +10,15 @@ $(document).ready (() => {
     } else {
         if (JSON.parse(sessionStorage.getItem('sessionUser')).userLog.role == 'admin') {
             $('#adminbutton').show()
+            $('#disconnectbutton').show()
         }
     }
+
+    $('#disconnectbutton').click((e) => {
+        e.preventDefault()
+        sessionStorage.clear()
+        location.reload()
+    })
 
     // masque le formulaire au chargement
     $("#pageformulaire").hide();
