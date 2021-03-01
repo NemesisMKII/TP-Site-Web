@@ -42,6 +42,38 @@ $(document).ready (() => {
         }   
     }
 
+    if (localStorage.getItem('albumlist')) {
+        var albumlist = JSON.parse(localStorage.getItem('albumlist'))
+        $('#albumMenu .nav').empty()
+        for (album in albumlist) {
+            $('#albumMenu .nav').append(`
+            <li class="nav-item">
+				<a class="nav-link" href="#" name="${albumlist[album].name}">${albumlist[album].name}</a>
+			</li>
+            `)
+        }
+    }
+
+    $('#albumMenu .nav li.nav-item').click((e) => {
+        for (album in albumlist) {
+            if ($(e.target).attr('name') == albumlist[album].name) {
+                console.log(albumlist[album].name);
+                $('main').empty()
+                $('main').append(`
+                <h3 class='text-center'>${albumlist[album].name}</h3>
+                <div class="d-flex justify-content-around albumphoto">
+                </div>
+                `)
+                for (photo in albumlist[album].photos) {
+                    var currentphoto = albumlist[album].photos[photo]
+                    $('main div').append(`
+                        <img src="/ress/imagesCarrou/miniature/${currentphoto.urlminiature}" class="photoalbum m-3" /> 
+                        `)
+                }
+            }
+        }
+    })
+
     $('#boudoiralert').hide()
 
     $('#boudoir').hover(() => {

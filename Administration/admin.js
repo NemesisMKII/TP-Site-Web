@@ -40,7 +40,7 @@ var albumsTEMPLATE = `
 /* PAGE TEMPLATES END */
 
 $(document).ready(() => {
-
+    //Load localstore if already exists, or create it
     if (!localStorage.getItem('albumlist')) {
         var albumlist = []
         localStorage.setItem('albumlist', JSON.stringify(albumlist))
@@ -56,6 +56,10 @@ $(document).ready(() => {
         var dataid = photolist.length + 1
     }
 
+    /*on click on a menu element, set the url corresponding to the element, then reloads.
+    page var is used to split the url in order to get only the element id
+    Then, after checking if there is an id in the url,
+    Switch case is used to fill the maincontainer with templates.*/
     var page = window.location.href.split('?')[1]
     if (page != undefined) {
         page = page.split('=')[1]
@@ -87,7 +91,7 @@ $(document).ready(() => {
                     for (albumitem in albumlist) {
                         $('#albumcontainer').append(`
                         <div class='album mb-5'>
-                            <img src="${albumlist[albumitem].photos[0]}" class="img-fluid fit" name="${albumlist[albumitem].name}" />
+                            <img src="../ress/imagesCarrou/miniature/${albumlist[albumitem].photos[0].urlminiature}" class="img-fluid fit" name="${albumlist[albumitem].name}" />
                             <p class="text-center">${albumlist[albumitem].name}</p>
                         </div>
                         `)
@@ -106,6 +110,8 @@ $(document).ready(() => {
     $('#delphoto').click(delPhoto)
 
     function addPhoto() {
+        /* Used to add photo to the website, made to be obsolete and replaced 
+        */
         var photoloaded = false
         $('.maincontainer').empty()
         $('.maincontainer').append(`
@@ -113,8 +119,8 @@ $(document).ready(() => {
         <div class="m-3 mt-4 contentdiv overflowscroll">
             <form action="" class="d-flex p-5" id="form">
                 <div class="d-block mx-auto" id="photoloaddiv">
-                    <p class="mb-1">Entrez l'URL de la photo (miniature)</p>
-                    <input type="text" placeholder="Entrez l'URL ..." class="mb-2" id="photoURL">
+                    <p class="mb-1">TEMPORAIRE: Entrez l'URL de la photo (miniature)</p>
+                    <input type="text" placeholder="Ex: photo.jpg" class="mb-2" id="photoURL">
                     <input type="button" value="charger photo" id="photoload">
                 </div>
                 <div class="d-flex">
@@ -129,31 +135,31 @@ $(document).ready(() => {
                         </div>
                         <div class="col">
                             <p class="mb-1">Date de prise de la photo:</p>
-                            <input type="text" class="mb-2" id="date" placeholder="inutile">
+                            <input type="text" class="mb-2" id="date" placeholder="Non obligatoire">
                         </div>
                     </div>
                     <div class="row justify-content-around">
                         <div class="col">
                             <p class="mb-1">Focale:</p>
-                            <input type="text" class="mb-2" id="focale" placeholder="inutile">
+                            <input type="text" class="mb-2" id="focale" placeholder="Non obligatoire">
                         </div>
                         <div class="col">
                             <p class="mb-1">Temps d'exposition:</p>
-                            <input type="text" class="mb-2" id="exposition" placeholder="inutile">
+                            <input type="text" class="mb-2" id="exposition" placeholder="Non obligatoire">
                         </div>
                         <div class="col">
                             <p class="mb-1">Iso:</p>
-                            <input type="text" class="mb-2" id="iso" placeholder="inutile">
+                            <input type="text" class="mb-2" id="iso" placeholder="Non obligatoire">
                         </div>
                     </div>
                     <div class="row justify-content-around">
                         <div class="col">
                             <p class="mb-1">Utilisation du flash:</p>
-                            <input type="text" class="mb-2" id="flash" placeholder="inutile">
+                            <input type="text" class="mb-2" id="flash" placeholder="Non obligatoire">
                         </div>
                         <div class="col">
                             <p class="mb-1">Longueur de la focale:</p>
-                            <input type="text" class="mb-2" id="focalelength" placeholder="inutile">
+                            <input type="text" class="mb-2" id="focalelength" placeholder="Non obligatoire">
                         </div>
                     </div>
                 </div>
@@ -167,11 +173,11 @@ $(document).ready(() => {
             if (photoloaded) {
                 $('#photoloaddiv').empty()
                 $('#photoloaddiv').after(`
-                <img src="${$('#photoURL').val()}" alt="" class="row">
+                <img src="../ress/imagesCarrou/miniature/${$('#photoURL').val()}" alt="" class="row">
                 `)
             } else {
                 $('#photoloaddiv').after(`
-                <img src="${$('#photoURL').val()}" alt="" class="row">
+                <img src="../ress/imagesCarrou/miniature/${$('#photoURL').val()}" alt="" class="row">
                 `)
             }
             
@@ -186,13 +192,13 @@ $(document).ready(() => {
                 alert('erreur')
             } else {
                 var photo = {
-                    urlminiature: urlref,
+                    urlminiature: $('#photoURL').val(),
                     datatec: $('#technique').val(),
                     datacat: $('#category').val(),
                     datatarget: 'html',
-                    name: urlref.split('.')[0],
-                    dataex: '.' + urlref.split('.')[1],
-                    data_id: urlref
+                    name: $('#photoURL').val().split('.')[0],
+                    dataex: '.' + $('#photoURL').val().split('.')[1],
+                    data_id: $('#photoURL').val()
                 }
                 photolist.push(photo)
                 localStorage.setItem('photolist', JSON.stringify(photolist))
@@ -269,15 +275,21 @@ $(document).ready(() => {
             var photo = $(e.target)
             var isalreadyselected = false
             for (photoitem in album) {
-                if (album[photoitem] == photo.attr('src')) {
+                if (album[photoitem].name == photo.attr('src').split('/')[photo.attr('src').split('/').length - 1].split('.')[0]) {
                     photo.removeClass('selection')
                     isalreadyselected = true
-                    album.splice(album[photoitem], 1)
+                    album.splice(photoitem, 1)
                 }
             }
             if (isalreadyselected == false) {
-                photo.addClass('selection')
-                album.push(photo.attr('src'))
+                for (photos in photolist) {
+                    if (photo.attr('src').split('/')[photo.attr('src').split('/').length - 1].split('.')[0] == photolist[photos].name) {
+                        photo.addClass('selection')
+                        album.push(photolist[photos])
+                        console.log(album);
+                    }
+                }
+                
             }
         })
 
