@@ -2,13 +2,13 @@
 
 var homeTEMPLATE = `
     <h2 class="text-center">Panel de gestion administrateur</h2>
-    <div class='m-3 mt-4 bg-success contentdiv'>
+    <div class='m-3 mt-4 contentdiv'>
     
     </div>
 `
 var photosTEMPLATE = `
     <h2 class="text-center">Gestion des photos</h2>
-    <div class='m-3 mt-4 border border-dark contentdiv overflowscroll'>
+    <div class='m-3 mt-4 contentdiv overflowscroll'>
         <div class='d-flex justify-content-around mt-2 overflowscroll' id="photocontainer">
         </div>
     </div>
@@ -27,8 +27,8 @@ var connexionsTEMPLATE = `
 
 var albumsTEMPLATE = `
     <h2 class="text-center">Gérer les albums</h2>
-    <div class='m-3 mt-4 border border-dark contentdiv overflowscroll'>
-        <div class='d-flex justify-content-around mt-4' id="albumcontainer">
+    <div class='m-3 mt-4 contentdiv overflowscroll'>
+        <div class='d-flex justify-content-around mt-4 mb-5' id="albumcontainer">
         
         </div>
     </div>
@@ -72,7 +72,7 @@ $(document).ready(() => {
                     $('main div.maincontainer').append(photosTEMPLATE)
                     for (photoitem in photolist) {
                         $('#photocontainer').append(`
-                        <img src="../ress/imagesCarrou/miniature/${photolist[photoitem].urlminiature}" data-tec="${photolist[photoitem].datatec}" data-cat="${photolist[photoitem].datacat}" data-target="${photolist[photoitem].datatarget}"  name="${photolist[photoitem].name}" data-ex="${photolist[photoitem].dataex}" data-id="${photolist[photoitem].data_id}">
+                        <img src="../ress/imagesCarrou/miniature/${photolist[photoitem].urlminiature}" class="mb-5" data-tec="${photolist[photoitem].datatec}" data-cat="${photolist[photoitem].datacat}" data-target="${photolist[photoitem].datatarget}"  name="${photolist[photoitem].name}" data-ex="${photolist[photoitem].dataex}" data-id="${photolist[photoitem].data_id}">
                         `)
                     }
                     break
@@ -86,8 +86,8 @@ $(document).ready(() => {
                     $('main div.maincontainer').append(albumsTEMPLATE)
                     for (albumitem in albumlist) {
                         $('#albumcontainer').append(`
-                        <div class='album'>
-                            <img src="${albumlist[albumitem].photos[0]}" class="img-fluid fit" />
+                        <div class='album mb-5'>
+                            <img src="${albumlist[albumitem].photos[0]}" class="img-fluid fit" name="${albumlist[albumitem].name}" />
                             <p class="text-center">${albumlist[albumitem].name}</p>
                         </div>
                         `)
@@ -110,7 +110,7 @@ $(document).ready(() => {
         $('.maincontainer').empty()
         $('.maincontainer').append(`
         <h2 class="text-center">Ajouter une photo </h2>
-        <div class="m-3 mt-4 border border-dark contentdiv overflowscroll">
+        <div class="m-3 mt-4 contentdiv overflowscroll">
             <form action="" class="d-flex p-5" id="form">
                 <div class="d-block mx-auto" id="photoloaddiv">
                     <p class="mb-1">Entrez l'URL de la photo (miniature)</p>
@@ -212,12 +212,11 @@ $(document).ready(() => {
         $('img').click((e) => {
             var photo = $(e.target)
             var isalreadyselected = false
-            console.log(photo.attr('name'));
             for (item in supimage) {
                 if (photo.attr('name') == supimage[item].name) {
                     photo.removeClass('selection')
                     isalreadyselected = true
-                    supimage.splice(supimage[item], 1)
+                    supimage.splice(item, 1)
                 }
             }
             if (isalreadyselected == false) {
@@ -234,11 +233,7 @@ $(document).ready(() => {
             for (item in supimage) {
                 for (photoitem in photolist) {
                     if (supimage[item].name == photolist[photoitem].name) {
-                        console.log(photoitem); 
-                        console.log(photolist);
-                        console.log(photolist[photoitem]);
                         photolist.splice(photoitem, 1)
-                        console.log(photolist);
                     }
                 }
             }
@@ -252,7 +247,7 @@ $(document).ready(() => {
         $('.maincontainer').empty()
         $('.maincontainer').append(`
         <h2 class="text-center">Ajouter un album </h2>
-        <div class="m-3 mt-4 border border-dark contentdiv" id="albumlisting">
+        <div class="m-3 mt-4 contentdiv" id="albumlisting">
             <div class="text-center pt-1">
                 <p class="mb-1">Nom de l'album</p>
                 <input type="text" placeholder="Entrez un nom d'album ..." id="albumtitle"/>
@@ -278,13 +273,11 @@ $(document).ready(() => {
                     photo.removeClass('selection')
                     isalreadyselected = true
                     album.splice(album[photoitem], 1)
-                    console.log(album);
                 }
             }
             if (isalreadyselected == false) {
                 photo.addClass('selection')
                 album.push(photo.attr('src'))
-                console.log(album);
             }
         })
 
@@ -294,9 +287,7 @@ $(document).ready(() => {
                     photos: album,
                     name: $('#albumtitle').val()
                 }
-
                 albumlist.push(albumobject)
-                console.log(albumlist);
                 localStorage.setItem('albumlist', JSON.stringify(albumlist))
                 location.reload()
             } else {
@@ -306,7 +297,47 @@ $(document).ready(() => {
     }
 
     function delAlbum() {
-        $('.contentdiv').empty()
+        var supalbum = []
+        $('.contentdiv').prepend(`
+        <h2 class="text-center">Choisissez les albums à supprimer</h2>
+        `)
+        $('.contentdiv').append(`
+        <button class="btn btn-success d-block mx-auto" id="confirm">Confirmer</button>
+        `)
+        $('img').click((e) => {
+            var album = $(e.target)
+            var isalreadyselected = false
+            console.log(album.attr('name'));
+            for (item in supalbum) {
+                if (album.attr('name') == supalbum[item].name) {
+                    album.removeClass('selection')
+                    isalreadyselected = true
+                    supalbum.splice(item, 1)
+                    console.log(supalbum);
+                }
+            }
+            if (isalreadyselected == false) {
+                for (albumitem in albumlist) {
+                    if (album.attr('name') == albumlist[albumitem].name) {
+                        album.addClass('selection')
+                        supalbum.push(albumlist[albumitem])
+                        console.log(supalbum);
+                    }
+                }
+            }
+        })
+
+        $('#confirm').click(() => {
+            for (item in supalbum) {
+                for (albumitem in albumlist) {
+                    if (supalbum[item].name == albumlist[albumitem].name) {
+                        albumlist.splice(albumitem, 1)
+                    }
+                }
+            }
+            localStorage.setItem('albumlist', JSON.stringify(albumlist))
+            location.reload()
+        })
     }
 
     function setURL() {
